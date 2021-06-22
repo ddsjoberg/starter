@@ -66,12 +66,8 @@ create_project <- function(path, path_data = NULL, template = c("default"),
   )
 
   # initializing git repo ------------------------------------------------------
-  git <-
-    dplyr::case_when(
-      is.na(git) & interactive() ~ ui_yeah("Initialise Git repo?"),
-      is.na(git) ~ FALSE,
-      TRUE ~ git
-    )
+  if (is.na(git) && !interactive()) git <- TRUE
+  else if (is.na(git) && interactive()) git <- ui_yeah("Initialise Git repo?")
 
   if (git) {
     # if there is an error setting up, printing note about the error
@@ -103,7 +99,10 @@ create_project <- function(path, path_data = NULL, template = c("default"),
       ui_yeah("Set up {ui_value('renv')} project? (recommended)",
               n_yes = 1, n_no = 1)
   }
-  if (isTRUE(renv)) renv::init(path, restart = FALSE)
+  if (isTRUE(renv)) {
+    ui_done("Initialising renv project")
+    renv::init(path, restart = FALSE)
+  }
 
   # finishing up ---------------------------------------------------------------
   # opening new R project
@@ -221,8 +220,8 @@ writing_files_folders <- function(selected_template, path,
     purrr::map_lgl(
       function(i) {
         if (!df_files$file_exists[i]) return(TRUE)
-        if (overwrite) return(TRUE)
-        if (!overwrite) return(FALSE)
+        if (isTRUE(overwrite)) return(TRUE)
+        if (!isTRUE(overwrite)) return(FALSE)
         if (!interactive()) return(FALSE)
         msg <- paste("{ui_path(df_files$filename[i])} already exists.",
                      "Would you like to overwrite it?")

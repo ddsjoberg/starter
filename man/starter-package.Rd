@@ -6,7 +6,21 @@
 \alias{starter-package}
 \title{starter: A Starter Kit for New Projects}
 \description{
-What the package does (one paragraph).
+Get set up with new projects by dropping a skeleton of a new
+    project into a new or existing directory. Functions to initialise Git
+    repositories and reproducible enviornments with the renv package. The
+    package allows for dynamically named files, folders, file content, as
+    well as the functionality to drop individual template files into
+    existing projects.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ddsjoberg/starter}
+  \item \url{http://www.danieldsjoberg.com/starter/index.html}
+  \item Report bugs at \url{https://github.com/ddsjoberg/starter/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Daniel D. Sjoberg \email{danield.sjoberg@gmail.com} (\href{https://orcid.org/0000-0003-0862-2018}{ORCID})
