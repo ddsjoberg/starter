@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter//index.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter//reference/create_project.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter//reference/create_symlink.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter//reference/starter-package.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter//reference/use_project_file.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter//articles/create_project.html</loc>
+  </url>
+</urlset>
