@@ -28,6 +28,29 @@ devtools::install_github("ddsjoberg/starter")
 
 ## Example
 
+``` r
+library(starter)
+
+create_project(
+  path = fs::path(tempdir(), "My Project Folder"),
+  open = FALSE # don't open project in new RStudio session
+)
+#> v Using 'Default Project Template' template
+#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/Rtmp0oXaIm/My Project Folder/'
+#> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj'
+#> v Initialising Git repo
+#> v Initialising renv project
+#> * Initializing project ...
+#> * Discovering package dependencies ... Done!
+#> * Copying packages into the cache ... Done!
+#> The following package(s) will be updated in the lockfile:
+#> 
+#> # CRAN ===============================
+#> - renv   [* -> 0.13.2]
+#> 
+#> * Lockfile written to 'C:/Users/sjobergd/AppData/Local/Temp/Rtmp0oXaIm/My Project Folder/renv.lock'.
+```
+
 ## Code of Conduct
 
 Please note that the starter project is released with a [Contributor
