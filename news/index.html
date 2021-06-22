@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Establish symbolic link between folders — create_symlink • starter</title>
+<title>Changelog • starter</title>
 
 
 <!-- jquery -->
@@ -39,12 +39,7 @@
 
 
 
-<meta property="og:title" content="Establish symbolic link between folders — create_symlink" />
-<meta property="og:description" content="The starter_symlink() function is an OS agnostic function that creates symbolic
-links between two folders. The function is, at its core, a wrapper for the
-R.utils::createLink() function with opinionated
-defaults. The function must be called in an environment where the working
-directory is known (e.g. using *.Rproj, setwd(), etc.)." />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -63,7 +58,7 @@ directory is known (e.g. using *.Rproj, setwd(), etc.)." />
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,74 +110,25 @@ directory is known (e.g. using *.Rproj, setwd(), etc.)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Establish symbolic link between folders</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ddsjoberg/starter/blob/master/R/create_symlink.R'><code>R/create_symlink.R</code></a></small>
-    <div class="hidden name"><code>create_symlink.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/ddsjoberg/starter/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>The <code>starter_symlink()</code> function is an OS agnostic function that creates symbolic
-links between two folders. The function is, at its core, a wrapper for the
-<code><a href='https://rdrr.io/pkg/R.utils/man/createLink.html'>R.utils::createLink()</a></code> function with opinionated
-defaults. The function must be called in an environment where the working
-directory is known (e.g. using <code>*.Rproj</code>, <code><a href='https://rdrr.io/r/base/getwd.html'>setwd()</a></code>, etc.).</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>create_symlink</span><span class='op'>(</span><span class='va'>to</span>, name <span class='op'>=</span> <span class='st'>"secure_data"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>to</th>
-      <td><p>target file or directory to which the shortcut should point to.</p></td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td><p>symbolic link folder name. Default folder name is `"secure_data"``</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/R.utils/man/createLink.html'>R.utils::createLink</a></code></p><dl>
-    <dt><code></code></dt><dd><p></p></dd>
-  
-</dl></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Returns (invisibly) the path or pathname to the link. If no link was
-created, NULL is returned.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>A symbolic link is a special kind of file that points to another file/folder.
-A symbolic link does not contain the data in the target file. It simply points
-to another entry somewhere in the file system. This allows symbolic links
-to link to directories or files on remote network locations. Depending
-on your operating system, a link may not establish if the originating
-path is a network drive.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/R.utils/man/createLink.html'>R.utils::createLink()</a></code></p></div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Daniel D. Sjoberg</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># Using `starter_symlink()` to establish a symbolic link to a</span>
-<span class='co'># mapped networked data folder.</span>
-<span class='co'># The default name of the symlink folder is 'secure_data'</span>
-<span class='fu'>create_symlink</span><span class='op'>(</span><span class='st'>"O:/Outcomes/Project Folder/Data"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <div id="starter-0009000" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.0.9000">
+<a href="#starter-0009000" class="anchor"></a>starter 0.0.0.9000</h1>
+<ul>
+<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
