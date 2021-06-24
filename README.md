@@ -5,13 +5,11 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter)
+[![R-CMD-check](https://github.com/ddsjoberg/starter/workflows/R-CMD-check/badge.svg)](https://github.com/ddsjoberg/starter/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ddsjoberg/starter?branch=main)
-[![R-CMD-check](https://github.com/ddsjoberg/starter/workflows/R-CMD-check/badge.svg)](https://github.com/ddsjoberg/starter/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter)
 <!-- badges: end -->
 
 The **starter** package provides a toolkit for starting new projects.
@@ -36,7 +34,7 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> v Using 'Default Project Template' template
-#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpqO4Xio/My Project Folder/'
+#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpwZUkah/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj'
 #> v Initialising Git repo
 #> v Initialising renv project
@@ -48,7 +46,7 @@ create_project(
 #> # CRAN ===============================
 #> - renv   [* -> 0.13.2]
 #> 
-#> * Lockfile written to 'C:/Users/sjobergd/AppData/Local/Temp/RtmpqO4Xio/My Project Folder/renv.lock'.
+#> * Lockfile written to 'C:/Users/sjobergd/AppData/Local/Temp/RtmpwZUkah/My Project Folder/renv.lock'.
 ```
 
 ## Code of Conduct
