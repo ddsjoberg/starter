@@ -22,7 +22,7 @@
 #' Default is `TRUE`. When `NA` which interactively asks user preference.
 #' @param overwrite Overwrite any existing files if they exist.  Options are
 #' `TRUE`, `FALSE`, and `NA` (aka ask interactively).  Default is `NA`
-#' @param open Logicial indicating whether to open new project in fresh RStudio
+#' @param open Logical indicating whether to open new project in fresh RStudio
 #' session
 #'
 #' @author Daniel D. Sjoberg

@@ -1,6 +1,6 @@
 Package: starter
 Title: A Starter Kit for New Projects
-Version: 0.1.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Daniel D.",
            family = "Sjoberg",
@@ -29,6 +29,7 @@ Imports:
     R.utils (>= 2.10.1),
     readr (>= 1.4.0),
     renv (>= 0.13.2),
+    rstudioapi (>= 0.13),
     rlang (>= 0.4.11),
     stringr (>= 1.4.0),
     tibble (>= 3.1.2),
@@ -37,6 +38,7 @@ Suggests:
     covr (>= 3.5.1),
     knitr (>= 1.33),
     rmarkdown (>= 2.8),
+    rstudio.prefs (>= 0.1.0),
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
@@ -45,3 +47,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Additional_repositories: https://ddsjoberg.r-universe.dev

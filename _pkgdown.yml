@@ -30,3 +30,4 @@ reference:
       - create_project
       - starts_with("use_")
       - create_symlink
+      - make_path_norm

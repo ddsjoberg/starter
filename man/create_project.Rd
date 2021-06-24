@@ -32,7 +32,7 @@ Default is \code{TRUE}. When \code{NA} which interactively asks user preference.
 \item{overwrite}{Overwrite any existing files if they exist.  Options are
 \code{TRUE}, \code{FALSE}, and \code{NA} (aka ask interactively).  Default is \code{NA}}
 
-\item{open}{Logicial indicating whether to open new project in fresh RStudio
+\item{open}{Logical indicating whether to open new project in fresh RStudio
 session}
 }
 \description{
