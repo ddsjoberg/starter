@@ -83,12 +83,16 @@ create_project <- function(path, path_data = NULL, template = c("default"),
   # initializing renv project --------------------------------------------------
   if (isTRUE(renv)) {
     ui_done("Initialising renv project")
+    previous_libpath <- .libPaths()
+    previous_wd <- getwd()
     usethis::with_project(
       path = path,
       code = renv::init(project = path, restart = FALSE),
       setwd = FALSE,
       quiet = TRUE
     )
+    .libPaths(previous_libpath)
+    setwd(previous_wd)
   }
 
   # finishing up ---------------------------------------------------------------
