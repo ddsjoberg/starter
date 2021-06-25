@@ -45,8 +45,28 @@
 create_project <- function(path, path_data = NULL, template = c("default"),
                            git = TRUE, renv = TRUE, overwrite = NA,
                            open = interactive()) {
+  # return to previous active project after execution --------------------------
+  old_active_proj <- usethis::proj_get()
+  on.exit(usethis::proj_set(old_active_proj))
+
+  # ask user -------------------------------------------------------------------
+  if (is.na(git))
+    git <- ifelse(!interactive(), TRUE, ui_yeah("Initialise Git repo?",
+                                                n_no = 1, shuffle = FALSE))
+  if (is.na(renv))
+    renv <- ifelse(!interactive(), TRUE, ui_yeah("Initialise renv project?",
+                                                 n_no = 1, shuffle = FALSE))
+
   # import template ------------------------------------------------------------
-  template <- evaluate_project_template(template, path)
+  template <- evaluate_project_template(template, path, git, renv)
+
+  # writing files and folders --------------------------------------------------
+  writing_files_folders(
+    selected_template = template,
+    path = path,
+    overwrite = overwrite,
+    path_data = path_data
+  )
 
   # setting symbolic link if provided ------------------------------------------
   if (!is.null(path_data)) {
@@ -57,51 +77,18 @@ create_project <- function(path, path_data = NULL, template = c("default"),
     ui_done("Creating symbolic link to data folder {ui_path(path_data)}")
   }
 
-  # writing files and folders --------------------------------------------------
-  writing_files_folders(
-    selected_template = template,
-    path = path,
-    overwrite = overwrite,
-    path_data = path_data
-  )
-
   # initializing git repo ------------------------------------------------------
-  if (is.na(git) && !interactive()) git <- TRUE
-  else if (is.na(git) && interactive()) git <- ui_yeah("Initialise Git repo?")
-
-  if (git) {
-    # if there is an error setting up, printing note about the error
-    tryCatch({
-      # Configure Git repository
-      gert::git_init(path = path)
-      ui_done("Initialising Git repo")
-    },
-    error = function(e) {
-      ui_oops(
-        paste(
-          "There was an error in {ui_code('gert::git_init()')} while",
-          "initialising the Git repo.",
-          "Have you installed Git and set it up?",
-          "Refer to the book 'Happy Git and GitHub for the useR'",
-          "for step-by-step instructions on getting started with Git."
-        ) %>%
-          stringr::str_wrap()
-      )
-      ui_code_block("https://happygitwithr.com/install-git.html")
-      # setting git to FALSE as no git repo exists
-      git <- FALSE
-    })
-  }
+  initialise_git(git, path)
 
   # initializing renv project --------------------------------------------------
-  if (is.na(renv) && interactive()) {
-    renv <-
-      ui_yeah("Set up {ui_value('renv')} project? (recommended)",
-              n_yes = 1, n_no = 1)
-  }
   if (isTRUE(renv)) {
     ui_done("Initialising renv project")
-    renv::init(path, restart = FALSE)
+    usethis::with_project(
+      path = path,
+      code = renv::init(project = path, restart = FALSE),
+      setwd = FALSE,
+      quiet = TRUE
+    )
   }
 
   # finishing up ---------------------------------------------------------------
@@ -111,9 +98,10 @@ create_project <- function(path, path_data = NULL, template = c("default"),
       on.exit()
     }
   }
+  invisible(usethis::proj_set(old_active_proj))
 }
 
-evaluate_project_template <- function(template, path) {
+evaluate_project_template <- function(template, path, git, renv) {
   if (rlang::is_string(template)) {
     template <-
       switch(
@@ -134,20 +122,23 @@ evaluate_project_template <- function(template, path) {
   # eval() quoted template list ------------------------------------------------
   folder_name <- basename(path)
   tryCatch({
-    selected_template <- eval(template)},
-    warning = function(w) {warning(w)},
-    error = function(e) {
-      ui_oops(
-        paste(
-          "There was as error evaluating the the quoted list defining the project template.",
-          "If this is a template stored in the package, please file",
-          "a GitHub Issue illustrating the error. If this is a personal template,",
-          "review the vignette on creating a personal project template."
-        ) %>%
-          stringr::str_wrap()
-      )
-      stop(e)
-    })
+    selected_template <-
+      eval(template) %>%
+      purrr::compact()
+  },
+  warning = function(w) {warning(w)},
+  error = function(e) {
+    ui_oops(
+      paste(
+        "There was as error evaluating the the quoted list defining the project template.",
+        "If this is a template stored in the package, please file",
+        "a GitHub Issue illustrating the error. If this is a personal template,",
+        "review the vignette on creating a personal project template."
+      ) %>%
+        stringr::str_wrap()
+    )
+    stop(e)
+  })
 
   # checking all files exist ---------------------------------------------------
   missing_template_files <-
@@ -255,6 +246,38 @@ writing_files_folders <- function(selected_template, path,
   ui_done("Writing files {ui_value(df_files$filename)}")
 }
 
+
+initialise_git <- function(git, path) {
+  # initializing git repo ------------------------------------------------------
+  if (isTRUE(git)) {
+    ui_done("Initialising Git repo")
+    # if there is an error setting up, printing note about the error
+    tryCatch({
+      # Configure Git repository
+      usethis::with_project(
+        path = path,
+        gert::git_init(path = path),
+        setwd = FALSE,
+        quiet = TRUE
+      )
+    },
+    error = function(e) {
+      ui_oops(
+        paste(
+          "There was an error in {ui_code('gert::git_init()')} while",
+          "initialising the Git repo.",
+          "Have you installed Git and set it up?",
+          "Refer to the book 'Happy Git and GitHub for the useR'",
+          "for step-by-step instructions on getting started with Git."
+        ) %>%
+          stringr::str_wrap()
+      )
+      ui_code_block("https://happygitwithr.com/install-git.html")
+      # setting git to FALSE as no git repo exists
+      git <- FALSE
+    })
+  }
+}
 
 copy_to_glue <- function(x) {
   purrr::map(

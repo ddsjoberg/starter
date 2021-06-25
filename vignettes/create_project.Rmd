@@ -28,7 +28,6 @@ Users can also create a personalized project templates. Instructions for creatin
 
 Let's create a new project and inspect the results.
 The new project will be created in a the folder called `"My Project Folder"`.
-We will link (via symbolic link) to a secure data folder called `"secure_data"`.
 
 ```{r, message=FALSE}
 # loading packages
@@ -36,10 +35,6 @@ library(starter)
 
 # specifying project folder location (folder does not yet exist)
 project_path <- fs::path(tempdir(), "My Project Folder")
-
-# creating folder where secure data would be stored (typically will be a network drive)
-secure_data_path <- fs::path(tempdir(), "secure_data")
-fs::dir_create(secure_data_path)
 ```
 
 Let's set up our new project. 
@@ -47,7 +42,6 @@ Let's set up our new project.
 ```{r, comment=""}
 create_project(
   path = project_path,
-  path_data = secure_data_path,
   open = FALSE # don't open project in new RStudio session
 )
 ```
@@ -201,7 +195,6 @@ unlink(project_path, recursive = TRUE)
 ```{r}
 create_project(
   path = project_path,
-  path_data = secure_data_path,
   template = my_template # metadata list created above
 )
 ```
