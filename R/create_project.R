@@ -82,7 +82,7 @@ create_project <- function(path, path_data = NULL, template = c("default"),
 
   # initializing renv project --------------------------------------------------
   if (isTRUE(renv)) {
-    ui_done("Initialising renv project")
+    ui_done("Initialising {ui_field('renv')} project")
     previous_libpath <- .libPaths()
     previous_wd <- getwd()
     usethis::with_project(
@@ -254,7 +254,7 @@ writing_files_folders <- function(selected_template, path,
 initialise_git <- function(git, path) {
   # initializing git repo ------------------------------------------------------
   if (isTRUE(git)) {
-    ui_done("Initialising Git repo")
+    ui_done("Initialising {ui_field('Git')} repo")
     # if there is an error setting up, printing note about the error
     tryCatch({
       # Configure Git repository
