@@ -33,10 +33,12 @@ create_project(
   path = fs::path(tempdir(), "My Project Folder"),
   open = FALSE # don't open project in new RStudio session
 )
+#> v Setting active project to 'C:/Users/sjobergd/GitHub/starter'
 #> v Using 'Default Project Template' template
-#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpwZUkah/My Project Folder/'
+#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpcZ2Y9M/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj'
 #> v Initialising Git repo
+#> v Setting active project to 'C:/Users/sjobergd/GitHub/starter'
 #> v Initialising renv project
 #> * Initializing project ...
 #> * Discovering package dependencies ... Done!
@@ -46,7 +48,8 @@ create_project(
 #> # CRAN ===============================
 #> - renv   [* -> 0.13.2]
 #> 
-#> * Lockfile written to 'C:/Users/sjobergd/AppData/Local/Temp/RtmpwZUkah/My Project Folder/renv.lock'.
+#> * Lockfile written to 'C:/Users/sjobergd/AppData/Local/Temp/RtmpcZ2Y9M/My Project Folder/renv.lock'.
+#> v Setting active project to 'C:/Users/sjobergd/GitHub/starter'
 ```
 
 ## Code of Conduct
