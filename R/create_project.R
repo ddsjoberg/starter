@@ -87,7 +87,9 @@ create_project <- function(path, path_data = NULL, template = c("default"),
     previous_wd <- getwd()
     usethis::with_project(
       path = path,
-      code = renv::init(project = path, restart = FALSE),
+      code = renv::init(project = path,
+                        restart = FALSE,
+                        settings = list(snapshot.type = "all")),
       setwd = FALSE,
       quiet = TRUE
     )
