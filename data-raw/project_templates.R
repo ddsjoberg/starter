@@ -7,19 +7,19 @@ default_project_template <-
       template_filename =
         fs::path_package(package = "starter", "project_templates/default_readme.md"),
       filename = "README.md",
-      copy = FALSE
+      glue = TRUE
     ),
     gitignore = list(
       template_filename =
         fs::path_package(package = "starter", "project_templates/default_gitignore.txt"),
       filename = ".gitignore",
-      copy = TRUE
+      glue = FALSE
     ),
     rproj = list(
       template_filename =
         fs::path_package(package = "starter", "project_templates/default_rproj.Rproj"),
       filename = stringr::str_glue("{folder_name}.Rproj"),
-      copy = TRUE
+      glue = FALSE
     )
   ))
 attr(default_project_template, "label") <- "Default Project Template"
