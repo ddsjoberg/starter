@@ -68,7 +68,8 @@ readr::read_file(fs::path(project_path, ".gitignore")) %>% cat()
 
 ## Custom Template {#custom_template}
 
-While the default template is useful, it can, of course, be useful to create a custom template for yourself or your team.  To create a custom template, you'll need two things: 
+While the default template is useful, it can, of course, be useful to create a custom template for yourself or your team.
+To create a custom template, you'll need two things: 
 
 1. Template files
 
@@ -103,7 +104,7 @@ readr::read_file(system.file("project_templates/default_readme.md", package = 's
 ### Metadata
 
 In order to implement and use a template, you must create a metadata object that stores information about each template file.
-The metadata is stored as a quoted named list: one element in the list per template file.
+The metadata is stored as a named list: one element in the list per template file.
 
 It is recommended you create the list elements named 'readme' and 'gitignore'. 
 The 'readme' element is used in the in the `use_project_readme()` function and 'gitignore' is in the `use_project_gitignore()` function---without these elements, these useful functions will return errors.
@@ -122,6 +123,7 @@ my_template <-
 ```
 
 Each element of the list is itself a list.
+The list is quoted so the template meta data is not evaluated until you call the `create_project()` function, allowing files to be dynamically named and template files to be saved within a package.
 The list contains three important pieces of information about each template file.
 
 1. The template path and file name.
