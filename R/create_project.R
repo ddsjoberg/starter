@@ -118,23 +118,15 @@ evaluate_project_template <- function(template, path, git, renv) {
     "User-defined Template" %>%
     {ui_done("Using {ui_value(.)} template")}
 
-  # checking imported template is a call
-  if (!rlang::is_call(template) && !rlang::is_expression(template)) {
-    stop("Expecting a quoted list in `template =`")
-  }
-
   # eval() quoted template list ------------------------------------------------
-  folder_name <- basename(path)
   tryCatch({
-    selected_template <-
-      eval(template) %>%
-      purrr::compact()
+    selected_template <- eval_nested_lists(template, path, git, renv)
   },
   warning = function(w) {warning(w)},
   error = function(e) {
     ui_oops(
       paste(
-        "There was as error evaluating the the quoted list defining the project template.",
+        "There was as error evaluating the the list defining the project template.",
         "If this is a template stored in the package, please file",
         "a GitHub Issue illustrating the error. If this is a personal template,",
         "review the vignette on creating a personal project template."
@@ -143,6 +135,9 @@ evaluate_project_template <- function(template, path, git, renv) {
     )
     stop(e)
   })
+
+  # checking imported template is named list
+  check_template_structure(selected_template)
 
   # checking all files exist ---------------------------------------------------
   missing_template_files <-
@@ -165,6 +160,72 @@ evaluate_project_template <- function(template, path, git, renv) {
 
   # return evaluated template --------------------------------------------------
   selected_template
+}
+
+# check the structure of the passed template object
+check_template_structure <- function(selected_template) {
+  # check input is a named list
+  if (!rlang::is_list(selected_template) || !rlang::is_named(selected_template)) {
+    stop("Expecting a named list in `template=`")
+  }
+
+  for (i in names(selected_template)) {
+    # check each files meta data is a named list
+    if (!rlang::is_list(selected_template[[i]]) ||
+        !rlang::is_named(selected_template[[i]]))
+      glue::glue("Template meta data for {ui_field(i)} must be a named list.") %>%
+      stop(call. = FALSE)
+    # check the named list has the correct names
+    if (!setequal(names(selected_template[[i]]), c("template_filename", "filename", "glue")) &&
+        !setequal(names(selected_template[[i]]), c("template_filename", "filename", "copy")))
+      glue::glue("Expecting elements of template list {ui_field(i)} to have ",
+                 "names {ui_value(c('template_filename', 'filename', 'glue'))}.") %>%
+      stop(call. = FALSE)
+    # check the types for each element are correct
+    copy_or_glue <- names(selected_template[[i]]) %>% intersect(c("glue", "copy"))
+    if (!rlang::is_string(selected_template[[i]][["template_filename"]]) ||
+        !rlang::is_string(selected_template[[i]][["filename"]]) ||
+        !rlang::is_logical(selected_template[[i]][[copy_or_glue]]))
+      glue::glue("Expecting elements of template list {ui_field(i)} to have specific classes: ",
+                 "{ui_value('template_filename')} and  {ui_value('filename')} must be strings ",
+                 "and {ui_value(copy_or_glue)} logical.") %>%
+      stop(call. = FALSE)
+    # check the template file exists
+    if (!fs::file_exists(selected_template[[i]][["template_filename"]]))
+        glue::glue("Template file {ui_value(selected_template[[i]][['template_filename']])} ",
+                   "does not exist.") %>%
+      stop(call. = FALSE)
+
+  }
+}
+
+# this function iterates over each element of
+# nested lists, and evaluates the quote or expr
+eval_nested_lists <- function(template, path, git, renv) {
+  template <- eval_if_call_or_expr(template, path, git, renv)
+  if (!rlang::is_list(template)) return(template)
+
+  # iterating over list to evaluate quoted/expr elements
+  for (i in seq_len(length(template))) {
+    if (rlang::is_list(template[[i]])) {
+      for (j in seq_len(length(template[[i]]))) {
+        template[[i]][[j]] <- eval_if_call_or_expr(template[[i]][[j]], path, git, renv)
+      }
+      # remove empty elements after evaluating
+      template[[i]] <- purrr::compact(template[[i]])
+    }
+    else template[[i]] <- eval_if_call_or_expr(template[[i]], path, git, renv)
+  }
+
+  # remove empty elements after evaluating and return
+  purrr::compact(template)
+}
+
+eval_if_call_or_expr <- function(x, path, git, renv)  {
+  # strings that may be needed in the evaluation of some strings
+  folder_name <- basename(path)
+  if (rlang::is_call(x) || rlang::is_expression(x)) x <- eval(x)
+  x
 }
 
 writing_files_folders <- function(selected_template, path,
@@ -249,7 +310,6 @@ writing_files_folders <- function(selected_template, path,
   )
   ui_done("Writing files {ui_value(df_files$filename)}")
 }
-
 
 initialise_git <- function(git, path) {
   # initializing git repo ------------------------------------------------------
