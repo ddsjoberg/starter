@@ -32,12 +32,12 @@ use_project_file <- function(name = NULL, filename = NULL,
                              template = NULL, open = interactive()) {
   # import template ------------------------------------------------------------
   path <- here::here()
-  template <- evaluate_project_template(template, path)
+  template <- evaluate_project_template(template, path, git = FALSE, renv = FALSE)
 
   # checking name is in selected template
-  if (is.null(name) || !name %in% names(selected_template)) {
+  if (is.null(name) || !name %in% names(template)) {
     stop(paste("Argument `name=` is not valid. Must be one of\n",
-               paste(shQuote(names(selected_template)), collapse = ", ")))
+               paste(shQuote(names(template)), collapse = ", ")))
   }
 
   # only keeping file selected
@@ -56,7 +56,7 @@ use_project_file <- function(name = NULL, filename = NULL,
   }
 
   # replace the output filename in the template
-  selected_template[[name]]$filename <- fs::path_norm(filename)
+  template[[name]]$filename <- fs::path_norm(filename)
 
   # writing file ---------------------------------------------------------------
   writing_files_folders(
@@ -67,8 +67,8 @@ use_project_file <- function(name = NULL, filename = NULL,
   )
 
   # opening new file -----------------------------------------------------------
-  if (open && fs::file_exists(selected_template[[name]][["filename"]])) {
-    usethis::edit_file(selected_template[[name]][["filename"]])
+  if (open && fs::file_exists(template[[name]][["filename"]])) {
+    usethis::edit_file(template[[name]][["filename"]])
   }
 
   return(invisible())

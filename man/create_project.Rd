@@ -7,7 +7,7 @@
 create_project(
   path,
   path_data = NULL,
-  template = c("default"),
+  template = "default",
   git = TRUE,
   renv = TRUE,
   overwrite = NA,

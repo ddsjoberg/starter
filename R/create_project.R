@@ -42,7 +42,7 @@
 #' @seealso [`use_project_file()`]
 #' @seealso [Vignette for `create_project()`](https://github.com/pages/ddsjoberg/starter/articles/create_project.html)
 
-create_project <- function(path, path_data = NULL, template = c("default"),
+create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, overwrite = NA,
                            open = interactive()) {
   # return to previous active project after execution --------------------------
@@ -108,6 +108,7 @@ create_project <- function(path, path_data = NULL, template = c("default"),
 }
 
 evaluate_project_template <- function(template, path, git, renv) {
+  if (is.null(template)) template <-  project_templates[["default"]]
   if (rlang::is_string(template)) {
     template <-
       switch(
