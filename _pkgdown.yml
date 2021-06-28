@@ -18,6 +18,8 @@ navbar:
     href: index.html
   - text: Reference
     href: reference/index.html
+  - text: Getting Started
+    href: articles/create_project.html
   - text: News
     href: news/index.html
   right:
