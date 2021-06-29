@@ -1,13 +1,28 @@
-proj_dir <- fs::path(tempdir(), "My Project Folder")
 
 test_that("create_project() works", {
+  proj_dir <- fs::path(tempdir(), "My Project Folder")
   expect_error(
     create_project(
       path = proj_dir,
+      git = NA,
+      renv = NA,
       open = FALSE # don't open project in new RStudio session
     ),
     NA
   )
+
+  # save existing wd
+  oldwd <- getwd()
+  setwd(proj_dir)
+  expect_error(
+    use_project_gitignore(),
+    NA
+  )
+  expect_error(
+    use_project_readme(),
+    NA
+  )
+  setwd(oldwd)
 })
 
 
