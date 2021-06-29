@@ -142,22 +142,6 @@ evaluate_project_template <- function(template, path, git, renv) {
   # checking imported template is named list
   check_template_structure(selected_template)
 
-  # checking all files exist ---------------------------------------------------
-  missing_template_files <-
-    selected_template %>%
-    purrr::map_chr(purrr::pluck, "template_filename")  %>%
-    fs::file_exists() %>%
-    purrr::keep(~ . == FALSE)
-
-  if (length(missing_template_files) > 0) {
-    stop(
-      paste0(
-        "The following template file(s) do not exist:\n",
-        paste(names(missing_template_files), collapse = "\n")
-      )
-    )
-  }
-
   # old name for glue was copy, update it --------------------------------------
   selected_template <- copy_to_glue(selected_template)
 

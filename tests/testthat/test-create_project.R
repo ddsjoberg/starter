@@ -23,6 +23,18 @@ test_that("create_project() works", {
     NA
   )
   setwd(oldwd)
+
+  # expecting error message
+  expect_error(
+    create_project(
+      path = proj_dir,
+      template = quote(stop()),
+      overwrite = TRUE,
+      git = FALSE,
+      renv = FALSE,
+      open = FALSE # don't open project in new RStudio session
+    )
+  )
 })
 
 
