@@ -1,6 +1,6 @@
 Package: starter
 Title: A Starter Kit for New Projects
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     person(given = "Daniel D.",
            family = "Sjoberg",
@@ -43,7 +43,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes:
-    ddsjoberg/rstudio.prefs
+    ddsjoberg/rstudio.prefs@*release
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
