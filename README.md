@@ -8,6 +8,7 @@
 [![R-CMD-check](https://github.com/ddsjoberg/starter/workflows/R-CMD-check/badge.svg)](https://github.com/ddsjoberg/starter/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ddsjoberg/starter?branch=main)
+[![r-universe](https://ddsjoberg.r-universe.dev/badges/starter)](https://ddsjoberg.r-universe.dev/ui#builds)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter)
 <!-- badges: end -->
@@ -33,23 +34,13 @@ create_project(
   path = fs::path(tempdir(), "My Project Folder"),
   open = FALSE # don't open project in new RStudio session
 )
-#> v Setting active project to 'C:/Users/sjobergd/GitHub/starter'
 #> v Using 'Default Project Template' template
-#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpcZ2Y9M/My Project Folder/'
+#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpUbgHDW/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj'
 #> v Initialising Git repo
-#> v Setting active project to 'C:/Users/sjobergd/GitHub/starter'
+#> v Setting active project to '<no active project>'
 #> v Initialising renv project
-#> * Initializing project ...
-#> * Discovering package dependencies ... Done!
-#> * Copying packages into the cache ... Done!
-#> The following package(s) will be updated in the lockfile:
-#> 
-#> # CRAN ===============================
-#> - renv   [* -> 0.13.2]
-#> 
-#> * Lockfile written to 'C:/Users/sjobergd/AppData/Local/Temp/RtmpcZ2Y9M/My Project Folder/renv.lock'.
-#> v Setting active project to 'C:/Users/sjobergd/GitHub/starter'
+#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpUbgHDW/My Project Folder".
 ```
 
 ## Code of Conduct

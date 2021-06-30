@@ -114,7 +114,7 @@ evaluate_project_template <- function(template, path, git, renv) {
     "User-defined Template" %>%
     {ui_done("Using {ui_value(.)} template")}
 
-  script_path <- attr(template, "script_path")
+  script_path <- attr(template, "script_path") %>% eval()
 
   # eval() quoted template list ------------------------------------------------
   tryCatch({
