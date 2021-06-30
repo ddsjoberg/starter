@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -117,6 +117,14 @@
       <small>Source: <a href='https://github.com/ddsjoberg/starter/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="starter-011" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.1">
+<a href="#starter-011" class="anchor"></a>starter 0.1.1</h1>
+<ul>
+<li><p>When <code><a href="../reference/create_project.html">create_project(renv = TRUE)</a></code>, <code><a href="https://rstudio.github.io/renv//reference/init.html">renv::init()</a></code> has been switched to <code><a href="https://rstudio.github.io/renv//reference/scaffold.html">renv::scaffold()</a></code>. This stops renv from initializing the project. The user must call <code><a href="https://rstudio.github.io/renv//reference/hydrate.html">renv::hydrate()</a></code> in order to discover the packages used in the project’s <code>*.R</code> and <code>*.Rmd</code> files and have them added to the <code>renv.lock</code> file.</p></li>
+<li><p>When a user specifies an attribute to the template list called <code>"script_path"</code>, the path is sourced.</p></li>
+</ul>
+</div>
     <div id="starter-010" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.0">
 <a href="#starter-010" class="anchor"></a>starter 0.1.0</h1>
