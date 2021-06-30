@@ -20,7 +20,19 @@ default_project_template <-
         fs::path_package(package = "starter", "project_templates/default_rproj.Rproj"),
       filename = stringr::str_glue("{folder_name}.Rproj"),
       glue = FALSE
-    )
+    ),
+    # only add Rprofile if renv was used
+    rprofile =
+      switch(
+        renv,
+        list(
+          template_filename =
+            fs::path_package(package = "starter",
+                             "project_templates/default_rprofile.R"),
+          filename = stringr::str_glue(".Rprofile"),
+          glue = TRUE
+        )
+      )
   ))
 attr(default_project_template, "label") <- "Default Project Template"
 

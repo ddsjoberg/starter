@@ -178,6 +178,13 @@ gitignore = list(
 ))
 ```
 
+You may also `source()` an R script by adding the path to the file as a template attribute.
+The script will be sourced after project template has been placed.
+
+```r
+attr(my_template, "script_path") <- "<path to file>"
+```
+
 There is one last step---give your template a label.
 The label will be displayed each time the template is used in either `create_project()` or `use_project_file()`.
 

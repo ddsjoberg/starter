@@ -45,10 +45,6 @@
 create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, overwrite = NA,
                            open = interactive()) {
-  # return to previous active project after execution --------------------------
-  old_active_proj <- usethis::proj_get()
-  on.exit(usethis::proj_set(old_active_proj))
-
   # ask user -------------------------------------------------------------------
   if (is.na(git))
     git <- ifelse(!interactive(), TRUE, ui_yeah("Initialise Git repo?",
@@ -65,7 +61,8 @@ create_project <- function(path, path_data = NULL, template = "default",
     selected_template = template,
     path = path,
     overwrite = overwrite,
-    path_data = path_data
+    path_data = path_data,
+    git = git, renv = renv
   )
 
   # setting symbolic link if provided ------------------------------------------
@@ -83,18 +80,14 @@ create_project <- function(path, path_data = NULL, template = "default",
   # initializing renv project --------------------------------------------------
   if (isTRUE(renv)) {
     ui_done("Initialising {ui_field('renv')} project")
-    previous_libpath <- .libPaths()
-    previous_wd <- getwd()
-    usethis::with_project(
-      path = path,
-      code = renv::init(project = path,
-                        restart = FALSE,
-                        settings = list(snapshot.type = "all")),
-      setwd = FALSE,
-      quiet = TRUE
-    )
-    .libPaths(previous_libpath)
-    setwd(previous_wd)
+    # set up sctruture of renv project
+    renv::scaffold(project = path)
+  }
+
+  # if user added a path to a script, run it -----------------------------------
+  if (!is.null(attr(template, "script_path"))) {
+    ui_done("Sourcing template script")
+    source(file = attr(template, "script_path"))
   }
 
   # finishing up ---------------------------------------------------------------
@@ -104,7 +97,7 @@ create_project <- function(path, path_data = NULL, template = "default",
       on.exit()
     }
   }
-  invisible(usethis::proj_set(old_active_proj))
+  return(invisible())
 }
 
 evaluate_project_template <- function(template, path, git, renv) {
@@ -120,6 +113,8 @@ evaluate_project_template <- function(template, path, git, renv) {
   attr(template, "label") %||%
     "User-defined Template" %>%
     {ui_done("Using {ui_value(.)} template")}
+
+  script_path <- attr(template, "script_path")
 
   # eval() quoted template list ------------------------------------------------
   tryCatch({
@@ -139,11 +134,14 @@ evaluate_project_template <- function(template, path, git, renv) {
     stop(e)
   })
 
-  # checking imported template is named list
-  check_template_structure(selected_template)
-
   # old name for glue was copy, update it --------------------------------------
   selected_template <- copy_to_glue(selected_template)
+
+  # adding script path attribute back ------------------------------------------
+  attr(selected_template, "script_path") <- script_path
+
+  # checking imported template is named list -----------------------------------
+  check_template_structure(selected_template)
 
   # return evaluated template --------------------------------------------------
   selected_template
@@ -153,7 +151,13 @@ evaluate_project_template <- function(template, path, git, renv) {
 check_template_structure <- function(selected_template) {
   # check input is a named list
   if (!rlang::is_list(selected_template) || !rlang::is_named(selected_template)) {
-    stop("Expecting a named list in `template=`")
+    stop("Expecting a named list in `template=`", call. = FALSE)
+  }
+
+  if (!is.null(attr(selected_template, "script_path")) &&
+      !fs::file_exists(attr(selected_template, "script_path"))) {
+    paste("Template attribute 'script_path' must be a file location.") %>%
+      stop(call. = FALSE)
   }
 
   for (i in names(selected_template)) {
@@ -179,8 +183,8 @@ check_template_structure <- function(selected_template) {
       stop(call. = FALSE)
     # check the template file exists
     if (!fs::file_exists(selected_template[[i]][["template_filename"]]))
-        glue::glue("Template file {ui_value(selected_template[[i]][['template_filename']])} ",
-                   "does not exist.") %>%
+      glue::glue("Template file {ui_value(selected_template[[i]][['template_filename']])} ",
+                 "does not exist.") %>%
       stop(call. = FALSE)
 
   }
@@ -216,7 +220,7 @@ eval_if_call_or_expr <- function(x, path, git, renv)  {
 }
 
 writing_files_folders <- function(selected_template, path,
-                                  overwrite, path_data) {
+                                  overwrite, path_data, git, renv) {
   # creating the base project folder -------------------------------------------
   if (!dir.exists(path)) {
     fs::dir_create(path, recurse = TRUE)
