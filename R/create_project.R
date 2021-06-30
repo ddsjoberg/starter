@@ -45,10 +45,6 @@
 create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, overwrite = NA,
                            open = interactive()) {
-  # return to previous active project after execution --------------------------
-  old_active_proj <- usethis::proj_get()
-  on.exit(usethis::proj_set(old_active_proj))
-
   # ask user -------------------------------------------------------------------
   if (is.na(git))
     git <- ifelse(!interactive(), TRUE, ui_yeah("Initialise Git repo?",
@@ -65,7 +61,8 @@ create_project <- function(path, path_data = NULL, template = "default",
     selected_template = template,
     path = path,
     overwrite = overwrite,
-    path_data = path_data
+    path_data = path_data,
+    git = git, renv = renv
   )
 
   # setting symbolic link if provided ------------------------------------------
@@ -83,18 +80,8 @@ create_project <- function(path, path_data = NULL, template = "default",
   # initializing renv project --------------------------------------------------
   if (isTRUE(renv)) {
     ui_done("Initialising {ui_field('renv')} project")
-    previous_libpath <- .libPaths()
-    previous_wd <- getwd()
-    usethis::with_project(
-      path = path,
-      code = renv::init(project = path,
-                        restart = FALSE,
-                        settings = list(snapshot.type = "all")),
-      setwd = FALSE,
-      quiet = TRUE
-    )
-    .libPaths(previous_libpath)
-    setwd(previous_wd)
+    # set up sctruture of renv project
+    renv::scaffold(project = path)
   }
 
   # finishing up ---------------------------------------------------------------
@@ -104,7 +91,7 @@ create_project <- function(path, path_data = NULL, template = "default",
       on.exit()
     }
   }
-  invisible(usethis::proj_set(old_active_proj))
+  return(invisible())
 }
 
 evaluate_project_template <- function(template, path, git, renv) {
@@ -216,7 +203,7 @@ eval_if_call_or_expr <- function(x, path, git, renv)  {
 }
 
 writing_files_folders <- function(selected_template, path,
-                                  overwrite, path_data) {
+                                  overwrite, path_data, git, renv) {
   # creating the base project folder -------------------------------------------
   if (!dir.exists(path)) {
     fs::dir_create(path, recurse = TRUE)
