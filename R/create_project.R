@@ -144,7 +144,7 @@ evaluate_project_template <- function(template, path, git, renv) {
   check_template_structure(selected_template)
 
   # return evaluated template --------------------------------------------------
-    selected_template
+  selected_template
 }
 
 # check the structure of the passed template object
@@ -157,7 +157,7 @@ check_template_structure <- function(selected_template) {
   if (!is.null(attr(selected_template, "script_path")) &&
       !fs::file_exists(attr(selected_template, "script_path"))) {
     paste("Template attribute 'script_path' must be a file location.") %>%
-    stop(call. = FALSE)
+      stop(call. = FALSE)
   }
 
   for (i in names(selected_template)) {
@@ -183,8 +183,8 @@ check_template_structure <- function(selected_template) {
       stop(call. = FALSE)
     # check the template file exists
     if (!fs::file_exists(selected_template[[i]][["template_filename"]]))
-        glue::glue("Template file {ui_value(selected_template[[i]][['template_filename']])} ",
-                   "does not exist.") %>%
+      glue::glue("Template file {ui_value(selected_template[[i]][['template_filename']])} ",
+                 "does not exist.") %>%
       stop(call. = FALSE)
 
   }
