@@ -84,6 +84,12 @@ create_project <- function(path, path_data = NULL, template = "default",
     renv::scaffold(project = path)
   }
 
+  # if user added a path to a script, run it -----------------------------------
+  if (!is.null(attr(template, "script_path"))) {
+    ui_done("Sourcing template script")
+    source(file = attr(template, "script_path"))
+  }
+
   # finishing up ---------------------------------------------------------------
   # opening new R project
   if (open) {
@@ -108,6 +114,8 @@ evaluate_project_template <- function(template, path, git, renv) {
     "User-defined Template" %>%
     {ui_done("Using {ui_value(.)} template")}
 
+  script_path <- attr(template, "script_path")
+
   # eval() quoted template list ------------------------------------------------
   tryCatch({
     selected_template <- eval_nested_lists(template, path, git, renv)
@@ -126,21 +134,30 @@ evaluate_project_template <- function(template, path, git, renv) {
     stop(e)
   })
 
-  # checking imported template is named list
-  check_template_structure(selected_template)
-
   # old name for glue was copy, update it --------------------------------------
   selected_template <- copy_to_glue(selected_template)
 
+  # adding script path attribute back ------------------------------------------
+  attr(selected_template, "script_path") <- script_path
+
+  # checking imported template is named list -----------------------------------
+  check_template_structure(selected_template)
+
   # return evaluated template --------------------------------------------------
-  selected_template
+    selected_template
 }
 
 # check the structure of the passed template object
 check_template_structure <- function(selected_template) {
   # check input is a named list
   if (!rlang::is_list(selected_template) || !rlang::is_named(selected_template)) {
-    stop("Expecting a named list in `template=`")
+    stop("Expecting a named list in `template=`", call. = FALSE)
+  }
+
+  if (!is.null(attr(selected_template, "script_path")) &&
+      !fs::file_exists(attr(selected_template, "script_path"))) {
+    paste("Template attribute 'script_path' must be a file location.") %>%
+    stop(call. = FALSE)
   }
 
   for (i in names(selected_template)) {
