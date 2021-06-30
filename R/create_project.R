@@ -87,7 +87,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   # if user added a path to a script, run it -----------------------------------
   if (!is.null(attr(template, "script_path"))) {
     ui_done("Sourcing template script")
-    source(file = attr(template, "script_path"))
+    source(file = attr(template, "script_path"), local = rlang::current_env())
   }
 
   # finishing up ---------------------------------------------------------------
@@ -224,7 +224,7 @@ writing_files_folders <- function(selected_template, path,
   # creating the base project folder -------------------------------------------
   if (!dir.exists(path)) {
     fs::dir_create(path, recurse = TRUE)
-    ui_done("Creating {ui_path(path)}")
+    ui_done("Writing folder {ui_path(path)}")
   }
 
   # symbolic link text ----------------------------------------------------------
