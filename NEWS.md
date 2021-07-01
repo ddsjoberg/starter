@@ -1,3 +1,7 @@
+# starter 0.1.3
+
+* No longer tracking the latest release of the rstudio.prefs package on GitHub, because it causes an issue with renv.
+
 # starter 0.1.2
 
 * Now evaluating the template attribute `"script_path"` to allow users to quote the file location.
