@@ -7,9 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "danield.sjoberg@gmail.com",
            comment = c(ORCID = "0000-0003-0862-2018"))
-Description: Get set up with new projects by dropping a skeleton of a new
+Description: Get started with new projects by dropping a skeleton of a new
     project into a new or existing directory. Functions to initialise Git
-    repositories and reproducible enviornments with the renv package. The
+    repositories and reproducible environments with the renv package. The
     package allows for dynamically named files, folders, file content, as
     well as the functionality to drop individual template files into
     existing projects.
@@ -39,13 +39,14 @@ Suggests:
     knitr (>= 1.33),
     rmarkdown (>= 2.9),
     rstudio.prefs (>= 0.1.0),
+    spelling (>= 2.2),
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
-Remotes:
-    ddsjoberg/rstudio.prefs
+Additional_repositories: https://ddsjoberg.r-universe.dev
 Config/testthat/edition: 3
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

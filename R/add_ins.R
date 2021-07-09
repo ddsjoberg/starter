@@ -7,7 +7,7 @@
 #' See below for process of setting shortcut.
 #' @details
 #' Add keyboard shortcut for [make_path_norm()] in RStudio
-#' * Install mskRutils, and restart RStudio
+#' * Install starter, and restart RStudio
 #' * Select "Tools" --> "Modify Keyboard Shortcuts...".
 #' * In Search box, type "Make Path Normal".
 #' * Click in the "Shortcut" column on the "Make Path Normal" row.
@@ -19,7 +19,7 @@
 #' \donttest{\dontrun{
 #' # set a keyboard shortcut for path normalization
 #' rstudio.prefs::use_rstudio_keyboard_shortcut(
-#'   `starter::make_path_norm` = "Ctrl+Shift+/"
+#'   "Ctrl+Shift+/" = "starter::make_path_norm"
 #' )
 #' }}
 
