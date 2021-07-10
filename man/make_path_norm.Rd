@@ -28,13 +28,7 @@ Add keyboard shortcut for \code{\link[=make_path_norm]{make_path_norm()}} in RSt
 }
 }
 \examples{
-# must be run interactively and RStudio must be installed
-if (interactive()) {
-  # set a keyboard shortcut for path normalization
-  rstudio.prefs::use_rstudio_keyboard_shortcut(
-    "Ctrl+Shift+/" = "starter::make_path_norm"
-  )
-}
+# See DETAILS section for instructions to include add-in in RStudio
 }
 \seealso{
 \link[fs:path_math]{fs::path_norm}

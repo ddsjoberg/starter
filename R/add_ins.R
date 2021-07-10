@@ -17,13 +17,7 @@
 #' @export
 #' @returns normalized path string
 #' @examples
-#' # must be run interactively and RStudio must be installed
-#' if (interactive()) {
-#'   # set a keyboard shortcut for path normalization
-#'   rstudio.prefs::use_rstudio_keyboard_shortcut(
-#'     "Ctrl+Shift+/" = "starter::make_path_norm"
-#'   )
-#' }
+#' # See DETAILS section for instructions to include add-in in RStudio
 
 make_path_norm <- function() {
   context <- rstudioapi::getActiveDocumentContext()

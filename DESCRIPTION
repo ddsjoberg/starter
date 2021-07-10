@@ -38,12 +38,10 @@ Suggests:
     covr (>= 3.5.1),
     knitr (>= 1.33),
     rmarkdown (>= 2.9),
-    rstudio.prefs (>= 0.1.0),
     spelling (>= 2.2),
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
-Additional_repositories: https://ddsjoberg.r-universe.dev
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
