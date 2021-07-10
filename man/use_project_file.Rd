@@ -36,18 +36,19 @@ The functions \code{use_project_gitignore()} and \code{use_project_readme()} are
 \code{use_project_file("gitignore")} and \code{use_project_file("readme")}.
 }
 \examples{
-\donttest{\dontrun{
-# create gitignore file
-use_project_file("gitignore")
-use_project_gitignore()
+# only run fn interactively, will place files in current working dir
+if (interactive()) {
+  # create gitignore file
+  use_project_file("gitignore")
+  use_project_gitignore()
 
-# create README.md file
-use_project_file("readme")
-use_project_readme()
-}}
+  # create README.md file
+  use_project_file("readme")
+  use_project_readme()
+}
 }
 \seealso{
 \code{\link[=create_project]{create_project()}}
 
-\href{https://github.com/pages/ddsjoberg/starter/articles/create_project.html}{Vignette for \code{create_project()}}
+\href{https://www.danieldsjoberg.com/starter/articles/create_project.html}{Vignette for \code{create_project()}}
 }

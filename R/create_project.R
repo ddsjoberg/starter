@@ -8,7 +8,7 @@
 #' @section Personalized Template:
 #' Users can create a
 #' personalized project template. Check out the
-#' \href{https://github.com/pages/ddsjoberg/starter/articles/create_project.html}{vignette}
+#' \href{https://www.danieldsjoberg.com/starter/articles/create_project.html}{vignette}
 #' for step by step instructions.
 #'
 #' @param path A path. If it exists, it is used. If it does not exist, it is
@@ -27,8 +27,8 @@
 #'
 #' @author Daniel D. Sjoberg
 #' @export
+#' @returns NULL
 #' @examples
-#' \donttest{\dontrun{
 #' # specifying project folder location (folder does not yet exist)
 #' project_path <- fs::path(tempdir(), "My Project Folder")
 #'
@@ -38,9 +38,8 @@
 #'
 #' # creating new project folder
 #' create_project(project_path, path_data = secure_data_path)
-#' }}
 #' @seealso [`use_project_file()`]
-#' @seealso [Vignette for `create_project()`](https://github.com/pages/ddsjoberg/starter/articles/create_project.html)
+#' @seealso [Vignette for `create_project()`](https://www.danieldsjoberg.com/starter/articles/create_project.html)
 
 create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, overwrite = NA,

@@ -37,12 +37,13 @@ on your operating system, a link may not establish if the originating
 path is a network drive.
 }
 \examples{
-\donttest{\dontrun{
-# Using `starter_symlink()` to establish a symbolic link to a
-# mapped networked data folder.
-# The default name of the symlink folder is 'secure_data'
-create_symlink("O:/Outcomes/Project Folder/Data")
-}}
+# only run fn interactively, will place symbolic link in current working dir
+if (interactive()) {
+  # Using `starter_symlink()` to establish a symbolic link to a
+  # mapped networked data folder.
+  # The default name of the symlink folder is 'secure_data'
+  create_symlink("O:/Outcomes/Project Folder/Data")
+}
 }
 \seealso{
 \code{\link[R.utils:createLink]{R.utils::createLink()}}

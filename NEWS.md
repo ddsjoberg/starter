@@ -1,3 +1,7 @@
+# starter (development version)
+
+* Documentation updates and tidying up for CRAN submission.
+
 # starter 0.1.3
 
 * No longer tracking the latest release of the rstudio.prefs package on GitHub, because it causes an issue with renv.

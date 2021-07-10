@@ -15,13 +15,15 @@
 #' * NOTE: It is possible to override a previously specified key combination with this selection.
 #' @seealso [fs::path_norm]
 #' @export
+#' @returns normalized path string
 #' @examples
-#' \donttest{\dontrun{
-#' # set a keyboard shortcut for path normalization
-#' rstudio.prefs::use_rstudio_keyboard_shortcut(
-#'   "Ctrl+Shift+/" = "starter::make_path_norm"
-#' )
-#' }}
+#' # must be run interactively and RStudio must be installed
+#' if (interactive()) {
+#'   # set a keyboard shortcut for path normalization
+#'   rstudio.prefs::use_rstudio_keyboard_shortcut(
+#'     "Ctrl+Shift+/" = "starter::make_path_norm"
+#'   )
+#' }
 
 make_path_norm <- function() {
   context <- rstudioapi::getActiveDocumentContext()

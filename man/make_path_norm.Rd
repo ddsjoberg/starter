@@ -6,6 +6,9 @@
 \usage{
 make_path_norm()
 }
+\value{
+normalized path string
+}
 \description{
 Wrapper to execute \code{\link[fs:path_math]{fs::path_norm()}} as a shortcut on
 highlighted text. The updated text will be converted in place to a path
@@ -25,12 +28,13 @@ Add keyboard shortcut for \code{\link[=make_path_norm]{make_path_norm()}} in RSt
 }
 }
 \examples{
-\donttest{\dontrun{
-# set a keyboard shortcut for path normalization
-rstudio.prefs::use_rstudio_keyboard_shortcut(
-  "Ctrl+Shift+/" = "starter::make_path_norm"
-)
-}}
+# must be run interactively and RStudio must be installed
+if (interactive()) {
+  # set a keyboard shortcut for path normalization
+  rstudio.prefs::use_rstudio_keyboard_shortcut(
+    "Ctrl+Shift+/" = "starter::make_path_norm"
+  )
+}
 }
 \seealso{
 \link[fs:path_math]{fs::path_norm}
