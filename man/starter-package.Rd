@@ -4,7 +4,7 @@
 \name{starter-package}
 \alias{starter}
 \alias{starter-package}
-\title{starter: A Starter Kit for New Projects}
+\title{starter: Starter Kit for New Projects}
 \description{
 Get started with new projects by dropping a skeleton of a new
     project into a new or existing directory. Functions to initialise Git
