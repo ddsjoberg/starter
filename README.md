@@ -16,11 +16,17 @@ The **starter** package provides a toolkit for starting new projects.
 
 ## Installation
 
-You can install {starter} from
+Install {starter} from CRAN with:
+
+``` r
+install.packages("starter")
+```
+
+Install the development version of {starter} from
 [GitHub](https://github.com/ddsjoberg/starter) with:
 
 ``` r
-# install.packages("devtools")
+# install.packages('devtools')
 devtools::install_github("ddsjoberg/starter")
 ```
 
@@ -34,12 +40,12 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> v Using 'Default Project Template' template
-#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/RtmpG22ExG/My Project Folder/'
+#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/RtmpGMZcM2/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
 #> v Initialising Git repo
 #> v Setting active project to '<no active project>'
 #> v Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpG22ExG/My Project Folder".
+#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpGMZcM2/My Project Folder".
 ```
 
 ## Code of Conduct

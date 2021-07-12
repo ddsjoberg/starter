@@ -52,7 +52,7 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
 
   # checking to argument is a path ---------------------------------------------
-  if (!fs::is_dir(to) || !fs::is_absolute_path(to)) {
+  if (!isTRUE(fs::is_dir(to)) || !isTRUE(fs::is_absolute_path(to))) {
     ui_oops("{usethis::ui_path(to)} is not an existing directory path.")
     ui_todo("Update the {usethis::ui_field('to')} argument and re-run {usethis::ui_code('create_symlink()')}.")
     stop()

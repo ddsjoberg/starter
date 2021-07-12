@@ -26,10 +26,16 @@ The **starter** package provides a toolkit for starting new projects.
 
 ## Installation
 
-You can install {starter} from [GitHub](https://github.com/ddsjoberg/starter) with:
+Install {starter} from CRAN with:
 
 ``` r
-# install.packages("devtools")
+install.packages("starter")
+```
+
+Install the development version of {starter} from [GitHub](https://github.com/ddsjoberg/starter) with:
+
+``` r
+# install.packages('devtools')
 devtools::install_github("ddsjoberg/starter")
 ```
 ## Example

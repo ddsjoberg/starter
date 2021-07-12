@@ -12,4 +12,12 @@
   
   New submission
 
+  The Title field starts with the package name.
+  
+## Additional Comments
 
+Please ignore the note about the title containing the package name.
+The assumed reference to the package name is just using the English 
+word in a sentence, not referencing the package name.
+
+Thank you for your time.
