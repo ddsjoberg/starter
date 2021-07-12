@@ -27,7 +27,7 @@
 #'
 #' @author Daniel D. Sjoberg
 #' @export
-#' @returns NULL
+#' @returns NULL, places project template in new or existing directory
 #' @examples
 #' # specifying project folder location (folder does not yet exist)
 #' project_path <- fs::path(tempdir(), "My Project Folder")

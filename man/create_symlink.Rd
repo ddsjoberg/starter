@@ -18,8 +18,7 @@ create_symlink(to, name = "secure_data", ...)
   }}
 }
 \value{
-Returns (invisibly) the path or pathname to the link. If no link was
-created, NULL is returned.
+NULL, Places the path or pathname to the link.
 }
 \description{
 The \code{starter_symlink()} function is an OS agnostic function that creates symbolic

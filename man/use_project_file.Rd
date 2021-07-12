@@ -29,6 +29,9 @@ Paths/filename is relative to project base (e.g. \code{here::here()})}
 
 \item{open}{If \code{TRUE}, opens the new file.}
 }
+\value{
+NULL, places single template file in current working directory
+}
 \description{
 Rather than using \code{create_project()} to start a new project folder, you
 may use \code{use_project_file()} to write a single file from any project template.

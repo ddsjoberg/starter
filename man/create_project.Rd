@@ -35,6 +35,9 @@ Default is \code{TRUE}. When \code{NA} which interactively asks user preference.
 \item{open}{Logical indicating whether to open new project in fresh RStudio
 session}
 }
+\value{
+NULL, places project template in new or existing directory
+}
 \description{
 Creates a directory with the essential files for
 a new project. The function can be used on existing project directories as well.

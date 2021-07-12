@@ -17,7 +17,7 @@
 #' @seealso [`create_project()`]
 #' @seealso [Vignette for `create_project()`](https://www.danieldsjoberg.com/starter/articles/create_project.html)
 #' @export
-#' @returns NULL
+#' @returns NULL, places single template file in current working directory
 #' @examples
 #' # only run fn interactively, will place files in current working dir
 #' if (interactive()) {

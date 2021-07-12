@@ -19,8 +19,7 @@
 #' @seealso [R.utils::createLink()]
 #' @export
 #' @author Daniel D. Sjoberg
-#' @returns Returns (invisibly) the path or pathname to the link. If no link was
-#' created, NULL is returned.
+#' @returns NULL, Places the path or pathname to the link.
 #' @examples
 #' # only run fn interactively, will place symbolic link in current working dir
 #' if (interactive()) {
