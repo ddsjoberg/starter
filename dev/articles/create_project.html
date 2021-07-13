@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.4.9000</span>
       </span>
     </div>
 
@@ -46,6 +46,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../articles/create_project.html">Getting Started</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -90,38 +93,26 @@
 <div id="default-template" class="section level2">
 <h2 class="hasAnchor">
 <a href="#default-template" class="anchor"></a>Default Template</h2>
-<p>Let’s create a new project and inspect the results. The new project will be created in a the folder called <code>"My Project Folder"</code>. We will link (via symbolic link) to a secure data folder called <code>"secure_data"</code>.</p>
+<p>Let’s create a new project and inspect the results. The new project will be created in a the folder called <code>"My Project Folder"</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># loading packages</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/starter">starter</a></span><span class="op">)</span>
 
 <span class="co"># specifying project folder location (folder does not yet exist)</span>
-<span class="va">project_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/path.html">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"My Project Folder"</span><span class="op">)</span>
-
-<span class="co"># creating folder where secure data would be stored (typically will be a network drive)</span>
-<span class="va">secure_data_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/path.html">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"secure_data"</span><span class="op">)</span>
-<span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span><span class="va">secure_data_path</span><span class="op">)</span></code></pre></div>
+<span class="va">project_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/path.html">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"My Project Folder"</span><span class="op">)</span></code></pre></div>
 <p>Let’s set up our new project.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">create_project</span>(</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="dt">path =</span> project_path,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="dt">path_data =</span> secure_data_path,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="dt">open =</span> <span class="ot">FALSE</span> <span class="co"># don't open project in new RStudio session</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>✔ Using <span class="st">'Default Project Template'</span> template</span>
-<span id="cb2-7"><a href="#cb2-7"></a>✔ Creating symbolic link to data folder <span class="st">'/tmp/RtmpSBfA1m/secure_data/'</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>✔ Writing files <span class="st">'README.md'</span>, <span class="st">'.gitignore'</span>, <span class="st">'My Project Folder.Rproj'</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>✔ Initialising Git repo</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="dt">open =</span> <span class="ot">FALSE</span> <span class="co"># don't open project in new RStudio session</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>✔ Using <span class="st">'Default Project Template'</span> template</span>
+<span id="cb2-6"><a href="#cb2-6"></a>✔ Writing folder <span class="st">'/tmp/RtmprLgB3x/My Project Folder/'</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>✔ Writing files <span class="st">'README.md'</span>, <span class="st">'.gitignore'</span>, <span class="st">'My Project Folder.Rproj'</span>, <span class="st">'.Rprofile'</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>✔ Initialising Git repo</span>
+<span id="cb2-9"><a href="#cb2-9"></a>✔ Setting active project to <span class="st">'&lt;no active project&gt;'</span></span>
 <span id="cb2-10"><a href="#cb2-10"></a>✔ Initialising renv project</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="op">*</span><span class="st"> </span>Initializing project ...</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="op">*</span><span class="st"> </span>Discovering package dependencies ... Done<span class="op">!</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="er">*</span><span class="st"> </span>Copying packages into the cache ... Done<span class="op">!</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>The following <span class="kw">package</span>(s) will be updated <span class="cf">in</span> the lockfile<span class="op">:</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co"># RSPM ===============================</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="op">-</span><span class="st"> </span>renv   [<span class="op">*</span><span class="st"> </span>-&gt;<span class="st"> </span><span class="dv">0</span>.<span class="fl">13.2</span>]</span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="op">*</span><span class="st"> </span>Lockfile written to <span class="st">'/tmp/RtmpSBfA1m/My Project Folder/renv.lock'</span>.</span></code></pre></div>
-<p>The directory was created, files added, a git repository was initialised in the folder, and the files were committed to the Git repository.</p>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="op">*</span><span class="st"> </span>renv infrastructure has been generated <span class="cf">for</span> project <span class="st">"/tmp/RtmprLgB3x/My Project Folder"</span>.</span></code></pre></div>
+<p>The directory was created, files added, a git repository was initialised in the folder, and the reproducible environment was constructed with the renv package.</p>
 <div id="readme-md" class="section level3">
 <h3 class="hasAnchor">
 <a href="#readme-md" class="anchor"></a><strong><code>README.md</code></strong>
@@ -130,7 +121,7 @@
 <pre><code><a href="../reference/create_symlink.html"># My Project Folder
 
 # Symbolic Link to Secure Data
-starter::create_symlink(to = "/tmp/RtmpSBfA1m/secure_data")</a></code></pre>
+starter::create_symlink(to = "&lt;secure data path&gt;")</a></code></pre>
 </div>
 <div id="gitignore" class="section level3">
 <h3 class="hasAnchor">
@@ -211,7 +202,7 @@ renv/staging/</code></pre>
 <div id="metadata" class="section level3">
 <h3 class="hasAnchor">
 <a href="#metadata" class="anchor"></a>Metadata</h3>
-<p>In order to implement and use a template, you must create a metadata object that stores information about each template file. The metadata is stored as a quoted named list: one element in the list per template file.</p>
+<p>In order to implement and use a template, you must create a metadata object that stores information about each template file. The metadata is stored as a named list: one element in the list per template file.</p>
 <p>It is recommended you create the list elements named ‘readme’ and ‘gitignore’. The ‘readme’ element is used in the in the <code><a href="../reference/use_project_file.html">use_project_readme()</a></code> function and ‘gitignore’ is in the <code><a href="../reference/use_project_file.html">use_project_gitignore()</a></code> function—without these elements, these useful functions will return errors.</p>
 <p>The list elements may be named any proper name within R. However, the names must be unique and we recommend short names. These do not need to match/reference any other text in the template file.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -221,7 +212,7 @@ renv/staging/</code></pre>
     readme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>,
     rproj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span>
   <span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Each element of the list is itself a list. The list contains three important pieces of information about each template file.</p>
+<p>Each element of the list is itself a list. The list is quoted so the template meta data is not evaluated until you call the <code><a href="../reference/create_project.html">create_project()</a></code> function, allowing files to be dynamically named and template files to be saved within a package. The list contains three important pieces of information about each template file.</p>
 <ol style="list-style-type: decimal">
 <li><p>The template path and file name.</p></li>
 <li><p>The name of the file after it’s been copied to the new project folder.</p></li>
@@ -261,34 +252,29 @@ gitignore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/
   glue <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span>
 <span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>There is one last step—give your template a label. The label will be displayed each time the template is used in either <code><a href="../reference/create_project.html">create_project()</a></code> or <code><a href="../reference/use_project_file.html">use_project_file()</a></code>.</p>
+<p>You may also <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> an R script by adding the path to the file as a template attribute. The script will be sourced after project template has been placed.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"script_path"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to file&gt;"</span></code></pre></div>
+<p>There is one last step—give your template a label. The label will be displayed each time the template is used in either <code><a href="../reference/create_project.html">create_project()</a></code> or <code><a href="../reference/use_project_file.html">use_project_file()</a></code>.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"My Very 1st Project Template"</span></code></pre></div>
 </div>
 <div id="implement-custom-template" class="section level3">
 <h3 class="hasAnchor">
 <a href="#implement-custom-template" class="anchor"></a>Implement Custom Template</h3>
 <p>Now that you have a folder with your template files stored and you have created a metadata list object, you can use them to create a new project folder with your custom template. The following code will get you started.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_project.html">create_project</a></span><span class="op">(</span>
   path <span class="op">=</span> <span class="va">project_path</span>,
-  path_data <span class="op">=</span> <span class="va">secure_data_path</span>,
   template <span class="op">=</span> <span class="va">my_template</span> <span class="co"># metadata list created above</span>
 <span class="op">)</span>
 <span class="co">#&gt; ✔ Using 'My Very 1st Project Template' template</span>
-<span class="co">#&gt; ✔ Creating symbolic link to data folder '/tmp/RtmpSBfA1m/secure_data/'</span>
+<span class="co">#&gt; ✔ Writing folder '/tmp/RtmprLgB3x/My Project Folder/'</span>
 <span class="co">#&gt; ✔ Writing files 'README.md', 'My Project Folder.Rproj', 'gitignore.txt'</span>
 <span class="co">#&gt; ✔ Initialising Git repo</span>
+<span class="co">#&gt; ✔ Setting active project to '&lt;no active project&gt;'</span>
 <span class="co">#&gt; ✔ Initialising renv project</span>
-<span class="co">#&gt; * Initializing project ...</span>
-<span class="co">#&gt; * Discovering package dependencies ... Done!</span>
-<span class="co">#&gt; * Copying packages into the cache ... Done!</span>
-<span class="co">#&gt; The following package(s) will be updated in the lockfile:</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; # RSPM ===============================</span>
-<span class="co">#&gt; - renv   [* -&gt; 0.13.2]</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; * Lockfile written to '/tmp/RtmpSBfA1m/My Project Folder/renv.lock'.</span></code></pre></div>
+<span class="co">#&gt; * renv infrastructure has been generated for project "/tmp/RtmprLgB3x/My Project Folder".</span></code></pre></div>
 </div>
 </div>
   </div>

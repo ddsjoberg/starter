@@ -75,7 +75,7 @@ whether to replace the existing file with the template file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.4.9000</span>
       </span>
     </div>
 
@@ -89,6 +89,9 @@ whether to replace the existing file with the template file." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../articles/create_project.html">Getting Started</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -129,7 +132,7 @@ whether to replace the existing file with the template file.</p>
     <pre class="usage"><span class='fu'>create_project</span><span class='op'>(</span>
   <span class='va'>path</span>,
   path_data <span class='op'>=</span> <span class='cn'>NULL</span>,
-  template <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"default"</span><span class='op'>)</span>,
+  template <span class='op'>=</span> <span class='st'>"default"</span>,
   git <span class='op'>=</span> <span class='cn'>TRUE</span>,
   renv <span class='op'>=</span> <span class='cn'>TRUE</span>,
   overwrite <span class='op'>=</span> <span class='cn'>NA</span>,
@@ -170,30 +173,32 @@ Default is <code>TRUE</code>. When <code>NA</code> which interactively asks user
     </tr>
     <tr>
       <th>open</th>
-      <td><p>Logicial indicating whether to open new project in fresh RStudio
+      <td><p>Logical indicating whether to open new project in fresh RStudio
 session</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>NULL, places project template in new or existing directory</p>
     <h2 class="hasAnchor" id="personalized-template"><a class="anchor" href="#personalized-template"></a>Personalized Template</h2>
 
     
 
 <p>Users can create a
 personalized project template. Check out the
-<a href='https://github.com/pages/ddsjoberg/starter/articles/create_project.html'>vignette</a>
+<a href='https://www.danieldsjoberg.com/starter/articles/create_project.html'>vignette</a>
 for step by step instructions.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='use_project_file.html'>use_project_file()</a></code></p>
-<p><a href='https://github.com/pages/ddsjoberg/starter/articles/create_project.html'>Vignette for <code>create_project()</code></a></p></div>
+<p><a href='https://www.danieldsjoberg.com/starter/articles/create_project.html'>Vignette for <code>create_project()</code></a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Daniel D. Sjoberg</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># specifying project folder location (folder does not yet exist)</span>
+    <pre class="examples"><div class='input'><span class='co'># specifying project folder location (folder does not yet exist)</span>
 <span class='va'>project_path</span> <span class='op'>&lt;-</span> <span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"My Project Folder"</span><span class='op'>)</span>
 
 <span class='co'># creating folder where secure data would be stored (typically will be a network drive)</span>
@@ -202,8 +207,7 @@ for step by step instructions.</p>
 
 <span class='co'># creating new project folder</span>
 <span class='fu'>create_project</span><span class='op'>(</span><span class='va'>project_path</span>, path_data <span class='op'>=</span> <span class='va'>secure_data_path</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Using <span style='color: #0000BB;'>'Default Project Template'</span> template</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing folder <span style='color: #0000BB;'>'/tmp/RtmpAIuBHP/My Project Folder/'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing files <span style='color: #0000BB;'>'README.md'</span>, <span style='color: #0000BB;'>'.gitignore'</span>, <span style='color: #0000BB;'>'My Project Folder.Rproj'</span>, <span style='color: #0000BB;'>'.Rprofile'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Creating symbolic link to data folder <span style='color: #0000BB;'>'/tmp/RtmpAIuBHP/secure_data/'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Initialising <span style='color: #00BB00;'>Git</span> repo</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'&lt;no active project&gt;'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Initialising <span style='color: #00BB00;'>renv</span> project</span></div><div class='output co'>#&gt; * renv infrastructure has been generated for project "/tmp/RtmpAIuBHP/My Project Folder".</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

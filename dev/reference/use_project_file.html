@@ -75,7 +75,7 @@ use_project_file(&quot;gitignore&quot;) and use_project_file(&quot;readme&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.4.9000</span>
       </span>
     </div>
 
@@ -89,6 +89,9 @@ use_project_file(&quot;gitignore&quot;) and use_project_file(&quot;readme&quot;)
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../articles/create_project.html">Getting Started</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -115,7 +118,7 @@ use_project_file(&quot;gitignore&quot;) and use_project_file(&quot;readme&quot;)
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Write a template file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ddsjoberg/starter/blob/master/R/use_starter_file.R'><code>R/use_starter_file.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ddsjoberg/starter/blob/master/R/use_project_file.R'><code>R/use_project_file.R</code></a></small>
     <div class="hidden name"><code>use_project_file.Rd</code></div>
     </div>
 
@@ -161,20 +164,24 @@ Paths/filename is relative to project base (e.g. <code><a href='https://here.r-l
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>NULL, places single template file in current working directory</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='create_project.html'>create_project()</a></code></p>
-<p><a href='https://github.com/pages/ddsjoberg/starter/articles/create_project.html'>Vignette for <code><a href='create_project.html'>create_project()</a></code></a></p></div>
+<p><a href='https://www.danieldsjoberg.com/starter/articles/create_project.html'>Vignette for <code><a href='create_project.html'>create_project()</a></code></a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># create gitignore file</span>
-<span class='fu'>use_project_file</span><span class='op'>(</span><span class='st'>"gitignore"</span><span class='op'>)</span>
-<span class='fu'>use_project_gitignore</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># only run fn interactively, will place files in current working dir</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># create gitignore file</span>
+  <span class='fu'>use_project_file</span><span class='op'>(</span><span class='st'>"gitignore"</span><span class='op'>)</span>
+  <span class='fu'>use_project_gitignore</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='co'># create README.md file</span>
-<span class='fu'>use_project_file</span><span class='op'>(</span><span class='st'>"readme"</span><span class='op'>)</span>
-<span class='fu'>use_project_readme</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='co'># create README.md file</span>
+  <span class='fu'>use_project_file</span><span class='op'>(</span><span class='st'>"readme"</span><span class='op'>)</span>
+  <span class='fu'>use_project_readme</span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>
