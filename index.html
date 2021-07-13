@@ -5,16 +5,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Starter Kit for New Projects • starter</title>
+<title>Starter Kit for New Projects • starter</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="A Starter Kit for New Projects">
-<meta property="og:description" content="Get set up with new projects by dropping a skeleton of a new
-    project into a new or existing directory. Functions to initialise Git
-    repositories and reproducible enviornments with the renv package. The
+<script src="pkgdown.js"></script><meta property="og:title" content="Starter Kit for New Projects">
+<meta property="og:description" content="Get started with new projects by dropping a skeleton of a new
+    project into a new or existing directory, initialise Git repositories,
+    and create reproducible environments with the renv package. The
     package allows for dynamically named files, folders, file content, as
     well as the functionality to drop individual template files into
     existing projects.">
@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -86,15 +86,18 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install {starter} from <a href="https://github.com/ddsjoberg/starter">GitHub</a> with:</p>
+<p>Install {starter} from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"starter"</span><span class="op">)</span></code></pre></div>
+<p>Install the development version of {starter} from <a href="https://github.com/ddsjoberg/starter">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages('devtools')</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ddsjoberg/starter"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/starter">starter</a></span><span class="op">)</span>
 
 <span class="fu"><a href="reference/create_project.html">create_project</a></span><span class="op">(</span>
@@ -102,12 +105,12 @@
   open <span class="op">=</span> <span class="cn">FALSE</span> <span class="co"># don't open project in new RStudio session</span>
 <span class="op">)</span>
 <span class="co">#&gt; v Using 'Default Project Template' template</span>
-<span class="co">#&gt; v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpUbgHDW/My Project Folder/'</span>
-<span class="co">#&gt; v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj'</span>
+<span class="co">#&gt; v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/RtmpGMZcM2/My Project Folder/'</span>
+<span class="co">#&gt; v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'</span>
 <span class="co">#&gt; v Initialising Git repo</span>
 <span class="co">#&gt; v Setting active project to '&lt;no active project&gt;'</span>
 <span class="co">#&gt; v Initialising renv project</span>
-<span class="co">#&gt; * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpUbgHDW/My Project Folder".</span></code></pre></div>
+<span class="co">#&gt; * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpGMZcM2/My Project Folder".</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
@@ -155,7 +158,6 @@
 <li><a href="https://github.com/ddsjoberg/starter/actions"><img src="https://github.com/ddsjoberg/starter/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/ddsjoberg/starter?branch=main"><img src="https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://ddsjoberg.r-universe.dev/ui#builds"><img src="https://ddsjoberg.r-universe.dev/badges/starter" alt="r-universe"></a></li>
-<li><a href="https://CRAN.R-project.org/package=starter"><img src="https://www.r-pkg.org/badges/version/starter" alt="CRAN status"></a></li>
 </ul>
 </div>
 </div>
