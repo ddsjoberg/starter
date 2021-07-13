@@ -9,19 +9,24 @@
 [![Codecov test
 coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ddsjoberg/starter?branch=main)
 [![r-universe](https://ddsjoberg.r-universe.dev/badges/starter)](https://ddsjoberg.r-universe.dev/ui#builds)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter)
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter) -->
 <!-- badges: end -->
 
 The **starter** package provides a toolkit for starting new projects.
 
 ## Installation
 
-You can install {starter} from
+Install {starter} from CRAN with:
+
+``` r
+install.packages("starter")
+```
+
+Install the development version of {starter} from
 [GitHub](https://github.com/ddsjoberg/starter) with:
 
 ``` r
-# install.packages("devtools")
+# install.packages('devtools')
 devtools::install_github("ddsjoberg/starter")
 ```
 
@@ -35,12 +40,12 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> v Using 'Default Project Template' template
-#> v Creating 'C:/Users/sjobergd/AppData/Local/Temp/RtmpUbgHDW/My Project Folder/'
-#> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj'
+#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/RtmpGMZcM2/My Project Folder/'
+#> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
 #> v Initialising Git repo
 #> v Setting active project to '<no active project>'
 #> v Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpUbgHDW/My Project Folder".
+#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpGMZcM2/My Project Folder".
 ```
 
 ## Code of Conduct

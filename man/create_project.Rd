@@ -35,6 +35,9 @@ Default is \code{TRUE}. When \code{NA} which interactively asks user preference.
 \item{open}{Logical indicating whether to open new project in fresh RStudio
 session}
 }
+\value{
+NULL, places project template in new or existing directory
+}
 \description{
 Creates a directory with the essential files for
 a new project. The function can be used on existing project directories as well.
@@ -45,12 +48,11 @@ whether to replace the existing file with the template file.
 
 Users can create a
 personalized project template. Check out the
-\href{https://github.com/pages/ddsjoberg/starter/articles/create_project.html}{vignette}
+\href{https://www.danieldsjoberg.com/starter/articles/create_project.html}{vignette}
 for step by step instructions.
 }
 
 \examples{
-\donttest{\dontrun{
 # specifying project folder location (folder does not yet exist)
 project_path <- fs::path(tempdir(), "My Project Folder")
 
@@ -60,12 +62,11 @@ fs::dir_create(secure_data_path)
 
 # creating new project folder
 create_project(project_path, path_data = secure_data_path)
-}}
 }
 \seealso{
 \code{\link[=use_project_file]{use_project_file()}}
 
-\href{https://github.com/pages/ddsjoberg/starter/articles/create_project.html}{Vignette for \code{create_project()}}
+\href{https://www.danieldsjoberg.com/starter/articles/create_project.html}{Vignette for \code{create_project()}}
 }
 \author{
 Daniel D. Sjoberg

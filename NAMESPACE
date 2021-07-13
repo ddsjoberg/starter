@@ -2,7 +2,6 @@
 
 export(create_project)
 export(create_symlink)
-export(make_path_norm)
 export(use_project_file)
 export(use_project_gitignore)
 export(use_project_readme)

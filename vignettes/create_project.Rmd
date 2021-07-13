@@ -46,7 +46,7 @@ create_project(
 )
 ```
 
-The directory was created, files added, a git repository was initialised in the folder, and the files were committed to the Git repository.
+The directory was created, files added, a git repository was initialised in the folder, and the reproducible environment was constructed with the renv package.
 
 ### **`README.md`**
 

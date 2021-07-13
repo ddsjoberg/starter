@@ -19,15 +19,15 @@
 #' @seealso [R.utils::createLink()]
 #' @export
 #' @author Daniel D. Sjoberg
-#' @return Returns (invisibly) the path or pathname to the link. If no link was
-#' created, NULL is returned.
+#' @returns NULL, Places the path or pathname to the link.
 #' @examples
-#' \donttest{\dontrun{
-#' # Using `starter_symlink()` to establish a symbolic link to a
-#' # mapped networked data folder.
-#' # The default name of the symlink folder is 'secure_data'
-#' create_symlink("O:/Outcomes/Project Folder/Data")
-#' }}
+#' # only run fn interactively, will place symbolic link in current working dir
+#' if (interactive()) {
+#'   # Using `starter_symlink()` to establish a symbolic link to a
+#'   # mapped networked data folder.
+#'   # The default name of the symlink folder is 'secure_data'
+#'   create_symlink("O:/Outcomes/Project Folder/Data")
+#' }
 
 create_symlink <- function(to, name = "secure_data", ...) {
   # checking inputs ------------------------------------------------------------
@@ -51,7 +51,7 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
 
   # checking to argument is a path ---------------------------------------------
-  if (!fs::is_dir(to) || !fs::is_absolute_path(to)) {
+  if (!isTRUE(fs::is_dir(to)) || !isTRUE(fs::is_absolute_path(to))) {
     ui_oops("{usethis::ui_path(to)} is not an existing directory path.")
     ui_todo("Update the {usethis::ui_field('to')} argument and re-run {usethis::ui_code('create_symlink()')}.")
     stop()

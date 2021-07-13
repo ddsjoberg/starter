@@ -15,18 +15,20 @@
 #' @name use_project_file
 #' @rdname use_project_file
 #' @seealso [`create_project()`]
-#' @seealso [Vignette for `create_project()`](https://github.com/pages/ddsjoberg/starter/articles/create_project.html)
+#' @seealso [Vignette for `create_project()`](https://www.danieldsjoberg.com/starter/articles/create_project.html)
 #' @export
+#' @returns NULL, places single template file in current working directory
 #' @examples
-#' \donttest{\dontrun{
-#' # create gitignore file
-#' use_project_file("gitignore")
-#' use_project_gitignore()
+#' # only run fn interactively, will place files in current working dir
+#' if (interactive()) {
+#'   # create gitignore file
+#'   use_project_file("gitignore")
+#'   use_project_gitignore()
 #'
-#' # create README.md file
-#' use_project_file("readme")
-#' use_project_readme()
-#' }}
+#'   # create README.md file
+#'   use_project_file("readme")
+#'   use_project_readme()
+#' }
 
 use_project_file <- function(name = NULL, filename = NULL,
                              template = NULL, open = interactive()) {
