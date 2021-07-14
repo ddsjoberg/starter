@@ -1,5 +1,9 @@
 # starter (development version)
 
+* Removed 'rstudioapi' package dependency.
+
+* Documentation updates.
+
 # starter 0.1.4
 
 * Documentation updates and tidying up for CRAN submission.
