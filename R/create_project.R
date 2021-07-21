@@ -267,7 +267,7 @@ writing_files_folders <- function(selected_template, path,
       function(i) {
         if (!df_files$file_exists[i]) return(TRUE)
         if (isTRUE(overwrite)) return(TRUE)
-        if (!isTRUE(overwrite)) return(FALSE)
+        if (isFALSE(overwrite)) return(FALSE)
         if (!interactive()) return(FALSE)
         msg <- paste("{ui_path(df_files$filename[i])} already exists.",
                      "Would you like to overwrite it?")
