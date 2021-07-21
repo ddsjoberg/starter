@@ -38,8 +38,9 @@ use_project_file <- function(name = NULL, filename = NULL,
 
   # checking name is in selected template
   if (is.null(name) || !name %in% names(template)) {
-    stop(paste("Argument `name=` is not valid. Must be one of\n",
-               paste(shQuote(names(template)), collapse = ", ")))
+    paste("Argument `name=` is not valid. Must be one of\n",
+          paste(shQuote(names(template)), collapse = ", ")) %>%
+    stop(call. = FALSE)
   }
 
   # only keeping file selected
