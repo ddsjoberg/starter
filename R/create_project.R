@@ -267,7 +267,7 @@ writing_files_folders <- function(selected_template, path,
       function(i) {
         if (!df_files$file_exists[i]) return(TRUE)
         if (isTRUE(overwrite)) return(TRUE)
-        if (!isTRUE(overwrite)) return(FALSE)
+        if (isFALSE(overwrite)) return(FALSE)
         if (!interactive()) return(FALSE)
         msg <- paste("{ui_path(df_files$filename[i])} already exists.",
                      "Would you like to overwrite it?")
@@ -341,4 +341,9 @@ copy_to_glue <- function(x) {
       purrr::list_modify(.x, glue = !.x$copy, copy = NULL)
     ) %||% .x
   )
+}
+
+# needed for R 3.4
+isFALSE = function(x) {
+  is.logical(x) && length(x) == 1L && !is.na(x) && !x
 }

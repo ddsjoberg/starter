@@ -185,7 +185,7 @@ The script will be sourced after project template has been placed.
 attr(my_template, "script_path") <- "<path to file>"
 ```
 
-Wrap the path ro the script in an expression if you need to delay the evaluation of the path string.
+Wrap the path to the script in an expression if you need to delay the evaluation of the path string.
 
 There is one last step---give your template a label.
 The label will be displayed each time the template is used in either `create_project()` or `use_project_file()`.
