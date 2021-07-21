@@ -342,3 +342,8 @@ copy_to_glue <- function(x) {
     ) %||% .x
   )
 }
+
+# needed for R 3.4
+isFALSE = function(x) {
+  is.logical(x) && length(x) == 1L && !is.na(x) && !x
+}
