@@ -82,7 +82,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   # initializing renv project --------------------------------------------------
   if (isTRUE(renv)) {
     ui_done("Initialising {ui_field('renv')} project")
-    # set up sctruture of renv project
+    # set up structure of renv project
     renv::scaffold(project = path, settings = list(snapshot.type = "all"))
   }
 
