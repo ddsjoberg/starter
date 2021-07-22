@@ -1,4 +1,4 @@
-# starter (development version)
+# starter 0.1.5
 
 * Default snapshot type is now 'all'.
 
