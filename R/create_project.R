@@ -15,12 +15,15 @@
 #' created.
 #' @param path_data A path. The directory where the secure data exist. Default is
 #' `NULL`.  When supplied, a symbolic link to data folder will be created.
-#' @param template Project template.
+#' @param template A project template. See
+#' \href{https://www.danieldsjoberg.com/starter/articles/create_project.html}{vignette}
+#' for details.
 #' @param git Logical indicating whether to create Git repository.  Default is `TRUE`
 #' When `NA`, user will be prompted whether to initialise Git repo.
 #' @param renv Logical indicating whether to add renv to a project.
-#' Default is `TRUE`. When `NA` which interactively asks user preference.
-#' @param overwrite Overwrite any existing files if they exist.  Options are
+#' Default is `TRUE`. When `NA` user is asked interactively for preference.
+#' @param overwrite Logical indicating whether to overwrite existing files
+#' if they exist.  Options are
 #' `TRUE`, `FALSE`, and `NA` (aka ask interactively).  Default is `NA`
 #' @param open Logical indicating whether to open new project in fresh RStudio
 #' session
