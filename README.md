@@ -40,12 +40,24 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> v Using 'Default Project Template' template
-#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/Rtmps5CYUj/My Project Folder/'
+#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/RtmpyoutC7/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
 #> v Initialising Git repo
 #> v Setting active project to '<no active project>'
 #> v Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/Rtmps5CYUj/My Project Folder".
+#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpyoutC7/My Project Folder".
+```
+
+## Example Templates
+
+Check out examples of starter templates currently being used.
+
+``` r
+devtools::install_github("ddsjoberg/hotfun")
+hotfun::project_template
+
+devtools::install_github("ddsjoberg/bstfun")
+bstfun::project_templates[["default"]]
 ```
 
 ## Code of Conduct
