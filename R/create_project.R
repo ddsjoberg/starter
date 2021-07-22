@@ -80,7 +80,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   if (isTRUE(renv)) {
     ui_done("Initialising {ui_field('renv')} project")
     # set up sctruture of renv project
-    renv::scaffold(project = path)
+    renv::scaffold(project = path, settings = list(snapshot.type = "all"))
   }
 
   # if user added a path to a script, run it -----------------------------------

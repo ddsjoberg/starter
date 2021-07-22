@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Default snapshot type is now 'all'.
+
 * Removed 'rstudioapi' package dependency.
 
 * Bug fix in `create_project(overwrite=)` where existing files were not being prompted with inquiry whether to overwrite.
