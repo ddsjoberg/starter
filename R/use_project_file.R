@@ -80,14 +80,12 @@ use_project_file <- function(name = NULL, filename = NULL,
 #' @rdname use_project_file
 #' @export
 use_project_gitignore <- function(filename = NULL, template = NULL) {
-  use_project_file(name = "gitignore", filename = filename,
-                   template = template)
+  use_project_file(name = "gitignore", filename = filename, template = template)
 }
 
 #' @rdname use_project_file
 #' @export
 use_project_readme <- function(filename = NULL, template = NULL) {
-  use_project_file(name = "readme", filename = filename,
-                   template = template)
+  use_project_file(name = "readme", filename = filename, template = template)
 }
 
