@@ -12,4 +12,6 @@
   
 ## Additional Comments
 
+Resubmitting to remove NOTES in the CRAN checks on the various system builds.
+
 Thank you for your time.
