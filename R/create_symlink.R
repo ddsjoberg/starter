@@ -72,11 +72,11 @@ create_symlink <- function(to, name = "secure_data", ...) {
       purrr::keep(~!is.na(.)) %>% # removing NAs
       setdiff("C:") # not allowing C: to be selected
 
-    # saving message to print is warngin or error occurs
+    # saving message to print is warning or error occurs
     if(drive_here %in% drive_mapped) {
       msg <- paste(
         "It looks like you've attempted to save a symbolic link on a",
-        "mapped network drive.  This often causes issues when working in",
+        "mapped network drive. This often causes issues when working in",
         "Windows. If you encounter an error, consider moving your GitHub",
         "repo to your local C: drive, and establishing the link there."
       ) %>%
@@ -85,25 +85,18 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
 
   # wrapping createLink --------------------------------------------------------
-  tryCatch({
-    R.utils::createLink(link = name, target = to, ...)
-    ui_done(
-      paste0(
-        "Symbolic link, {usethis::ui_path(name)}, connects to\n",
-        "{usethis::ui_path(to)}"
-      )
-    )
-  },
-  warning = function(w) {
-    # displaying note about windows and symbolic links if warning occured
-    if(!is.null(msg)) ui_oops(msg)
-    warning(w)
-  },
-  error = function(e) {
-    # displaying note about windows and symbolic links if error occured
-    if(!is.null(msg)) ui_oops(msg)
-    stop(e)
-  })
+  safe_createLink <- purrr::safely(R.utils::createLink)
+  result <- safe_createLink(link = here::here(name), target = to, ...)
+
+  if (is.null(result$error)) {
+    ui_done(paste0("Symbolic link placed connecting {usethis::ui_path(name)} to\n",
+                   "{usethis::ui_path(to)}"))
+  }
+  else {
+    # displaying note about windows and symbolic links if error occurred
+      if(!is.null(msg)) ui_oops(msg)
+      stop(result$error)
+  }
 
   invisible()
 }
