@@ -86,7 +86,7 @@ create_symlink <- function(to, name = "secure_data", ...) {
 
   # wrapping createLink --------------------------------------------------------
   tryCatch({
-    R.utils::createLink(link = name, target = to, ...)
+    R.utils::createLink(link = here::here(name), target = to, ...)
     ui_done(
       paste0(
         "Symbolic link, {usethis::ui_path(name)}, connects to\n",
