@@ -89,8 +89,8 @@ create_symlink <- function(to, name = "secure_data", ...) {
   result <- safe_createLink(link = here::here(name), target = to, ...)
 
   if (is.null(result$error)) {
-    ui_done(paste0("Symbolic link connecting {usethis::ui_path(name)} to\n",
-                   "{usethis::ui_path(to)} placed."))
+    ui_done(paste0("Symbolic link placed connecting {usethis::ui_path(name)} to\n",
+                   "{usethis::ui_path(to)}"))
   }
   else {
     # displaying note about windows and symbolic links if error occurred
