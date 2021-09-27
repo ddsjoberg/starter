@@ -1,3 +1,5 @@
+# starter (development version)
+
 # starter 0.1.6
 
 * Updated `create_symlink()` to pass the full path to `R.utils::createLink(link=)` instead of just the folder name. This solves an issue when creating symbolic links without full admin rights.

@@ -1,6 +1,6 @@
 Package: starter
 Title: Starter Kit for New Projects
-Version: 0.1.6
+Version: 0.1.6.9000
 Authors@R: 
     person(given = "Daniel D.",
            family = "Sjoberg",
