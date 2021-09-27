@@ -88,25 +88,15 @@ create_symlink <- function(to, name = "secure_data", ...) {
   safe_createLink <- purrr::safely(R.utils::createLink)
   result <- safe_createLink(link = here::here(name), target = to, ...)
 
-  # tryCatch({
-  #   R.utils::createLink(link = here::here(name), target = to, ...)
-  #   ui_done(
-  #     paste0(
-  #       "Symbolic link, {usethis::ui_path(name)}, connects to\n",
-  #       "{usethis::ui_path(to)}"
-  #     )
-  #   )
-  # },
-  # warning = function(w) {
-  #   # displaying note about windows and symbolic links if warning occured
-  #   if(!is.null(msg)) ui_oops(msg)
-  #   warning(w)
-  # },
-  # error = function(e) {
-  #   # displaying note about windows and symbolic links if error occured
-  #   if(!is.null(msg)) ui_oops(msg)
-  #   stop(e)
-  # })
+  if (is.null(result$error)) {
+    ui_done(paste0("Symbolic link connecting {usethis::ui_path(name)} to\n",
+                   "{usethis::ui_path(to)} placed."))
+  }
+  else {
+    # displaying note about windows and symbolic links if error occurred
+      if(!is.null(msg)) ui_oops(msg)
+      stop(result$error)
+  }
 
   invisible()
 }
