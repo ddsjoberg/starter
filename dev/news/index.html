@@ -130,7 +130,7 @@
 <a href="#starter-016" class="anchor"></a>starter 0.1.6<small> 2021-09-27 </small>
 </h1>
 <ul>
-<li>Updated <code><a href="../reference/create_symlink.html">create_symlink()</a></code> to pass the full path to <code><a href="https://rdrr.io/pkg/R.utils/man/createLink.html">R.utils::createLink(link=)</a></code> instead of just the folder name. This solves an issue when creating symbolic links without full admin rights.</li>
+<li>Updated <code><a href="../reference/create_symlink.html">create_symlink()</a></code> to pass the full path to <code>R.utils::createLink(link=)</code> instead of just the folder name. This solves an issue when creating symbolic links without full admin rights.</li>
 </ul>
 </div>
     <div id="starter-015" class="section level1">
@@ -140,7 +140,7 @@
 <ul>
 <li><p>Default snapshot type is now ‘all’.</p></li>
 <li><p>Removed ‘rstudioapi’ package dependency.</p></li>
-<li><p>Bug fix in <code><a href="../reference/create_project.html">create_project(overwrite=)</a></code> where existing files were not being prompted with inquiry whether to overwrite.</p></li>
+<li><p>Bug fix in <code>create_project(overwrite=)</code> where existing files were not being prompted with inquiry whether to overwrite.</p></li>
 <li><p>Documentation updates.</p></li>
 </ul>
 </div>
@@ -174,7 +174,7 @@
 <a href="#starter-011" class="anchor"></a>starter 0.1.1<small> Unreleased </small>
 </h1>
 <ul>
-<li><p>When <code><a href="../reference/create_project.html">create_project(renv = TRUE)</a></code>, <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> has been switched to <code><a href="https://rstudio.github.io/renv/reference/scaffold.html">renv::scaffold()</a></code>. This stops renv from initializing the project. The user must call <code><a href="https://rstudio.github.io/renv/reference/hydrate.html">renv::hydrate()</a></code> in order to discover the packages used in the project’s <code>*.R</code> and <code>*.Rmd</code> files and have them added to the <code>renv.lock</code> file.</p></li>
+<li><p>When <code>create_project(renv = TRUE)</code>, <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> has been switched to <code><a href="https://rstudio.github.io/renv/reference/scaffold.html">renv::scaffold()</a></code>. This stops renv from initializing the project. The user must call <code><a href="https://rstudio.github.io/renv/reference/hydrate.html">renv::hydrate()</a></code> in order to discover the packages used in the project’s <code>*.R</code> and <code>*.Rmd</code> files and have them added to the <code>renv.lock</code> file.</p></li>
 <li><p>When a user specifies an attribute to the template list called <code>"script_path"</code>, the path is sourced.</p></li>
 </ul>
 </div>
