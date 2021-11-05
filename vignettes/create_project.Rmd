@@ -187,6 +187,11 @@ attr(my_template, "script_path") <- "<path to file>"
 
 Wrap the path to the script in an expression if you need to delay the evaluation of the path string.
 
+You can also override the `create_project()` arguments by adding an attribute with a named list of the argument values you'd like the template to use.
+For example, if you always want to initialize the git repo and never use renv, attach this list `list(git = TRUE, renv = FALSE)` as an attribute called `"arg_override"`.
+For this feature to work, the template object must be an unquoted list.
+While the entire template cannot be quoted or an expression, the individual list elements can still be quoted.
+
 There is one last step---give your template a label.
 The label will be displayed each time the template is used in either `create_project()` or `use_project_file()`.
 
