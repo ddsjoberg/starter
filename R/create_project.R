@@ -27,6 +27,9 @@
 #' `TRUE`, `FALSE`, and `NA` (aka ask interactively).  Default is `NA`
 #' @param open Logical indicating whether to open new project in fresh RStudio
 #' session
+#' @param symlink Logical indicating whether to place a symbolic link
+#' to the location in `path_data=`. Default is to place the symbolic link
+#' if the project is a git repository.
 #'
 #' @author Daniel D. Sjoberg
 #' @export
@@ -45,8 +48,8 @@
 #' @seealso [Vignette for `create_project()`](https://www.danieldsjoberg.com/starter/articles/create_project.html)
 
 create_project <- function(path, path_data = NULL, template = "default",
-                           git = TRUE, renv = TRUE, overwrite = NA,
-                           open = interactive()) {
+                           git = TRUE, renv = TRUE, symlink = git,
+                           overwrite = NA, open = interactive()) {
   # ask user -------------------------------------------------------------------
   if (is.na(git))
     git <- ifelse(!interactive(), TRUE, ui_yeah("Initialise Git repo?",
@@ -54,9 +57,12 @@ create_project <- function(path, path_data = NULL, template = "default",
   if (is.na(renv))
     renv <- ifelse(!interactive(), TRUE, ui_yeah("Initialise renv project?",
                                                  n_no = 1, shuffle = FALSE))
+  if (is.na(symlink))
+    symlink <- ifelse(!interactive(), TRUE, ui_yeah("Place symbolic link?",
+                                                    n_no = 1, shuffle = FALSE))
 
   # import template ------------------------------------------------------------
-  template <- evaluate_project_template(template, path, git, renv)
+  template <- evaluate_project_template(template, path, git, renv, symlink)
 
   # writing files and folders --------------------------------------------------
   writing_files_folders(
@@ -68,7 +74,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   )
 
   # setting symbolic link if provided ------------------------------------------
-  if (!is.null(path_data)) {
+  if (isTRUE(symlink) && !is.null(path_data)) {
     R.utils::createLink(
       target = glue::glue("{path_data}"),
       link = fs::path(glue::glue("{path}"), "secure_data")
@@ -102,7 +108,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   return(invisible())
 }
 
-evaluate_project_template <- function(template, path, git, renv) {
+evaluate_project_template <- function(template, path, git, renv, symlink) {
   if (is.null(template)) template <-  project_templates[["default"]]
   if (rlang::is_string(template)) {
     template <-

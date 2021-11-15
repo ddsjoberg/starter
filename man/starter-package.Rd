@@ -6,12 +6,7 @@
 \alias{starter-package}
 \title{starter: Starter Kit for New Projects}
 \description{
-Get started with new projects by dropping a skeleton of a new
-    project into a new or existing directory, initialise git repositories,
-    and create reproducible environments with the 'renv' package. The
-    package allows for dynamically named files, folders, file content, as
-    well as the functionality to drop individual template files into
-    existing projects.
+Get started with new projects by dropping a skeleton of a new project into a new or existing directory, initialise git repositories, and create reproducible environments with the 'renv' package. The package allows for dynamically named files, folders, file content, as well as the functionality to drop individual template files into existing projects.
 }
 \seealso{
 Useful links:
