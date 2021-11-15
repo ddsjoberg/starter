@@ -6,6 +6,7 @@ test_that("create_project() works", {
       path = proj_dir,
       git = NA,
       renv = NA,
+      symlink = NA,
       open = FALSE # don't open project in new RStudio session
     ),
     NA

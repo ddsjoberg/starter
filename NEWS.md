@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Added `create_project(symlink=)` argument indicating whether or not to place a symbolic link to the folder indicated in `create_project(path_data=).`
+
 * Updated `.Rprofile` start-up message for new repositories include the `renv::snapshot()` step.
 
 # starter 0.1.6
