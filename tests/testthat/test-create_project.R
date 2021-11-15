@@ -11,6 +11,18 @@ test_that("create_project() works", {
     NA
   )
 
+  override_template <- project_templates[["default"]]
+  attr(override_template, "arg_override") <- list(git = FALSE, renv = FALSE)
+  expect_error(
+    create_project(
+      path = proj_dir,
+      template = override_template,
+      overwrite = TRUE,
+      open = FALSE # don't open project in new RStudio session
+    ),
+    NA
+  )
+
   # save existing wd
   oldwd <- getwd()
   setwd(proj_dir)
