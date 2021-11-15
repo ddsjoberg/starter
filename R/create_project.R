@@ -48,7 +48,7 @@ create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, overwrite = NA,
                            open = interactive()) {
   # check if template has function arg override --------------------------------
-  if (!is.null(template) && rlang::is_list(template) && !is.null(attr(template, "arg_override"))) {
+  if (!is.null(template) && !is.null(attr(template, "arg_override"))) {
     override_arg_list <- attr(template, "arg_override")
 
     # print note about args being set
@@ -56,7 +56,8 @@ create_project <- function(path, path_data = NULL, template = "default",
       purrr::iwalk(
         function(arg, name) {
           if (!identical(arg, eval(parse(text = name))))
-            stringr::str_glue("Argument Override, {name}: {eval(parse(text = name))} --> {arg}")
+            stringr::str_glue("Argument Override, {name}: {eval(parse(text = name))} --> {arg}") %>%
+            cat("\n")
         }
       )
     list2env(override_arg_list, envir = rlang::current_env())
