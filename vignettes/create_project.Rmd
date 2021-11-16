@@ -176,14 +176,14 @@ my_template <-
 ```
 
 Note that you are able to put files into subfolders by including the subfolder name in the `filename` argument.  This can be done for any type of file. 
-Here is an example of what the metadata could look like if you wanted to put the `README.md` file into a subfolder called `projectdocs`.
+Here's an example of what the metadata could look like if the user has a static Rmarkdown template called `template_analysis.Rmd` that they want to copy into a project subfolder called `scripts`.
 
 ```{r, eval = FALSE}
-readme <- 
+analysis <- 
   list(
-    template_filename = system.file("project_templates/default_readme.md", package = "starter"), 
-    filename = "projectdocs/README.md", 
-    glue = TRUE
+    template_filename = "C:/project_templates/template_analysis.Rmd", 
+    filename = "scripts/analysis.Rmd", 
+    glue = FALSE
   )
 ```
 
