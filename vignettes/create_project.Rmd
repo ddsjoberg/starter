@@ -175,6 +175,18 @@ my_template <-
   )
 ```
 
+Note that you are able to put files into subfolders by including the subfolder name in the `filename` argument.  This can be done for any type of file. 
+Here is an example of what the metadata could look like if you wanted to put the `README.md` file into a subfolder called `projectdocs`.
+
+```{r, eval = FALSE}
+readme <- 
+  list(
+    template_filename = system.file("project_templates/default_readme.md", package = "starter"), 
+    filename = "projectdocs/README.md", 
+    glue = TRUE
+  )
+```
+
 ### Advanced Features
 
 You may also `source()` an R script by adding the path to the file as a template attribute.
