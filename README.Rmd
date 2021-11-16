@@ -53,13 +53,12 @@ create_project(
 Check out examples of starter templates currently being used.
 
 ```r
-devtools::install_github("ddsjoberg/hotfun")
+devtools::install_github("ddsjoberg/bstfun")
 create_project(
   path = fs::path(tempdir(), "My Project Folder"),
-  template = hotfun::project_template
+  template = bstfun::project_templates[["hot"]]
 )
 
-devtools::install_github("ddsjoberg/bstfun")
 create_project(
   path = fs::path(tempdir(), "My Project Folder"),
   template = bstfun::project_templates[["default"]]
