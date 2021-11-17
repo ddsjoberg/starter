@@ -75,7 +75,7 @@ whether to replace the existing file with the template file." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@ whether to replace the existing file with the template file." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ddsjoberg/">
+  <a href="https://github.com/ddsjoberg/starter/">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -135,6 +135,7 @@ whether to replace the existing file with the template file.</p>
   template <span class='op'>=</span> <span class='st'>"default"</span>,
   git <span class='op'>=</span> <span class='cn'>TRUE</span>,
   renv <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  symlink <span class='op'>=</span> <span class='va'>git</span>,
   overwrite <span class='op'>=</span> <span class='cn'>NA</span>,
   open <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -169,6 +170,12 @@ When <code>NA</code>, user will be prompted whether to initialise Git repo.</p><
 Default is <code>TRUE</code>. When <code>NA</code> user is asked interactively for preference.</p></td>
     </tr>
     <tr>
+      <th>symlink</th>
+      <td><p>Logical indicating whether to place a symbolic link
+to the location in <code>path_data=</code>. Default is to place the symbolic link
+if the project is a git repository.</p></td>
+    </tr>
+    <tr>
       <th>overwrite</th>
       <td><p>Logical indicating whether to overwrite existing files
 if they exist.  Options are
@@ -201,16 +208,23 @@ for step by step instructions.</p>
     <p>Daniel D. Sjoberg</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># specifying project folder location (folder does not yet exist)</span>
-<span class='va'>project_path</span> <span class='op'>&lt;-</span> <span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"My Project Folder"</span><span class='op'>)</span>
-
-<span class='co'># creating folder where secure data would be stored (typically will be a network drive)</span>
-<span class='va'>secure_data_path</span> <span class='op'>&lt;-</span> <span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"secure_data"</span><span class='op'>)</span>
-<span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/create.html'>dir_create</a></span><span class='op'>(</span><span class='va'>secure_data_path</span><span class='op'>)</span>
-
-<span class='co'># creating new project folder</span>
-<span class='fu'>create_project</span><span class='op'>(</span><span class='va'>project_path</span>, path_data <span class='op'>=</span> <span class='va'>secure_data_path</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Using <span style='color: #0000BB;'>'Default Project Template'</span> template</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing folder <span style='color: #0000BB;'>'/tmp/RtmpBd1omq/My Project Folder/'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing files <span style='color: #0000BB;'>'README.md'</span>, <span style='color: #0000BB;'>'.gitignore'</span>, <span style='color: #0000BB;'>'My Project Folder.Rproj'</span>, <span style='color: #0000BB;'>'.Rprofile'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Creating symbolic link to data folder <span style='color: #0000BB;'>'/tmp/RtmpBd1omq/secure_data/'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Initialising <span style='color: #00BB00;'>Git</span> repo</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'&lt;no active project&gt;'</span></span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Initialising <span style='color: #00BB00;'>renv</span> project</span></div><div class='output co'>#&gt; * renv infrastructure has been generated for project "/tmp/RtmpBd1omq/My Project Folder".</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># specifying project folder location (folder does not yet exist)</span></span>
+<span class='r-in'><span class='va'>project_path</span> <span class='op'>&lt;-</span> <span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"My Project Folder"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># creating folder where secure data would be stored (typically will be a network drive)</span></span>
+<span class='r-in'><span class='va'>secure_data_path</span> <span class='op'>&lt;-</span> <span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"secure_data"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>fs</span><span class='fu'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/create.html'>dir_create</a></span><span class='op'>(</span><span class='va'>secure_data_path</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># creating new project folder</span></span>
+<span class='r-in'><span class='fu'>create_project</span><span class='op'>(</span><span class='va'>project_path</span>, path_data <span class='op'>=</span> <span class='va'>secure_data_path</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Using <span style='color: #0000BB;'>'Default Project Template'</span> template</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Writing folder <span style='color: #0000BB;'>'/tmp/Rtmpuk3wfP/My Project Folder/'</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Writing files <span style='color: #0000BB;'>'README.md'</span>, <span style='color: #0000BB;'>'.gitignore'</span>, <span style='color: #0000BB;'>'My Project Folder.Rproj'</span>, <span style='color: #0000BB;'>'.Rprofile'</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Creating symbolic link to data folder <span style='color: #0000BB;'>'/tmp/Rtmpuk3wfP/secure_data/'</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Initialising <span style='color: #00BB00;'>Git</span> repo</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Initialising <span style='color: #00BB00;'>renv</span> project</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * renv infrastructure has been generated for project "/tmp/Rtmpuk3wfP/My Project Folder".</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

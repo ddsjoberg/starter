@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   create_project: create_project.html
-last_built: 2021-09-27T19:31Z
+last_built: 2021-11-17T14:14Z
 urls:
   reference: http://www.danieldsjoberg.com/starter//reference
   article: http://www.danieldsjoberg.com/starter//articles
