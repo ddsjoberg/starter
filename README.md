@@ -7,7 +7,7 @@
 
 [![R-CMD-check](https://github.com/ddsjoberg/starter/workflows/R-CMD-check/badge.svg)](https://github.com/ddsjoberg/starter/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ddsjoberg/starter?branch=main)
+coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ddsjoberg/starter?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter)
 <!-- badges: end -->
@@ -40,11 +40,11 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> v Using 'Default Project Template' template
-#> v Writing folder 'C:/Users/SjobergD/AppData/Local/Temp/RtmpeCEIQJ/My Project Folder/'
+#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/Rtmp8o24jv/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
 #> v Initialising Git repo
 #> v Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/SjobergD/AppData/Local/Temp/RtmpeCEIQJ/My Project Folder".
+#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/Rtmp8o24jv/My Project Folder".
 ```
 
 ## Example Templates

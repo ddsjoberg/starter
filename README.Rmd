@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/ddsjoberg/starter/workflows/R-CMD-check/badge.svg)](https://github.com/ddsjoberg/starter/actions)
-[![Codecov test coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://codecov.io/gh/ddsjoberg/starter?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/ddsjoberg/starter/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ddsjoberg/starter?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/starter)](https://CRAN.R-project.org/package=starter)
 <!-- badges: end -->
 

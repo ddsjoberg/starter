@@ -12,7 +12,7 @@ Get started with new projects by dropping a skeleton of a new project into a new
 Useful links:
 \itemize{
   \item \url{https://github.com/ddsjoberg/starter}
-  \item \url{http://www.danieldsjoberg.com/starter/index.html}
+  \item \url{https://www.danieldsjoberg.com/starter/index.html}
   \item Report bugs at \url{https://github.com/ddsjoberg/starter/issues}
 }
 

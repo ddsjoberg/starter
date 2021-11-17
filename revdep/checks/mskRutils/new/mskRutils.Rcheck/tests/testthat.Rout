@@ -1,0 +1,29 @@
+
+R version 4.1.1 (2021-08-10) -- "Kick Things"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(mskRutils)
+> 
+> test_check("mskRutils")
+* renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/RtmpCyMzrQ/Project Folder".
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ]
+> 
+> proc.time()
+   user  system elapsed 
+   1.76    0.87    3.76 
+Warning message:
+cannot delete reparse point 'C:\Users\sjobergd\AppData\Local\Temp\RtmpCyMzrQ/Project Folder/secure_data', reason 'There is a mismatch between the tag specified in the request and the tag present in the reparse point' 

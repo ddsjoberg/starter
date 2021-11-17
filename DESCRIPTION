@@ -15,7 +15,7 @@ Description: Get started with new projects by dropping a skeleton of a new
     existing projects.
 License: AGPL (>= 3)
 URL: https://github.com/ddsjoberg/starter,
-    http://www.danieldsjoberg.com/starter/index.html
+    https://www.danieldsjoberg.com/starter/index.html
 BugReports: https://github.com/ddsjoberg/starter/issues
 Depends: 
     R (>= 3.4)

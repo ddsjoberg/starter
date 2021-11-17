@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Establish symbolic link between folders</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for create_symlink {starter}"><tr><td>create_symlink {starter}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Establish symbolic link between folders</h2>
+
+<h3>Description</h3>
+
+<p>The <code>starter_symlink()</code> function is an OS agnostic function that creates symbolic
+links between two folders. The function is, at its core, a wrapper for the
+<code>R.utils::createLink()</code> function with opinionated
+defaults. The function must be called in an environment where the working
+directory is known (e.g. using <code style="white-space: pre;">*.Rproj</code>, <code>setwd()</code>, etc.).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+create_symlink(to, name = "secure_data", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>to</code></td>
+<td>
+<p>target file or directory to which the shortcut should point to.</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>symbolic link folder name. Default folder name is '&quot;secure_data&quot;&ldquo;</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+
+<p>Arguments passed on to <code><a href="../../R.utils/help/createLink.html">R.utils::createLink</a></code>
+</p>
+
+<dl>
+<dt></dt><dd></dd>
+</dl>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>A symbolic link is a special kind of file that points to another file/folder.
+A symbolic link does not contain the data in the target file. It simply points
+to another entry somewhere in the file system. This allows symbolic links
+to link to directories or files on remote network locations. Depending
+on your operating system, a link may not establish if the originating
+path is a network drive.
+</p>
+
+
+<h3>Value</h3>
+
+<p>NULL, Places the path or pathname to the link.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Daniel D. Sjoberg
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../R.utils/help/createLink.html">R.utils::createLink()</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# only run fn interactively, will place symbolic link in current working dir
+if (interactive()) {
+  # Using `starter_symlink()` to establish a symbolic link to a
+  # mapped networked data folder.
+  # The default name of the symlink folder is 'secure_data'
+  create_symlink("O:/Outcomes/Project Folder/Data")
+}
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>starter</em> version 0.1.6.9003 <a href="00Index.html">Index</a>]</div>
+</div></body></html>
