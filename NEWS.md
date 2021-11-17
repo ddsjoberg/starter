@@ -1,4 +1,4 @@
-# starter (development version)
+# starter 0.1.7
 
 * Allowing users to use their template to override function arguments in `create_project()`. This way, if the user never uses git, for example, this can be communicated in the template, rather than needing to change the function argument every time.
 
