@@ -219,20 +219,33 @@ eval_nested_lists <- function(template, path, git, renv) {
   template <- eval_if_call_or_expr(template, path, git, renv)
   if (!rlang::is_list(template)) return(template)
 
+  template_evaluated <-
+    vector(mode = "list", length = length(template)) %>%
+    stats::setNames(names(template)) %>%
+    purrr::map(~list())
   # iterating over list to evaluate quoted/expr elements
   for (i in seq_len(length(template))) {
     if (rlang::is_list(template[[i]])) {
       for (j in seq_len(length(template[[i]]))) {
-        template[[i]][[j]] <- eval_if_call_or_expr(template[[i]][[j]], path, git, renv)
+        template_evaluated[[i]][j] <-
+          eval_if_call_or_expr(template[[i]][[j]], path, git, renv) %>%
+          list() %>%
+          stats::setNames(names(template[[i]][j]))
       }
       # remove empty elements after evaluating
-      template[[i]] <- purrr::compact(template[[i]])
+      template_evaluated[i] <-
+        purrr::compact(template[[i]]) %>%
+        list() %>%
+        stats::setNames(names(template[i]))
     }
-    else template[[i]] <- eval_if_call_or_expr(template[[i]], path, git, renv)
+    else template_evaluated[i] <-
+        eval_if_call_or_expr(template[[i]], path, git, renv) %>%
+        list() %>%
+        stats::setNames(names(template[i]))
   }
 
   # remove empty elements after evaluating and return
-  purrr::compact(template)
+  purrr::compact(template_evaluated)
 }
 
 eval_if_call_or_expr <- function(x, path, git, renv)  {
