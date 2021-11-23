@@ -1,3 +1,5 @@
+# starter (development version)
+
 # starter 0.1.8
 
 * Fix for the `use_project_file()` function when the template has an element that evaluates to `NULL` (which resulted in an indexing error). (#19)
