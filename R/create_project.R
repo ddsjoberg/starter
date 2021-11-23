@@ -34,7 +34,7 @@
 #' @author Daniel D. Sjoberg
 #' @export
 #' @returns NULL, places project template in new or existing directory
-#' @examples
+#' @examplesIf pkgdown::in_pkgdown()
 #' # specifying project folder location (folder does not yet exist)
 #' project_path <- fs::path(tempdir(), "My Project Folder")
 #'

@@ -36,6 +36,7 @@ Imports:
 Suggests: 
     covr (>= 3.5.1),
     knitr (>= 1.34),
+    pkgdown (>= 1.6.1),
     rmarkdown (>= 2.11),
     spelling (>= 2.2),
     testthat (>= 3.0.4)
