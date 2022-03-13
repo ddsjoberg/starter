@@ -1,5 +1,11 @@
 # starter (development version)
 
+* Added `create_project(renv.settings=)` argument.
+
+* No longer using `renv::scaffold(settings = list(snapshot.type = 'all'))` as the default.
+
+* Improved messaging in the default `.Rprofile` template file to finish setting up the renv project.
+
 # starter 0.1.8
 
 * Fix for the `use_project_file()` function when the template has an element that evaluates to `NULL` (which resulted in an indexing error). (#19)

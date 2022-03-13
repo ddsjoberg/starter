@@ -30,6 +30,7 @@
 #' @param symlink Logical indicating whether to place a symbolic link
 #' to the location in `path_data=`. Default is to place the symbolic link
 #' if the project is a git repository.
+#' @param renv.settings A list of renv settings passed to `renv::scaffold(settings=)`
 #'
 #' @author Daniel D. Sjoberg
 #' @export
@@ -49,6 +50,7 @@
 
 create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, symlink = git,
+                           renv.settings = NULL,
                            overwrite = NA, open = interactive()) {
   # check if template has function arg override --------------------------------
   if (!is.null(template) && !is.null(attr(template, "arg_override"))) {
@@ -104,7 +106,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   if (isTRUE(renv)) {
     ui_done("Initialising {ui_field('renv')} project")
     # set up structure of renv project
-    renv::scaffold(project = path, settings = list(snapshot.type = "all"))
+    renv::scaffold(project = path, settings = renv.settings)
   }
 
   # if user added a path to a script, run it -----------------------------------

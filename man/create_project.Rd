@@ -11,6 +11,7 @@ create_project(
   git = TRUE,
   renv = TRUE,
   symlink = git,
+  renv.settings = NULL,
   overwrite = NA,
   open = interactive()
 )
@@ -35,6 +36,8 @@ Default is \code{TRUE}. When \code{NA} user is asked interactively for preferenc
 \item{symlink}{Logical indicating whether to place a symbolic link
 to the location in \verb{path_data=}. Default is to place the symbolic link
 if the project is a git repository.}
+
+\item{renv.settings}{A list of renv settings passed to \code{renv::scaffold(settings=)}}
 
 \item{overwrite}{Logical indicating whether to overwrite existing files
 if they exist.  Options are
