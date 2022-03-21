@@ -61,7 +61,7 @@ create_project <- function(path, path_data = NULL, template = "default",
       purrr::iwalk(
         function(arg, name) {
           if (!identical(arg, eval(parse(text = name))))
-            ui_done("Using template argument override {ui_code(paste(name, deparse(arg), sep = ' = '))}")
+            ui_done("Using template argument override {ui_code(paste(name, deparse(arg, width.cutoff = 200L), sep = ' = '))}")
         }
       )
     list2env(override_arg_list, envir = rlang::current_env())
