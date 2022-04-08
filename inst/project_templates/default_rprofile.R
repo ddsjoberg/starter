@@ -7,7 +7,7 @@ if (file.exists("renv.lock") &&
   if ("usethis" %in% installed.packages()[, 1]) {
     usethis::ui_oops("Your 'renv' project is not yet setup.")
     usethis::ui_todo("Run the following to discover and record packages.")
-    usethis::ui_code_block("renv::install('rmarkdown'); renv::hydrate(); renv::snapshot()")
+    usethis::ui_code_block("renv::install('rmarkdown'); renv::hydrate(); renv::snapshot()", copy = FALSE)
   }
   # if cli available, print a pretty message to finish setting up renv
   else if ("cli" %in% installed.packages()[, 1]) {
