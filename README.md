@@ -40,11 +40,11 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> v Using 'Default Project Template' template
-#> v Writing folder 'C:/Users/sjobergd/AppData/Local/Temp/Rtmp8o24jv/My Project Folder/'
+#> v Writing folder 'C:/Users/SjobergD/AppData/Local/Temp/RtmpMfm5PW/My Project Folder/'
 #> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
 #> v Initialising Git repo
 #> v Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/sjobergd/AppData/Local/Temp/Rtmp8o24jv/My Project Folder".
+#> * renv infrastructure has been generated for project "C:/Users/SjobergD/AppData/Local/Temp/RtmpMfm5PW/My Project Folder".
 ```
 
 ## Example Templates
