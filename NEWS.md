@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Added `{{folder_first_word}}` to objects available to use in the project templates. Evaluates to the first "word" in the folder name, where the word separator is either a space or hyphen.
+
 * Added `create_project(renv.settings=)` argument.
 
 * No longer using `renv::scaffold(settings = list(snapshot.type = 'all'))` as the default.

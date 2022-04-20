@@ -253,6 +253,9 @@ eval_nested_lists <- function(template, path, git, renv) {
 eval_if_call_or_expr <- function(x, path, git, renv)  {
   # strings that may be needed in the evaluation of some strings
   folder_name <- basename(path)
+  folder_first_word <-
+    stringr::str_split(folder_name, pattern = ' |-', simplify = T)[, 1] %>%
+    tolower()
   if (rlang::is_call(x) || rlang::is_expression(x)) x <- eval(x)
   x
 }

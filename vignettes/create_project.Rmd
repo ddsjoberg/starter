@@ -86,9 +86,10 @@ In the default template described above, the `README.md` file is an example of t
 The `README.md` file is populated with the project name, and the project-specific code for creating a symbolic link to the secure data folder.
 The following fields are available to include in the dynamic templates.
 
-    {{folder_name}}    project folder name
-    {{symbolic_link}}  code for establishing symbolic link to data folder
-    {{foo()}}          any R function, e.g. `Sys.Date()`
+    {{folder_name}}          project folder name
+    {{folder_first_word}}    first word of folder name
+    {{symbolic_link}}        code for establishing symbolic link to data folder
+    {{foo()}}                any R function, e.g. `Sys.Date()`
 
 Each of these fields are accessible via standard `glue::glue()` syntax, with the exception that double curly brackets are needed rather than single (e.g. `glue::glue(., .open = "{{", .close = "}}")`).
 
@@ -169,7 +170,7 @@ my_template <-
     )),
     gitignore = rlang::expr(list(
       template_filename = system.file("project_templates/default_gitignore.txt", package = "starter"), 
-      filename = "gitignore.txt", 
+      filename = ".gitignore", 
       glue = TRUE
     ))
   )
