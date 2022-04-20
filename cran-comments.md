@@ -10,11 +10,8 @@
 > checking CRAN incoming feasibility ... NOTE
   Maintainer: 'Daniel D. Sjoberg <danield.sjoberg@gmail.com>'
 
-  Days since last update: 6
-
-0 errors √ | 0 warnings √ | 1 note x
+0 errors √ | 0 warnings √ | 0 note √
   
 ## Additional Comments
 
-Apologies for the short time between releases.
-I am fixing a bug I introduced in the previous release.
+Thank you for your time.
