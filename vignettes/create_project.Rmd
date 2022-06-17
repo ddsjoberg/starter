@@ -39,7 +39,7 @@ project_path <- fs::path(tempdir(), "My Project Folder")
 
 Let's set up our new project. 
 
-```{r, comment=""}
+```{r}
 create_project(
   path = project_path,
   open = FALSE # don't open project in new RStudio session
