@@ -50,10 +50,10 @@ use_project_file <- function(name = NULL, filename = NULL,
   filename <- filename %||% template[[name]]$filename
 
   if (fs::file_exists(fs::path(path, filename)) && interactive()) {
-    ui_oops("File {ui_field(filename)} already exists.")
+    cli::cli_alert_danger("File {.file {filename}} already exists.")
     filename <- readline("Please supply a new file name including extension [return to quit]. ")
     if (filename == "") {
-      ui_oops("Aborting.")
+      cli::cli_alert_danger("Aborting.")
       return(invisible())
     }
   }
@@ -71,7 +71,7 @@ use_project_file <- function(name = NULL, filename = NULL,
 
   # opening new file -----------------------------------------------------------
   if (open && fs::file_exists(template[[name]][["filename"]])) {
-    usethis::edit_file(template[[name]][["filename"]])
+    utils::file.edit(template[[name]][["filename"]])
   }
 
   return(invisible())

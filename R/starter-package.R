@@ -1,10 +1,18 @@
 #' @importFrom dplyr %>%
 #' @importFrom purrr %||%
 #' @importFrom rlang .data .env
-#' @importFrom usethis ui_done ui_path ui_yeah ui_value ui_code ui_field
-#' ui_oops ui_code_block ui_todo
 #' @keywords internal
 "_PACKAGE"
+
+# similar to usethis::ui_yeah(), but no usethis dep
+ui_yeah <- function(x) {
+  cli::cli_alert_warning(x)
+  utils::menu(c("Yes", "No"), "") %>%
+    {dplyr::case_when(
+      . == 1L ~ TRUE,
+      . == 2L ~ FALSE
+    )}
+}
 
 # allowing for the use of the dot when piping
 utils::globalVariables(".")

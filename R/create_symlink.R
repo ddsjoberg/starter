@@ -95,7 +95,7 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
   else {
     # displaying note about windows and symbolic links if error occurred
-      if(!is.null(msg)) ui_oops(msg)
+      if(!is.null(msg)) cli::cli_alert_danger(msg)
       stop(result$error)
   }
 
