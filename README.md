@@ -30,7 +30,9 @@ Install the development version of {starter} from
 devtools::install_github("ddsjoberg/starter")
 ```
 
-## Example
+## Examples
+
+Simple default template
 
 ``` r
 library(starter)
@@ -46,8 +48,6 @@ create_project(
 #> ✔ Initialising renv project
 #> * renv infrastructure has been generated for project "~/My Project Folder".
 ```
-
-## Example Templates
 
 Template example typical used in an analysis framework.
 Template includes a script to setup the data, perform analyses, and report the results.
