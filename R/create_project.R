@@ -295,7 +295,7 @@ writing_files_folders <- function(selected_template, path,
 
   # tibble of each file in template --------------------------------------------
   df_files <-
-    tibble::tibble(file_abbrv = names(selected_template)) %>%
+    dplyr::tibble(file_abbrv = names(selected_template)) %>%
     dplyr::rowwise() %>%
     dplyr::mutate(
       filename = selected_template[[.data$file_abbrv]]$filename,
