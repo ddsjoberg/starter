@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Exporting the project templates in `project_templates`. `project_templates[["default"]]` is a simple example of template usage, and `project_templates[["analysis"]]` is a template including scripts to prepare an anlaysis project. (#28)
+
 # starter 0.1.9
 
 * Added `{{folder_first_word}}` to objects available to use in the project templates. Evaluates to the first "word" in the folder name, where the word separator is either a space or hyphen.
