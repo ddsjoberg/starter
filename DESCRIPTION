@@ -20,6 +20,7 @@ Depends:
     R (>= 3.4)
 Imports: 
     dplyr (>= 1.0.7),
+    cli (>= 3.0.0),
     fs (>= 1.5.0),
     gert (>= 1.4.1),
     glue (>= 1.4.2),
