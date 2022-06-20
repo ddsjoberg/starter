@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.9.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.9.9002</span>
       </span>
     </div>
 
@@ -58,7 +58,10 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="starter-development-version">starter (development version)<a class="anchor" aria-label="anchor" href="#starter-development-version"></a></h2>
-<ul><li>Exporting the project templates in <code>project_templates</code>. <code>project_templates[["default"]]</code> is a simple example of template usage, and <code>project_templates[["analysis"]]</code> is a template including scripts to prepare an anlaysis project. (<a href="https://github.com/ddsjoberg/starter/issues/28" class="external-link">#28</a>)</li></ul></div>
+<ul><li><p>Updated the sample <code>.Rprofile</code> template file with improved checking of the renv project status before messaging users. Previously, we checked the installed packages for the project; if no packages (except renv) were installed, the user saw a message about hydrating the package. But this message would appear each time an existing project was cloned to a new machine where <code><a href="https://rstudio.github.io/renv/reference/restore.html" class="external-link">renv::restore()</a></code> had yet to be run. We now check the <code>renv.lock</code> file for the recorded packages instead of installed packages. (<a href="https://github.com/ddsjoberg/starter/issues/27" class="external-link">#27</a>)</p></li>
+<li><p>Removed {tibble} dependency.</p></li>
+<li><p>Exporting the project templates in <code>project_templates</code>. <code>project_templates[["default"]]</code> is a simple example of template usage, and <code>project_templates[["analysis"]]</code> is a template including scripts to prepare an anlaysis project. (<a href="https://github.com/ddsjoberg/starter/issues/28" class="external-link">#28</a>)</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.9" id="starter-019">starter 0.1.9<small>2022-04-20</small><a class="anchor" aria-label="anchor" href="#starter-019"></a></h2>
 <ul><li><p>Added <code>{{folder_first_word}}</code> to objects available to use in the project templates. Evaluates to the first “word” in the folder name, where the word separator is either a space or hyphen.</p></li>
