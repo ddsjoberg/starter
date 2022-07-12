@@ -97,33 +97,33 @@
 </h2>
 <p>Let’s create a new project and inspect the results. The new project will be created in a the folder called <code>"My Project Folder"</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># loading packages</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/starter" class="external-link">starter</a></span><span class="op">)</span>
-
-<span class="co"># specifying project folder location (folder does not yet exist)</span>
-<span class="va">project_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"My Project Folder"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># loading packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ddsjoberg/starter" class="external-link">starter</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># specifying project folder location (folder does not yet exist)</span></span>
+<span><span class="va">project_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"My Project Folder"</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s set up our new project.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/create_project.html">create_project</a></span><span class="op">(</span>
-  path <span class="op">=</span> <span class="va">project_path</span>,
-  open <span class="op">=</span> <span class="cn">FALSE</span> <span class="co"># don't open project in new RStudio session</span>
-<span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using <span style="color: #0000BB;">'Default Project Template'</span> template</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing folder <span style="color: #0000BB;">'/tmp/Rtmp5q8zOI/My Project Folder/'</span></span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing files <span style="color: #0000BB;">'README.md'</span>, <span style="color: #0000BB;">'.gitignore'</span>, <span style="color: #0000BB;">'My Project Folder.Rproj'</span>, <span style="color: #0000BB;">'.Rprofile'</span></span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">Git</span> repo</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">renv</span> project</span>
-<span class="co">#&gt; * renv infrastructure has been generated for project "/tmp/Rtmp5q8zOI/My Project Folder".</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_project.html">create_project</a></span><span class="op">(</span></span>
+<span>  path <span class="op">=</span> <span class="va">project_path</span>,</span>
+<span>  open <span class="op">=</span> <span class="cn">FALSE</span> <span class="co"># don't open project in new RStudio session</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using <span style="color: #0000BB;">"Default Project Template"</span> template</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing folder <span style="color: #0000BB;">/tmp/RtmppFT9uS/My Project Folder</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing files <span style="color: #0000BB;">"README.md"</span>, <span style="color: #0000BB;">".gitignore"</span>, <span style="color: #0000BB;">"My Project Folder.Rproj"</span>, and <span style="color: #0000BB;">".Rprofile"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">Git</span> repo</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #0000BB;">renv</span> project</span></span>
+<span><span class="co">#&gt; * renv infrastructure has been generated for project "/tmp/RtmppFT9uS/My Project Folder".</span></span></code></pre></div>
 <p>The directory was created, files added, a git repository was initialised in the folder, and the reproducible environment was constructed with the renv package.</p>
 <div class="section level3">
 <h3 id="readme-md">
 <strong><code>README.md</code></strong><a class="anchor" aria-label="anchor" href="#readme-md"></a>
 </h3>
 <p>The following is the <code>README.md</code> file added the project directory. It’s pre-filled with information specific to this project. The first line of the file is the project folder name, followed by a R code for creating a symbolic link from the project folder to the secure data folder.</p>
-<pre><code><span class="co"># My Project Folder</span>
-
-<span class="co"># Symbolic Link to Secure Data</span>
-<span class="fu">starter</span><span class="fu">::</span><span class="fu"><a href="../reference/create_symlink.html">create_symlink</a></span><span class="op">(</span>to <span class="op">=</span> <span class="st">"&lt;secure data path&gt;"</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="co"># My Project Folder</span></span>
+<span></span>
+<span><span class="co"># Symbolic Link to Secure Data</span></span>
+<span><span class="fu">starter</span><span class="fu">::</span><span class="fu"><a href="../reference/create_symlink.html">create_symlink</a></span><span class="op">(</span>to <span class="op">=</span> <span class="st">"&lt;secure data path&gt;"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="gitignore">
@@ -197,10 +197,10 @@ renv/staging/</code></pre>
 {{foo()}}                any R function, e.g. `Sys.Date()`</code></pre>
 <p>Each of these fields are accessible via standard <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue::glue()</a></code> syntax, with the exception that double curly brackets are needed rather than single (e.g. <code>glue::glue(., .open = "{{", .close = "}}")</code>).</p>
 <p>Below is an example of the dynamic <code>README.md</code> template from the default template.</p>
-<pre><code><span class="co"># {{folder_name}}</span>
-
-<span class="co"># Symbolic Link to Secure Data</span>
-<span class="op">{</span><span class="op">{</span><span class="va">symbolic_link</span><span class="op">}</span><span class="op">}</span></code></pre>
+<pre><code><span><span class="co"># {{folder_name}}</span></span>
+<span></span>
+<span><span class="co"># Symbolic Link to Secure Data</span></span>
+<span><span class="op">{</span><span class="op">{</span><span class="va">symbolic_link</span><span class="op">}</span><span class="op">}</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="metadata">Metadata<a class="anchor" aria-label="anchor" href="#metadata"></a>
@@ -208,12 +208,12 @@ renv/staging/</code></pre>
 <p>In order to create a template, you must add a metadata object that stores information about each template file. The metadata is stored as a named list: one element in the list per file in the template.</p>
 <p>The list elements may be named any proper name within R. However, the names must be unique and we recommend short names. These do not need to match/reference any other text in the template file.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">my_template</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    gitignore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-    readme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-    rproj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    gitignore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    readme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    rproj <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>Each element of the list is itself a list. The lists contain three important pieces of information about each template file.</p>
 <ol style="list-style-type: decimal">
 <li><p>The template path and file name.</p></li>
@@ -222,61 +222,61 @@ renv/staging/</code></pre>
 </ol>
 <p>The metadata for the <code>README.md</code> file in the default template looks like this:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">readme</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_readme.md"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, 
-    filename <span class="op">=</span> <span class="st">"README.md"</span>, 
-    glue <span class="op">=</span> <span class="cn">TRUE</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">readme</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_readme.md"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, </span>
+<span>    filename <span class="op">=</span> <span class="st">"README.md"</span>, </span>
+<span>    glue <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>Note that in this case, the location of the template file is pointing to a file location where the {starter} package is installed. If you are not saving your template in an R package, your <code>template_file</code> path will likely point to a folder in your machine, e.g. <code>"C:/project_templates/default_readme.md"</code></p>
 <p>As another example, here’s the metadata for the <code>*.Rproj</code> file from the default template. Note that the file name can be dynamic (the use of <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue::glue()</a></code>), while the underlying file is not dynamic (<code>glue = FALSE</code>). The list is stored as an expression so the template meta data is not evaluated until you call the <code><a href="../reference/create_project.html">create_project()</a></code> function, allowing files to be dynamically named and template files to be saved within a package.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rproj</span> <span class="op">&lt;-</span> 
-  <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_rproj.Rproj"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, 
-    filename <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"{folder_name}.Rproj"</span><span class="op">)</span>, 
-    glue <span class="op">=</span> <span class="cn">FALSE</span>
-  <span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">rproj</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_rproj.Rproj"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, </span>
+<span>    filename <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"{folder_name}.Rproj"</span><span class="op">)</span>, </span>
+<span>    glue <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Below is an example of a simple custom template.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">my_template</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    readme <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_readme.md"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, 
-      filename <span class="op">=</span> <span class="st">"README.md"</span>,
-      glue <span class="op">=</span> <span class="cn">TRUE</span>
-    <span class="op">)</span><span class="op">)</span>,
-    rproj <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_rproj.Rproj"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, 
-      filename <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"{folder_name}.Rproj"</span><span class="op">)</span>,
-      glue <span class="op">=</span> <span class="cn">FALSE</span>
-    <span class="op">)</span><span class="op">)</span>,
-    gitignore <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-      template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_gitignore.txt"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, 
-      filename <span class="op">=</span> <span class="st">".gitignore"</span>, 
-      glue <span class="op">=</span> <span class="cn">TRUE</span>
-    <span class="op">)</span><span class="op">)</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    readme <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_readme.md"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, </span>
+<span>      filename <span class="op">=</span> <span class="st">"README.md"</span>,</span>
+<span>      glue <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span><span class="op">)</span>,</span>
+<span>    rproj <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_rproj.Rproj"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, </span>
+<span>      filename <span class="op">=</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"{folder_name}.Rproj"</span><span class="op">)</span>,</span>
+<span>      glue <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>    <span class="op">)</span><span class="op">)</span>,</span>
+<span>    gitignore <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/expr.html" class="external-link">expr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      template_filename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"project_templates/default_gitignore.txt"</span>, package <span class="op">=</span> <span class="st">"starter"</span><span class="op">)</span>, </span>
+<span>      filename <span class="op">=</span> <span class="st">".gitignore"</span>, </span>
+<span>      glue <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p>Note that you are able to put files into subfolders by including the subfolder name in the <code>filename</code> argument. This can be done for any type of file. Here’s an example of what the metadata could look like if the user has a static Rmarkdown template called <code>template_analysis.Rmd</code> that they want to copy into a project subfolder called <code>scripts</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">analysis</span> <span class="op">&lt;-</span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    template_filename <span class="op">=</span> <span class="st">"C:/project_templates/template_analysis.Rmd"</span>, 
-    filename <span class="op">=</span> <span class="st">"scripts/analysis.Rmd"</span>, 
-    glue <span class="op">=</span> <span class="cn">FALSE</span>
-  <span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">analysis</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    template_filename <span class="op">=</span> <span class="st">"C:/project_templates/template_analysis.Rmd"</span>, </span>
+<span>    filename <span class="op">=</span> <span class="st">"scripts/analysis.Rmd"</span>, </span>
+<span>    glue <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="advanced-features">Advanced Features<a class="anchor" aria-label="anchor" href="#advanced-features"></a>
 </h3>
 <p>You may also <code><a href="https://rdrr.io/r/base/source.html" class="external-link">source()</a></code> an R script by adding the path to the file as a template attribute. The script will be sourced after project template has been placed. This feature is often used when you’d like to add an empty folder to your project.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"script_path"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to file&gt;"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"script_path"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"&lt;path to file&gt;"</span></span></code></pre></div>
 <p>Wrap the path to the script in an expression if you need to delay the evaluation of the path string.</p>
 <p>You can also override the <code><a href="../reference/create_project.html">create_project()</a></code> arguments by adding an attribute with a named list of the argument values you’d like the template to use. For example, if you always want to initialize the git repo and never use renv, attach this list <code>list(git = TRUE, renv = FALSE)</code> as an attribute called <code>"arg_override"</code>.</p>
 <p>There is one last step—give your template a label. The label will be displayed each time the template is called in either <code><a href="../reference/create_project.html">create_project()</a></code> or <code><a href="../reference/use_project_file.html">use_project_file()</a></code>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"My 1st Project Template"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"My 1st Project Template"</span></span></code></pre></div>
 <p>It is recommended you create the list elements named <code>'readme'</code> and <code>'gitignore'</code>. The <code>'readme'</code> element is used in the in the <code><a href="../reference/use_project_file.html">use_project_readme()</a></code> function and <code>'gitignore'</code> is in the <code><a href="../reference/use_project_file.html">use_project_gitignore()</a></code> function—without these elements, these useful functions will return errors.</p>
 </div>
 <div class="section level3">
@@ -284,16 +284,16 @@ renv/staging/</code></pre>
 </h3>
 <p>Now that you have a folder with your template files stored and you have created a metadata list object, you can use them to create a new project folder with your custom template. The following code will get you started.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/create_project.html">create_project</a></span><span class="op">(</span>
-  path <span class="op">=</span> <span class="va">project_path</span>,
-  template <span class="op">=</span> <span class="va">my_template</span> <span class="co"># metadata list created above</span>
-<span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using <span style="color: #0000BB;">'My 1st Project Template'</span> template</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing folder <span style="color: #0000BB;">'/tmp/Rtmp5q8zOI/My Project Folder/'</span></span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing files <span style="color: #0000BB;">'README.md'</span>, <span style="color: #0000BB;">'My Project Folder.Rproj'</span>, <span style="color: #0000BB;">'.gitignore'</span></span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">Git</span> repo</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">renv</span> project</span>
-<span class="co">#&gt; * renv infrastructure has been generated for project "/tmp/Rtmp5q8zOI/My Project Folder".</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_project.html">create_project</a></span><span class="op">(</span></span>
+<span>  path <span class="op">=</span> <span class="va">project_path</span>,</span>
+<span>  template <span class="op">=</span> <span class="va">my_template</span> <span class="co"># metadata list created above</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Using <span style="color: #0000BB;">"My 1st Project Template"</span> template</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing folder <span style="color: #0000BB;">/tmp/RtmppFT9uS/My Project Folder</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing files <span style="color: #0000BB;">"README.md"</span>, <span style="color: #0000BB;">"My Project Folder.Rproj"</span>, and <span style="color: #0000BB;">".gitignore"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">Git</span> repo</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Initialising <span style="color: #0000BB;">renv</span> project</span></span>
+<span><span class="co">#&gt; * renv infrastructure has been generated for project "/tmp/RtmppFT9uS/My Project Folder".</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -315,7 +315,7 @@ renv/staging/</code></pre>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

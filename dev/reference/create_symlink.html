@@ -64,13 +64,13 @@ directory is known (e.g. using *.Rproj, setwd(), etc.)."><meta name="robots" con
     <div class="ref-description">
     <p>The <code>starter_symlink()</code> function is an OS agnostic function that creates symbolic
 links between two folders. The function is, at its core, a wrapper for the
-<code><a href="https://rdrr.io/pkg/R.utils/man/createLink.html" class="external-link">R.utils::createLink()</a></code> function with opinionated
+<code><a href="https://henrikbengtsson.github.io/R.utils/reference/createLink.html" class="external-link">R.utils::createLink()</a></code> function with opinionated
 defaults. The function must be called in an environment where the working
 directory is known (e.g. using <code>*.Rproj</code>, <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd()</a></code>, etc.).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_symlink</span><span class="op">(</span><span class="va">to</span>, name <span class="op">=</span> <span class="st">"secure_data"</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_symlink</span><span class="op">(</span><span class="va">to</span>, name <span class="op">=</span> <span class="st">"secure_data"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -84,7 +84,7 @@ directory is known (e.g. using <code>*.Rproj</code>, <code><a href="https://rdrr
 
 
 <dt>...</dt>
-<dd><p>Arguments passed on to <code><a href="https://rdrr.io/pkg/R.utils/man/createLink.html" class="external-link">R.utils::createLink</a></code></p><dl><dt><code></code></dt>
+<dd><p>Arguments passed on to <code><a href="https://henrikbengtsson.github.io/R.utils/reference/createLink.html" class="external-link">R.utils::createLink</a></code></p><dl><dt><code></code></dt>
 <dd></dd>
 
   
@@ -108,7 +108,7 @@ path is a network drive.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="https://rdrr.io/pkg/R.utils/man/createLink.html" class="external-link">R.utils::createLink()</a></code></p></div>
+    <div class="dont-index"><p><code><a href="https://henrikbengtsson.github.io/R.utils/reference/createLink.html" class="external-link">R.utils::createLink()</a></code></p></div>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -117,13 +117,13 @@ path is a network drive.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># only run fn interactively, will place symbolic link in current working dir</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="co"># Using `starter_symlink()` to establish a symbolic link to a</span></span>
-<span class="r-in">  <span class="co"># mapped networked data folder.</span></span>
-<span class="r-in">  <span class="co"># The default name of the symlink folder is 'secure_data'</span></span>
-<span class="r-in">  <span class="fu">create_symlink</span><span class="op">(</span><span class="st">"O:/Outcomes/Project Folder/Data"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># only run fn interactively, will place symbolic link in current working dir</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># Using `starter_symlink()` to establish a symbolic link to a</span></span></span>
+<span class="r-in"><span>  <span class="co"># mapped networked data folder.</span></span></span>
+<span class="r-in"><span>  <span class="co"># The default name of the symlink folder is 'secure_data'</span></span></span>
+<span class="r-in"><span>  <span class="fu">create_symlink</span><span class="op">(</span><span class="st">"O:/Outcomes/Project Folder/Data"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -138,7 +138,7 @@ path is a network drive.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
