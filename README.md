@@ -30,7 +30,9 @@ Install the development version of {starter} from
 devtools::install_github("ddsjoberg/starter")
 ```
 
-## Example
+## Examples
+
+Simple default template
 
 ``` r
 library(starter)
@@ -39,29 +41,32 @@ create_project(
   path = fs::path(tempdir(), "My Project Folder"),
   open = FALSE # don't open project in new RStudio session
 )
-#> v Using 'Default Project Template' template
-#> v Writing folder 'C:/Users/SjobergD/AppData/Local/Temp/RtmpMfm5PW/My Project Folder/'
-#> v Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
-#> v Initialising Git repo
-#> v Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/SjobergD/AppData/Local/Temp/RtmpMfm5PW/My Project Folder".
+#> ✔ Using 'Default Project Template' template
+#> ✔ Writing folder '~/My Project Folder/'
+#> ✔ Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
+#> ✔ Initialising Git repo
+#> ✔ Initialising renv project
+#> * renv infrastructure has been generated for project "~/My Project Folder".
 ```
 
-## Example Templates
-
-Check out examples of starter templates currently being used.
+Template example typical used in an analysis framework.
+Template includes a script to setup the data, perform analyses, and report the results.
 
 ``` r
-devtools::install_github("ddsjoberg/bstfun")
 create_project(
   path = fs::path(tempdir(), "My Project Folder"),
-  template = bstfun::project_templates[["hot"]]
+  template = project_templates[["analysis"]]
 )
 
-create_project(
-  path = fs::path(tempdir(), "My Project Folder"),
-  template = bstfun::project_templates[["default"]]
-)
+#> ✔ Using 'Analysis Project Template' template
+#> ✔ Writing folder '~/My Project Folder/'
+#> ✔ Creating '~/My Project Folder/scripts/'
+#> ✔ Creating '~/My Project Folder/scripts/templates/'
+#> ✔ Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile', 'scripts/10-setup_my.Rmd', #> 'scripts/20-analysis_my.Rmd', 'scripts/30-report_my.Rmd', 'scripts/templates/doc_template.docx', #> 'scripts/templates/references.bib', 'scripts/derived_variables.xlsx', 'SAP - My Project Folder.docx'
+#> ✔ Initialising Git repo
+#> ✔ Initialising renv project
+#> * renv infrastructure has been generated for project "~/My Project #> Folder".
+#> ✔ Opening '~/My Project Folder/' in new RStudio session
 ```
 
 ## Code of Conduct
