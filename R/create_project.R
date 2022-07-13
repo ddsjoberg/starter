@@ -68,6 +68,8 @@ create_project <- function(path, path_data = NULL, template = "default",
   }
 
   # ask user -------------------------------------------------------------------
+  if (!isTRUE(git) && is_git(path)) git <- TRUE # if folder is already git, don't ask about it.
+
   if (is.na(git))
     git <- ifelse(!interactive(), TRUE, ui_yeah("Initialise Git repo?"))
   if (is.na(renv))
@@ -342,7 +344,7 @@ writing_files_folders <- function(selected_template, path,
 
 initialise_git <- function(git, path) {
   # initializing git repo ------------------------------------------------------
-  if (isTRUE(git)) {
+  if (isTRUE(git) && !is_git(path)) {
     cli::cli_alert_success("Initialising {.field Git} repo")
     # if there is an error setting up, printing note about the error
     tryCatch({
@@ -386,3 +388,8 @@ copy_to_glue <- function(x) {
 isFALSE = function(x) {
   is.logical(x) && length(x) == 1L && !is.na(x) && !x
 }
+
+is_git <- function(path = ".") {
+  fs::dir_exists(path) && fs::dir_exists(path = fs::path(path, ".git"))
+}
+
