@@ -1,6 +1,5 @@
 #' @importFrom dplyr %>%
-#' @importFrom purrr %||%
-#' @importFrom rlang .data .env
+#' @importFrom rlang %||% .data .env
 #' @keywords internal
 "_PACKAGE"
 
