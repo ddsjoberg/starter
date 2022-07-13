@@ -56,7 +56,7 @@ analysis_project_template <-
                          list(
                            template_filename =
                              fs::path_package(package = "starter", "project_templates/default_rprofile.R"),
-                           filename = stringr::str_glue(".Rprofile"),
+                           filename = glue::glue(".Rprofile"),
                            glue = TRUE
                          )
       ))

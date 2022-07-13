@@ -63,29 +63,29 @@ create_symlink <- function(to, name = "secure_data", ...) {
   msg <- NULL
   if (Sys.info()[["sysname"]] == "Windows") {
     # grabbing drive name of project folder
-    drive_here <- stringr::str_sub(here::here(), 1, 2)
+    drive_here <- substr(here::here(), 1, 2)
 
     # getting list of mapped network drives
     drive_mapped <-
       system("net use", intern = TRUE) %>% # grabbing all mapped drives
-      stringr::str_extract(pattern = "[A-Z]:") %>% # extracting the drive letter
-      purrr::keep(~!is.na(.)) %>% # removing NAs
-      setdiff("C:") # not allowing C: to be selected
+      {regmatches(., gregexpr('[A-Z]:', text = .))} %>% # extracting the drive letter
+      discard(rlang::is_empty) %>% # removing NAs
+      setdiff("C:") %>%
+      unlist()
 
     # saving message to print is warning or error occurs
     if(drive_here %in% drive_mapped) {
       msg <- paste(
-        "It looks like you've attempted to save a symbolic link on a",
-        "mapped network drive. This often causes issues when working in",
-        "Windows. If you encounter an error, consider moving your GitHub",
+        "It looks like you've attempted to save a symbolic link on a\n",
+        "mapped network drive. This often causes issues when working in\n",
+        "Windows. If you encounter an error, consider moving your GitHub\n",
         "repo to your local C: drive, and establishing the link there."
-      ) %>%
-        stringr::str_wrap()
+      )
     }
   }
 
   # wrapping createLink --------------------------------------------------------
-  safe_createLink <- purrr::safely(R.utils::createLink)
+  safe_createLink <- safely(R.utils::createLink)
   result <- safe_createLink(link = here::here(name), target = to, ...)
 
   if (is.null(result$error)) {

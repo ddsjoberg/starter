@@ -57,13 +57,15 @@ create_project <- function(path, path_data = NULL, template = "default",
     override_arg_list <- attr(template, "arg_override")
 
     # print note about args being set
-    override_arg_list %>%
-      purrr::iwalk(
-        function(arg, name) {
-          if (!identical(arg, eval(parse(text = name))))
-            cli::cli_alert_success("Using template argument override {.code {paste(name, deparse(arg, width.cutoff = 200L), sep = ' = ')}}")
-        }
-      )
+
+    walk2(
+      override_arg_list,
+      names(override_arg_list),
+      function(arg, name) {
+        if (!identical(arg, eval(parse(text = name))))
+          cli::cli_alert_success("Using template argument override {.code {paste(name, deparse(arg, width.cutoff = 200L), sep = ' = ')}}")
+      }
+    )
     list2env(override_arg_list, envir = rlang::current_env())
   }
 
@@ -148,12 +150,11 @@ evaluate_project_template <- function(template, path, git, renv, symlink) {
   error = function(e) {
     cli::cli_alert_danger(
       paste(
-        "There was as error evaluating the the list defining the project template.",
-        "If this is a template stored in the package, please file",
-        "a GitHub Issue illustrating the error. If this is a personal template,",
+        "There was as error evaluating the the list defining the project template.\n",
+        "If this is a template stored in the package, please file\n",
+        "a GitHub Issue illustrating the error. If this is a personal template,\n",
         "review the vignette on creating a personal project template."
-      ) %>%
-        stringr::str_wrap()
+      )
     )
     stop(e)
   })
@@ -223,7 +224,7 @@ eval_nested_lists <- function(template, path, git, renv) {
   template_evaluated <-
     vector(mode = "list", length = length(template)) %>%
     stats::setNames(names(template)) %>%
-    purrr::map(~list())
+    map(~list())
   # iterating over list to evaluate quoted/expr elements
   for (i in seq_len(length(template))) {
     if (rlang::is_list(template[[i]])) {
@@ -235,7 +236,7 @@ eval_nested_lists <- function(template, path, git, renv) {
       }
       # remove empty elements after evaluating
       template_evaluated[i] <-
-        purrr::compact(template[[i]]) %>%
+        compact(template[[i]]) %>%
         list() %>%
         stats::setNames(names(template[i]))
     }
@@ -246,14 +247,14 @@ eval_nested_lists <- function(template, path, git, renv) {
   }
 
   # remove empty elements after evaluating and return
-  purrr::compact(template_evaluated)
+  compact(template_evaluated)
 }
 
 eval_if_call_or_expr <- function(x, path, git, renv)  {
   # strings that may be needed in the evaluation of some strings
   folder_name <- basename(path)
   folder_first_word <-
-    stringr::str_split(folder_name, pattern = ' |-', simplify = T)[, 1] %>%
+    strsplit(x = folder_name, split = ' |-')[[1]][1] %>%
     tolower()
   if (rlang::is_call(x) || rlang::is_expression(x)) x <- eval(x)
   x
@@ -272,18 +273,18 @@ writing_files_folders <- function(selected_template, path,
   symbolic_link <-
     ifelse(
       !is.null(path_data),
-      stringr::str_glue('starter::create_symlink(to = "{fs::path_norm(path_data)}")'),
+      glue::glue('starter::create_symlink(to = "{fs::path_norm(path_data)}")'),
       'starter::create_symlink(to = "<secure data path>")'
     )
   folder_name <- basename(path)
 
   # creating project folder(s) -------------------------------------------------
   selected_template %>%
-    purrr::map_chr(purrr::pluck, "filename") %>%
+    map_chr("filename") %>%
     dirname() %>%
-    purrr::discard(~. == ".") %>%
+    discard(~. == ".") %>%
     unique() %>%
-    purrr::walk(
+    walk(
       function(.x) {
         if (!fs::dir_exists(fs::path(path, .x))) {
           fs::dir_create(fs::path(path, .x), recurse = TRUE)
@@ -304,7 +305,7 @@ writing_files_folders <- function(selected_template, path,
     )
   df_files$write_file <-
     seq_len(nrow(df_files)) %>%
-    purrr::map_lgl(
+    map_lgl(
       function(i) {
         if (!df_files$file_exists[i]) return(TRUE)
         if (isTRUE(overwrite)) return(TRUE)
@@ -320,7 +321,7 @@ writing_files_folders <- function(selected_template, path,
   df_files <- df_files %>% dplyr::filter(.data$write_file)
 
   # writing template files to folder -------------------------------------------
-  purrr::walk(
+  walk(
     seq_len(nrow(df_files)),
     function(i) {
       # if glue file contents, importing as string, evaluating glue::glue, and writing to file
@@ -359,13 +360,12 @@ initialise_git <- function(git, path) {
     error = function(e) {
       cli::cli_alert_danger(
         paste(
-          "There was an error in {.code gert::git_init()} while",
-          "initialising the Git repo.",
-          "Have you installed Git and set it up?",
-          "Refer to the book 'Happy Git and GitHub for the useR'",
+          "There was an error in {.code gert::git_init()} while\n",
+          "initialising the Git repo.\n",
+          "Have you installed Git and set it up?\n",
+          "Refer to the book 'Happy Git and GitHub for the useR'\n",
           "for step-by-step instructions on getting started with Git."
-        ) %>%
-          stringr::str_wrap()
+        )
       )
       cli::cli_alert("{.url https://happygitwithr.com/install-git.html}")
       # setting git to FALSE as no git repo exists
@@ -375,11 +375,11 @@ initialise_git <- function(git, path) {
 }
 
 copy_to_glue <- function(x) {
-  purrr::map(
+  map(
     x,
     ~switch(
       "copy" %in% names(.x),
-      purrr::list_modify(.x, glue = !.x$copy, copy = NULL)
+      modifyList(.x, val = list(glue = !.x$copy, copy = NULL))
     ) %||% .x
   )
 }

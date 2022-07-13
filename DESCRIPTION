@@ -25,12 +25,10 @@ Imports:
     gert (>= 1.4.1),
     glue (>= 1.4.2),
     here (>= 1.0.1),
-    purrr (>= 0.3.4),
     R.utils (>= 2.11.0),
     readr (>= 2.0.1),
     renv (>= 0.14.0),
     rlang (>= 0.4.11),
-    stringr (>= 1.4.0),
     usethis (>= 2.0.1)
 Suggests: 
     covr (>= 3.5.1),
