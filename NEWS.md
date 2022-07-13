@@ -4,7 +4,9 @@
 
 * Removed {tibble} dependency.
 
-* Exporting the project templates in `project_templates`. `project_templates[["default"]]` is a simple example of template usage, and `project_templates[["analysis"]]` is a template including scripts to prepare an anlaysis project. (#28)
+* Better messaging when placing a project skeleton into a folder that is already a git repo: users won't be asked if they want to create a git repo when it already exists. (#26)
+
+* Exporting the project templates in `project_templates`. `project_templates[["default"]]` is a simple example of template usage, and `project_templates[["analysis"]]` is a template including scripts to prepare an analysis project. (#28)
 
 # starter 0.1.9
 
