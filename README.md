@@ -30,9 +30,7 @@ Install the development version of {starter} from
 devtools::install_github("ddsjoberg/starter")
 ```
 
-## Examples
-
-Simple default template
+## Example
 
 ``` r
 library(starter)
@@ -41,32 +39,29 @@ create_project(
   path = fs::path(tempdir(), "My Project Folder"),
   open = FALSE # don't open project in new RStudio session
 )
-#> ✔ Using 'Default Project Template' template
-#> ✔ Writing folder '~/My Project Folder/'
-#> ✔ Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile'
+#> ✔ Using "Default Project Template" template
+#> ✔ Writing folder '~/My Project Folder'
+#> ✔ Writing files "README.md", ".gitignore", "My Project Folder.Rproj", and ".Rprofile"
 #> ✔ Initialising Git repo
 #> ✔ Initialising renv project
 #> * renv infrastructure has been generated for project "~/My Project Folder".
 ```
 
-Template example typical used in an analysis framework.
-Template includes a script to setup the data, perform analyses, and report the results.
+## Example Templates
+
+Check out examples of starter templates currently being used.
 
 ``` r
+devtools::install_github("ddsjoberg/bstfun")
 create_project(
   path = fs::path(tempdir(), "My Project Folder"),
-  template = project_templates[["analysis"]]
+  template = bstfun::project_templates[["hot"]]
 )
 
-#> ✔ Using 'Analysis Project Template' template
-#> ✔ Writing folder '~/My Project Folder/'
-#> ✔ Creating '~/My Project Folder/scripts/'
-#> ✔ Creating '~/My Project Folder/scripts/templates/'
-#> ✔ Writing files 'README.md', '.gitignore', 'My Project Folder.Rproj', '.Rprofile', 'scripts/10-setup_my.Rmd', #> 'scripts/20-analysis_my.Rmd', 'scripts/30-report_my.Rmd', 'scripts/templates/doc_template.docx', #> 'scripts/templates/references.bib', 'scripts/derived_variables.xlsx', 'SAP - My Project Folder.docx'
-#> ✔ Initialising Git repo
-#> ✔ Initialising renv project
-#> * renv infrastructure has been generated for project "~/My Project #> Folder".
-#> ✔ Opening '~/My Project Folder/' in new RStudio session
+create_project(
+  path = fs::path(tempdir(), "My Project Folder"),
+  template = bstfun::project_templates[["default"]]
+)
 ```
 
 ## Code of Conduct
