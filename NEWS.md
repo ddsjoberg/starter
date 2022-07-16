@@ -1,3 +1,5 @@
+# starter (development version)
+
 # starter 0.1.10
 
 * Updated the sample `.Rprofile` template file with improved checking of the renv project status before messaging users. Previously, we checked the installed packages for the project; if no packages (except renv) were installed, the user saw a message about hydrating the package. But this message would appear each time an existing project was cloned to a new machine where `renv::restore()` had yet to be run. We now check the `renv.lock` file for the recorded packages instead of installed packages. (#27)
