@@ -20,7 +20,7 @@ use_project_file("gitignore") and use_project_file("readme").'><!-- mathjax --><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -68,16 +68,16 @@ The functions <code>use_project_gitignore()</code> and <code>use_project_readme(
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">use_project_file</span><span class="op">(</span>
-  name <span class="op">=</span> <span class="cn">NULL</span>,
-  filename <span class="op">=</span> <span class="cn">NULL</span>,
-  template <span class="op">=</span> <span class="cn">NULL</span>,
-  open <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">use_project_gitignore</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, template <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">use_project_readme</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, template <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">use_project_file</span><span class="op">(</span></span>
+<span>  name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  filename <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  template <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  open <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">use_project_gitignore</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, template <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">use_project_readme</span><span class="op">(</span>filename <span class="op">=</span> <span class="cn">NULL</span>, template <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -86,19 +86,28 @@ The functions <code>use_project_gitignore()</code> and <code>use_project_readme(
 <dd><p>Name of file to write.  Not sure of the files available to you?
 Run the function without specifying a name, and all files available within the
 template will print.</p></dd>
+
+
 <dt>filename</dt>
 <dd><p>Optional argument to specify the name of the file to be written.
 Paths/filename is relative to project base (e.g. <code><a href="https://here.r-lib.org//reference/here.html" class="external-link">here::here()</a></code>)</p></dd>
+
+
 <dt>template</dt>
 <dd><p>A project template. See
 <a href="https://www.danieldsjoberg.com/starter/articles/create_project.html" class="external-link">vignette</a>
 for details.</p></dd>
+
+
 <dt>open</dt>
 <dd><p>If <code>TRUE</code>, opens the new file.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>NULL, places single template file in current working directory</p>
+    
+
+<p>NULL, places single template file in current working directory</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -108,15 +117,16 @@ for details.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># create gitignore file</span></span>
-<span class="r-in"><span class="fu">use_project_file</span><span class="op">(</span><span class="st">"gitignore"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">use_project_gitignore</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># create README.md file</span></span>
-<span class="r-in"><span class="fu">use_project_file</span><span class="op">(</span><span class="st">"readme"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">use_project_readme</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># only run fn interactively, will place files in current working dir</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># create gitignore file</span></span></span>
+<span class="r-in"><span>  <span class="fu">use_project_file</span><span class="op">(</span><span class="st">"gitignore"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">use_project_gitignore</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># create README.md file</span></span></span>
+<span class="r-in"><span>  <span class="fu">use_project_file</span><span class="op">(</span><span class="st">"readme"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">use_project_readme</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -127,13 +137,11 @@ for details.</p></dd>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="http://www.danieldsjoberg.com/" class="external-link">Daniel D.
-Sjoberg</a>.</p>
+  <p></p><p>Developed by <a href="http://www.danieldsjoberg.com/" class="external-link">Daniel D. Sjoberg</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -20,7 +20,7 @@ whether to replace the existing file with the template file."><!-- mathjax --><s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -68,17 +68,17 @@ whether to replace the existing file with the template file.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">create_project</span><span class="op">(</span>
-  <span class="va">path</span>,
-  path_data <span class="op">=</span> <span class="cn">NULL</span>,
-  template <span class="op">=</span> <span class="st">"default"</span>,
-  git <span class="op">=</span> <span class="cn">TRUE</span>,
-  renv <span class="op">=</span> <span class="cn">TRUE</span>,
-  symlink <span class="op">=</span> <span class="va">git</span>,
-  renv.settings <span class="op">=</span> <span class="cn">NULL</span>,
-  overwrite <span class="op">=</span> <span class="cn">NA</span>,
-  open <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_project</span><span class="op">(</span></span>
+<span>  <span class="va">path</span>,</span>
+<span>  path_data <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  template <span class="op">=</span> <span class="st">"default"</span>,</span>
+<span>  git <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  renv <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  symlink <span class="op">=</span> <span class="va">git</span>,</span>
+<span>  renv.settings <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  open <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -86,36 +86,55 @@ whether to replace the existing file with the template file.</p>
     <dl><dt>path</dt>
 <dd><p>A path. If it exists, it is used. If it does not exist, it is
 created.</p></dd>
+
+
 <dt>path_data</dt>
 <dd><p>A path. The directory where the secure data exist. Default is
 <code>NULL</code>.  When supplied, a symbolic link to data folder will be created.</p></dd>
+
+
 <dt>template</dt>
 <dd><p>A project template. See
 <a href="https://www.danieldsjoberg.com/starter/articles/create_project.html" class="external-link">vignette</a>
 for details.</p></dd>
+
+
 <dt>git</dt>
 <dd><p>Logical indicating whether to create Git repository.  Default is <code>TRUE</code>
 When <code>NA</code>, user will be prompted whether to initialise Git repo.</p></dd>
+
+
 <dt>renv</dt>
 <dd><p>Logical indicating whether to add renv to a project.
 Default is <code>TRUE</code>. When <code>NA</code> user is asked interactively for preference.</p></dd>
+
+
 <dt>symlink</dt>
 <dd><p>Logical indicating whether to place a symbolic link
 to the location in <code>path_data=</code>. Default is to place the symbolic link
 if the project is a git repository.</p></dd>
+
+
 <dt>renv.settings</dt>
 <dd><p>A list of renv settings passed to <code>renv::scaffold(settings=)</code></p></dd>
+
+
 <dt>overwrite</dt>
 <dd><p>Logical indicating whether to overwrite existing files
 if they exist.  Options are
 <code>TRUE</code>, <code>FALSE</code>, and <code>NA</code> (aka ask interactively).  Default is <code>NA</code></p></dd>
+
+
 <dt>open</dt>
 <dd><p>Logical indicating whether to open new project in fresh RStudio
 session</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>NULL, places project template in new or existing directory</p>
+    
+
+<p>NULL, places project template in new or existing directory</p>
     </div>
     <div id="personalized-template">
     <h2>Personalized Template</h2>
@@ -138,18 +157,22 @@ for step by step instructions.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># specifying project folder location (folder does not yet exist)</span></span>
-<span class="r-in"><span class="va">project_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"My Project Folder"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># creating folder where secure data would be stored (typically will be a network drive)</span></span>
-<span class="r-in"><span class="va">secure_data_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"secure_data"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="va">secure_data_path</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># creating new project folder</span></span>
-<span class="r-in"><span class="fu">create_project</span><span class="op">(</span><span class="va">project_path</span>, path_data <span class="op">=</span> <span class="va">secure_data_path</span>, open <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">v</span> Using <span style="color: #0000BB;">'Default Project Template'</span> template</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> User input required, but session is not interactive.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Query: <span style="color: #0000BB;">'README.md'</span> already exists. Would you like to overwrite it?</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># specifying project folder location (folder does not yet exist)</span></span></span>
+<span class="r-in"><span><span class="va">project_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"My Project Folder"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># creating folder where secure data would be stored (typically will be a network drive)</span></span></span>
+<span class="r-in"><span><span class="va">secure_data_path</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"secure_data"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html" class="external-link">dir_create</a></span><span class="op">(</span><span class="va">secure_data_path</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># creating new project folder</span></span></span>
+<span class="r-in"><span><span class="fu">create_project</span><span class="op">(</span><span class="va">project_path</span>, path_data <span class="op">=</span> <span class="va">secure_data_path</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Using <span style="color: #0000BB;">"Default Project Template"</span> template</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Writing folder <span style="color: #0000BB;">/tmp/RtmpGjZ5fz/My Project Folder</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Writing files <span style="color: #0000BB;">"README.md"</span>, <span style="color: #0000BB;">".gitignore"</span>, <span style="color: #0000BB;">"My Project Folder.Rproj"</span>, and <span style="color: #0000BB;">".Rprofile"</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Creating symbolic link to data folder <span style="color: #0000BB;">/tmp/RtmpGjZ5fz/secure_data</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Initialising <span style="color: #00BB00;">Git</span> repo</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Initialising <span style="color: #0000BB;">renv</span> project</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * renv infrastructure has been generated for project "/tmp/RtmpGjZ5fz/My Project Folder".</span>
 </code></pre></div>
     </div>
   </div>
@@ -160,13 +183,11 @@ for step by step instructions.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="http://www.danieldsjoberg.com/" class="external-link">Daniel D.
-Sjoberg</a>.</p>
+  <p></p><p>Developed by <a href="http://www.danieldsjoberg.com/" class="external-link">Daniel D. Sjoberg</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

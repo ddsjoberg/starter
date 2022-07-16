@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -57,85 +57,57 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.1.10" id="starter-0110">starter 0.1.10<small>2022-07-16</small><a class="anchor" aria-label="anchor" href="#starter-0110"></a></h2>
+<ul><li><p>Updated the sample <code>.Rprofile</code> template file with improved checking of the renv project status before messaging users. Previously, we checked the installed packages for the project; if no packages (except renv) were installed, the user saw a message about hydrating the package. But this message would appear each time an existing project was cloned to a new machine where <code><a href="https://rstudio.github.io/renv/reference/restore.html" class="external-link">renv::restore()</a></code> had yet to be run. We now check the <code>renv.lock</code> file for the recorded packages instead of installed packages. (<a href="https://github.com/ddsjoberg/starter/issues/27" class="external-link">#27</a>)</p></li>
+<li><p>Removed {tibble}, {stringr}, and {purrr} dependencies.</p></li>
+<li><p>Better messaging when placing a project skeleton into a folder that is already a git repo: users won’t be asked if they want to create a git repo when it already exists. (<a href="https://github.com/ddsjoberg/starter/issues/26" class="external-link">#26</a>)</p></li>
+<li><p>Exporting the project templates in <code>project_templates</code>. <code>project_templates[["default"]]</code> is a simple example of template usage, and <code>project_templates[["analysis"]]</code> is a template including scripts to prepare an analysis project. (<a href="https://github.com/ddsjoberg/starter/issues/28" class="external-link">#28</a>)</p></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.9" id="starter-019">starter 0.1.9<small>2022-04-20</small><a class="anchor" aria-label="anchor" href="#starter-019"></a></h2>
-<ul><li><p>Added <code>{{folder_first_word}}</code> to objects available to
-use in the project templates. Evaluates to the first “word” in the
-folder name, where the word separator is either a space or
-hyphen.</p></li>
-<li><p>Added <code>create_project(renv.settings=)</code>
-argument.</p></li>
-<li><p>No longer using
-<code>renv::scaffold(settings = list(snapshot.type = 'all'))</code> as
-the default.</p></li>
-<li><p>Improved messaging in the default <code>.Rprofile</code> template
-file to finish setting up the renv project.</p></li>
+<ul><li><p>Added <code>{{folder_first_word}}</code> to objects available to use in the project templates. Evaluates to the first “word” in the folder name, where the word separator is either a space or hyphen.</p></li>
+<li><p>Added <code>create_project(renv.settings=)</code> argument.</p></li>
+<li><p>No longer using <code>renv::scaffold(settings = list(snapshot.type = 'all'))</code> as the default.</p></li>
+<li><p>Improved messaging in the default <code>.Rprofile</code> template file to finish setting up the renv project.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.8" id="starter-018">starter 0.1.8<small>2021-11-23</small><a class="anchor" aria-label="anchor" href="#starter-018"></a></h2>
-<ul><li>Fix for the <code><a href="../reference/use_project_file.html">use_project_file()</a></code> function when the
-template has an element that evaluates to <code>NULL</code> (which
-resulted in an indexing error). (<a href="https://github.com/ddsjoberg/starter/issues/19" class="external-link">#19</a>)</li>
-</ul></div>
+<ul><li>Fix for the <code><a href="../reference/use_project_file.html">use_project_file()</a></code> function when the template has an element that evaluates to <code>NULL</code> (which resulted in an indexing error). (<a href="https://github.com/ddsjoberg/starter/issues/19" class="external-link">#19</a>)</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.7" id="starter-017">starter 0.1.7<small>2021-11-17</small><a class="anchor" aria-label="anchor" href="#starter-017"></a></h2>
-<ul><li><p>Allowing users to use their template to override function
-arguments in <code><a href="../reference/create_project.html">create_project()</a></code>. This way, if the user never
-uses git, for example, this can be communicated in the template, rather
-than needing to change the function argument every time.</p></li>
-<li><p>Added <code>create_project(symlink=)</code> argument indicating
-whether or not to place a symbolic link to the folder indicated in
-<code>create_project(path_data=).</code></p></li>
-<li><p>Updated <code>.Rprofile</code> start-up message for new
-repositories to include the <code><a href="https://rstudio.github.io/renv/reference/snapshot.html" class="external-link">renv::snapshot()</a></code> step.</p></li>
+<ul><li><p>Allowing users to use their template to override function arguments in <code><a href="../reference/create_project.html">create_project()</a></code>. This way, if the user never uses git, for example, this can be communicated in the template, rather than needing to change the function argument every time.</p></li>
+<li><p>Added <code>create_project(symlink=)</code> argument indicating whether or not to place a symbolic link to the folder indicated in <code>create_project(path_data=).</code></p></li>
+<li><p>Updated <code>.Rprofile</code> start-up message for new repositories to include the <code><a href="https://rstudio.github.io/renv/reference/snapshot.html" class="external-link">renv::snapshot()</a></code> step.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.6" id="starter-016">starter 0.1.6<small>2021-09-27</small><a class="anchor" aria-label="anchor" href="#starter-016"></a></h2>
-<ul><li>Updated <code><a href="../reference/create_symlink.html">create_symlink()</a></code> to pass the full path to
-<code>R.utils::createLink(link=)</code> instead of just the folder name.
-This solves an issue when creating symbolic links without full admin
-rights.</li>
-</ul></div>
+<ul><li>Updated <code><a href="../reference/create_symlink.html">create_symlink()</a></code> to pass the full path to <code>R.utils::createLink(link=)</code> instead of just the folder name. This solves an issue when creating symbolic links without full admin rights.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.5" id="starter-015">starter 0.1.5<small>2021-07-22</small><a class="anchor" aria-label="anchor" href="#starter-015"></a></h2>
 <ul><li><p>Default snapshot type is now ‘all’.</p></li>
 <li><p>Removed ‘rstudioapi’ package dependency.</p></li>
-<li><p>Bug fix in <code>create_project(overwrite=)</code> where existing
-files were not being prompted with inquiry whether to
-overwrite.</p></li>
+<li><p>Bug fix in <code>create_project(overwrite=)</code> where existing files were not being prompted with inquiry whether to overwrite.</p></li>
 <li><p>Documentation updates.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.4" id="starter-014">starter 0.1.4<small>2021-07-13</small><a class="anchor" aria-label="anchor" href="#starter-014"></a></h2>
-<ul><li><p>Documentation updates and tidying up for CRAN
-submission.</p></li>
+<ul><li><p>Documentation updates and tidying up for CRAN submission.</p></li>
 <li><p>Removed path normalization RStudio add-in.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.3" id="starter-013">starter 0.1.3<a class="anchor" aria-label="anchor" href="#starter-013"></a></h2>
-<ul><li>No longer tracking the latest release of the rstudio.prefs package
-on GitHub, because it causes an issue with renv.</li>
-</ul></div>
+<ul><li>No longer tracking the latest release of the rstudio.prefs package on GitHub, because it causes an issue with renv.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.2" id="starter-012">starter 0.1.2<a class="anchor" aria-label="anchor" href="#starter-012"></a></h2>
-<ul><li>Now evaluating the template attribute <code>"script_path"</code> to
-allow users to quote the file location.</li>
-</ul></div>
+<ul><li>Now evaluating the template attribute <code>"script_path"</code> to allow users to quote the file location.</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.1" id="starter-011">starter 0.1.1<a class="anchor" aria-label="anchor" href="#starter-011"></a></h2>
-<ul><li><p>When <code>create_project(renv = TRUE)</code>,
-<code><a href="https://rstudio.github.io/renv/reference/init.html" class="external-link">renv::init()</a></code> has been switched to
-<code><a href="https://rstudio.github.io/renv/reference/scaffold.html" class="external-link">renv::scaffold()</a></code>. This stops renv from initializing the
-project. The user must call <code><a href="https://rstudio.github.io/renv/reference/hydrate.html" class="external-link">renv::hydrate()</a></code> in order to
-discover the packages used in the project’s <code>*.R</code> and
-<code>*.Rmd</code> files and have them added to the
-<code>renv.lock</code> file.</p></li>
-<li><p>When a user specifies an attribute to the template list called
-<code>"script_path"</code>, the path is sourced.</p></li>
+<ul><li><p>When <code>create_project(renv = TRUE)</code>, <code><a href="https://rstudio.github.io/renv/reference/init.html" class="external-link">renv::init()</a></code> has been switched to <code><a href="https://rstudio.github.io/renv/reference/scaffold.html" class="external-link">renv::scaffold()</a></code>. This stops renv from initializing the project. The user must call <code><a href="https://rstudio.github.io/renv/reference/hydrate.html" class="external-link">renv::hydrate()</a></code> in order to discover the packages used in the project’s <code>*.R</code> and <code>*.Rmd</code> files and have them added to the <code>renv.lock</code> file.</p></li>
+<li><p>When a user specifies an attribute to the template list called <code>"script_path"</code>, the path is sourced.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.0" id="starter-010">starter 0.1.0<a class="anchor" aria-label="anchor" href="#starter-010"></a></h2>
-<ul><li>First release</li>
-</ul></div>
+<ul><li>First release</li></ul></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -146,13 +118,11 @@ discover the packages used in the project’s <code>*.R</code> and
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="http://www.danieldsjoberg.com/" class="external-link">Daniel D.
-Sjoberg</a>.</p>
+  <p></p><p>Developed by <a href="http://www.danieldsjoberg.com/" class="external-link">Daniel D. Sjoberg</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
