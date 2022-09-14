@@ -2,7 +2,7 @@ url: http://www.danieldsjoberg.com/starter/
 
 template:
   params:
-    bootswatch: flatly
+    bootswatch: journal
 development:
   mode: auto
   version_label: default
