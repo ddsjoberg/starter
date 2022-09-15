@@ -91,7 +91,7 @@ create_symlink <- function(to, name = "secure_data", ...) {
   if (is.null(result$error)) {
     paste0("Symbolic link placed connecting {.file {name}} to\n",
            "{.file {to}}") %>%
-      cli::cli_alert_danger()
+      cli::cli_alert_success()
   }
   else {
     # displaying note about windows and symbolic links if error occurred
