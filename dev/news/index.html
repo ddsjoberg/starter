@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">starter</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.10.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.10.9002</span>
       </span>
     </div>
 
@@ -58,7 +58,9 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="starter-development-version">starter (development version)<a class="anchor" aria-label="anchor" href="#starter-development-version"></a></h2>
-<ul><li>Updated messaging symbols when symbolic link is placed (<a href="https://github.com/ddsjoberg/starter/issues/37" class="external-link">#37</a>)</li></ul></div>
+<ul><li><p>Environment update to ensure function runs without error when <code><a href="../reference/create_project.html">create_project()</a></code> asks about over-writing an existing file.</p></li>
+<li><p>Updated messaging symbols when symbolic link is placed (<a href="https://github.com/ddsjoberg/starter/issues/37" class="external-link">#37</a>)</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.10" id="starter-0110">starter 0.1.10<small>2022-07-16</small><a class="anchor" aria-label="anchor" href="#starter-0110"></a></h2>
 <ul><li><p>Updated the sample <code>.Rprofile</code> template file with improved checking of the renv project status before messaging users. Previously, we checked the installed packages for the project; if no packages (except renv) were installed, the user saw a message about hydrating the package. But this message would appear each time an existing project was cloned to a new machine where <code><a href="https://rstudio.github.io/renv/reference/restore.html" class="external-link">renv::restore()</a></code> had yet to be run. We now check the <code>renv.lock</code> file for the recorded packages instead of installed packages. (<a href="https://github.com/ddsjoberg/starter/issues/27" class="external-link">#27</a>)</p></li>
