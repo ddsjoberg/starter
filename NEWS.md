@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Environment update to ensure function runs without error when `create_project()` asks about over-writing an existing file.
+
 * Updated messaging symbols when symbolic link is placed (#37)
 
 # starter 0.1.10
