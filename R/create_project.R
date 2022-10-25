@@ -73,11 +73,11 @@ create_project <- function(path, path_data = NULL, template = "default",
   if (!isTRUE(git) && is_git(path)) git <- TRUE # if folder is already git, don't ask about it.
 
   if (is.na(git))
-    git <- ifelse(!interactive(), TRUE, ui_yeah("Initialise Git repo?"))
+    git <- ifelse(!interactive(), TRUE, ui_yeah2("Initialise Git repo?"))
   if (is.na(renv))
-    renv <- ifelse(!interactive(), TRUE, ui_yeah("Initialise renv project?"))
+    renv <- ifelse(!interactive(), TRUE, ui_yeah2("Initialise renv project?"))
   if (is.na(symlink))
-    symlink <- ifelse(!interactive(), TRUE, ui_yeah("Place symbolic link?"))
+    symlink <- ifelse(!interactive(), TRUE, ui_yeah2("Place symbolic link?"))
 
   # import template ------------------------------------------------------------
   template <- evaluate_project_template(template, path, git, renv, symlink)
@@ -313,7 +313,7 @@ writing_files_folders <- function(selected_template, path,
         if (!interactive()) return(FALSE)
         msg <- paste("{.file {df_files$filename[i]}} already exists.",
                      "Would you like to overwrite it?")
-        return(ui_yeah(msg))
+        return(ui_yeah2(msg))
       }
     )
 
