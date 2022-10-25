@@ -4,8 +4,8 @@
 "_PACKAGE"
 
 # similar to usethis::ui_yeah(), but no usethis dep
-ui_yeah <- function(x) {
-  cli::cli_alert_warning(x)
+ui_yeah2 <- function(x, .envir = parent.frame()) {
+  cli::cli_alert_warning(x, .envir = .envir)
   utils::menu(c("Yes", "No"), "") %>%
     {dplyr::case_when(
       . == 1L ~ TRUE,
