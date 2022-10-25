@@ -21,19 +21,19 @@ Depends:
 Imports: 
     dplyr (>= 1.0.7),
     cli (>= 3.0.0),
-    fs (>= 1.5.0),
     gert (>= 1.4.1),
     glue (>= 1.4.2),
     here (>= 1.0.1),
     R.utils (>= 2.11.0),
-    readr (>= 2.0.1),
     renv (>= 0.14.0),
     rlang (>= 0.4.11),
     usethis (>= 2.0.1)
 Suggests: 
     covr (>= 3.5.1),
+    fs (>= 1.5.0),
     knitr (>= 1.34),
     pkgdown (>= 1.6.1),
+    readr (>= 2.0.1),
     rmarkdown (>= 2.11),
     spelling (>= 2.2),
     testthat (>= 3.0.4)
@@ -44,4 +44,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1

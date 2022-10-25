@@ -38,20 +38,20 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
 
   # checking if location is an existing folder
-  if (fs::is_dir(name)) {
+  if (dir.exists(name)) {
     cli::cli_alert_danger("{.file {name}} is an existing folder, and symbolic link cannot be placed.")
     stop()
   }
 
   # checking if a link/file already exists
-  if (fs::is_link(name) || fs::is_file(name) || fs::file_exists(name)) {
+  if (is.symlink(name) || file.exists(name)) {
     cli::cli_alert_danger("{.file {name}} is an existing symbolic link or file, and a new symbolic link cannot be placed.")
     cli::cli_alert_danger("Delete the file or update the {.field name} argument and re-run {.code create_symlink()}.")
     stop()
   }
 
   # checking to argument is a path ---------------------------------------------
-  if (!isTRUE(fs::is_dir(to)) || !isTRUE(fs::is_absolute_path(to))) {
+  if (!isTRUE(dir.exists(to))) {
     cli::cli_alert_danger("{.file {to}} is not an existing directory path.")
     cli::cli_ul("Update the {.field to} argument and re-run {.code create_symlink()}.")
     stop()
@@ -101,3 +101,6 @@ create_symlink <- function(to, name = "secure_data", ...) {
 
   invisible()
 }
+
+
+is.symlink <- function(path) isTRUE(nzchar(Sys.readlink(paths), keepNA = TRUE))

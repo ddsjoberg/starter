@@ -49,7 +49,7 @@ use_project_file <- function(name = NULL, filename = NULL,
   # if file already exists, prompt user for new name
   filename <- filename %||% template[[name]]$filename
 
-  if (fs::file_exists(fs::path(path, filename)) && interactive()) {
+  if (file.exists(file.path(path, filename)) && interactive()) {
     cli::cli_alert_danger("File {.file {filename}} already exists.")
     filename <- readline("Please supply a new file name including extension [return to quit]. ")
     if (filename == "") {
@@ -59,7 +59,7 @@ use_project_file <- function(name = NULL, filename = NULL,
   }
 
   # replace the output filename in the template
-  template[[name]]$filename <- fs::path_norm(filename)
+  template[[name]]$filename <- filename
 
   # writing file ---------------------------------------------------------------
   writing_files_folders(
@@ -70,7 +70,7 @@ use_project_file <- function(name = NULL, filename = NULL,
   )
 
   # opening new file -----------------------------------------------------------
-  if (open && fs::file_exists(template[[name]][["filename"]])) {
+  if (open && file.exists(template[[name]][["filename"]])) {
     utils::file.edit(template[[name]][["filename"]])
   }
 
