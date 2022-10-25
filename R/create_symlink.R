@@ -103,4 +103,4 @@ create_symlink <- function(to, name = "secure_data", ...) {
 }
 
 
-is.symlink <- function(path) isTRUE(nzchar(Sys.readlink(paths), keepNA = TRUE))
+is.symlink <- function(path) isTRUE(nzchar(Sys.readlink(path), keepNA = TRUE))

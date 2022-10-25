@@ -27,7 +27,7 @@ Imports:
     R.utils (>= 2.11.0),
     renv (>= 0.14.0),
     rlang (>= 0.4.11),
-    usethis (>= 2.0.1)
+    rstudioapi
 Suggests: 
     covr (>= 3.5.1),
     fs (>= 1.5.0),

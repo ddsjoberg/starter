@@ -118,10 +118,8 @@ create_project <- function(path, path_data = NULL, template = "default",
 
   # finishing up ---------------------------------------------------------------
   # opening new R project
-  if (open) {
-    if (usethis::proj_activate(path)) {
-      on.exit()
-    }
+  if (isTRUE(open) && rstudioapi::isAvailable()) {
+    rstudioapi::openProject(path, newSession = TRUE)
   }
   return(invisible())
 }
@@ -351,12 +349,7 @@ initialise_git <- function(git, path) {
     # if there is an error setting up, printing note about the error
     tryCatch({
       # Configure Git repository
-      usethis::with_project(
-        path = path,
-        gert::git_init(path = path),
-        setwd = FALSE,
-        quiet = TRUE
-      )
+      gert::git_init(path = path)
     },
     error = function(e) {
       cli::cli_alert_danger(
@@ -391,6 +384,6 @@ isFALSE = function(x) {
 }
 
 is_git <- function(path = ".") {
-  dir.exists(path) && dir.exists(path = file.path(path, ".git"))
+  dir.exists(path) && dir.exists(paths = file.path(path, ".git"))
 }
 
