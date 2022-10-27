@@ -66,11 +66,11 @@ for step by step instructions.
 \examples{
 \dontshow{if (pkgdown::in_pkgdown()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # specifying project folder location (folder does not yet exist)
-project_path <- fs::path(tempdir(), "My Project Folder")
+project_path <- file.path(tempdir(), "My Project Folder")
 
 # creating folder where secure data would be stored (typically will be a network drive)
-secure_data_path <- fs::path(tempdir(), "secure_data")
-fs::dir_create(secure_data_path)
+secure_data_path <- file.path(tempdir(), "secure_data")
+dir.create(secure_data_path)
 
 # creating new project folder
 create_project(project_path, path_data = secure_data_path)

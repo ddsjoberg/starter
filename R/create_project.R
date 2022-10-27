@@ -37,11 +37,11 @@
 #' @returns NULL, places project template in new or existing directory
 #' @examplesIf pkgdown::in_pkgdown()
 #' # specifying project folder location (folder does not yet exist)
-#' project_path <- fs::path(tempdir(), "My Project Folder")
+#' project_path <- file.path(tempdir(), "My Project Folder")
 #'
 #' # creating folder where secure data would be stored (typically will be a network drive)
-#' secure_data_path <- fs::path(tempdir(), "secure_data")
-#' fs::dir_create(secure_data_path)
+#' secure_data_path <- file.path(tempdir(), "secure_data")
+#' dir.create(secure_data_path)
 #'
 #' # creating new project folder
 #' create_project(project_path, path_data = secure_data_path)
@@ -95,7 +95,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   if (isTRUE(symlink) && !is.null(path_data)) {
     R.utils::createLink(
       target = glue::glue("{path_data}"),
-      link = fs::path(glue::glue("{path}"), "secure_data")
+      link = file.path(glue::glue("{path}"), "secure_data")
     )
     cli::cli_alert_success("Creating symbolic link to data folder {.file {path_data}}")
   }
@@ -118,10 +118,8 @@ create_project <- function(path, path_data = NULL, template = "default",
 
   # finishing up ---------------------------------------------------------------
   # opening new R project
-  if (open) {
-    if (usethis::proj_activate(path)) {
-      on.exit()
-    }
+  if (isTRUE(open) && rstudioapi::isAvailable()) {
+    rstudioapi::openProject(path, newSession = TRUE)
   }
   return(invisible())
 }
@@ -180,7 +178,7 @@ check_template_structure <- function(selected_template) {
   }
 
   if (!is.null(attr(selected_template, "script_path")) &&
-      !fs::file_exists(attr(selected_template, "script_path"))) {
+      !file.exists(attr(selected_template, "script_path"))) {
     paste("Template attribute 'script_path' must be a file location.") %>%
       stop(call. = FALSE)
   }
@@ -207,7 +205,7 @@ check_template_structure <- function(selected_template) {
                  "and {copy_or_glue} logical.") %>%
       stop(call. = FALSE)
     # check the template file exists
-    if (!fs::file_exists(selected_template[[i]][["template_filename"]]))
+    if (!file.exists(selected_template[[i]][["template_filename"]]))
       glue::glue("Template file '{selected_template[[i]][['template_filename']]}' ",
                  "does not exist.") %>%
       stop(call. = FALSE)
@@ -264,7 +262,7 @@ writing_files_folders <- function(selected_template, path,
                                   overwrite, path_data, git, renv) {
   # creating the base project folder -------------------------------------------
   if (!dir.exists(path)) {
-    fs::dir_create(path, recurse = TRUE)
+    dir.create(path, recursive = TRUE)
     cli::cli_alert_success("Writing folder {.file {path}}")
   }
 
@@ -273,7 +271,7 @@ writing_files_folders <- function(selected_template, path,
   symbolic_link <-
     ifelse(
       !is.null(path_data),
-      glue::glue('starter::create_symlink(to = "{fs::path_norm(path_data)}")'),
+      glue::glue('starter::create_symlink(to = "{normalizePath(path_data, winslash = \"/\")}")'),
       'starter::create_symlink(to = "<secure data path>")'
     )
   folder_name <- basename(path)
@@ -286,9 +284,9 @@ writing_files_folders <- function(selected_template, path,
     unique() %>%
     walk(
       function(.x) {
-        if (!fs::dir_exists(fs::path(path, .x))) {
-          fs::dir_create(fs::path(path, .x), recurse = TRUE)
-          cli::cli_alert_success("Creating {.file {fs::path(path, .x)}}")
+        if (!dir.exists(file.path(path, .x))) {
+          dir.create(file.path(path, .x), recursive = TRUE)
+          cli::cli_alert_success("Creating {.file {file.path(path, .x)}}")
         }
       }
     )
@@ -301,7 +299,7 @@ writing_files_folders <- function(selected_template, path,
       filename = selected_template[[.data$file_abbrv]]$filename,
       template_file_path = selected_template[[.data$file_abbrv]]$template_filename,
       glue = selected_template[[.data$file_abbrv]]$glue,
-      file_exists = fs::file_exists(fs::path(.env$path, .data$filename))
+      file_exists = file.exists(file.path(.env$path, .data$filename))
     )
   df_files$write_file <-
     seq_len(nrow(df_files)) %>%
@@ -326,15 +324,16 @@ writing_files_folders <- function(selected_template, path,
     function(i) {
       # if glue file contents, importing as string, evaluating glue::glue, and writing to file
       if (df_files$glue[i]) {
-        readr::read_file(df_files$template_file_path[i]) %>%
+        readLines(df_files$template_file_path[i]) %>%
+          paste(collapse = "\n") %>%
           glue::glue(.open = "{{", .close = "}}") %>%
-          readr::write_file(file = fs::path(path, df_files$filename[i]))
+          writeLines(con = file.path(path, df_files$filename[i]))
       }
       # if just copying (no glue), copying file to project folder
       else {
         file.copy(
           from = df_files$template_file_path[i],
-          to = fs::path(path, df_files$filename[i]),
+          to = file.path(path, df_files$filename[i]),
           overwrite = TRUE
         )
       }
@@ -350,12 +349,7 @@ initialise_git <- function(git, path) {
     # if there is an error setting up, printing note about the error
     tryCatch({
       # Configure Git repository
-      usethis::with_project(
-        path = path,
-        gert::git_init(path = path),
-        setwd = FALSE,
-        quiet = TRUE
-      )
+      gert::git_init(path = path)
     },
     error = function(e) {
       cli::cli_alert_danger(
@@ -390,6 +384,6 @@ isFALSE = function(x) {
 }
 
 is_git <- function(path = ".") {
-  fs::dir_exists(path) && fs::dir_exists(path = fs::path(path, ".git"))
+  dir.exists(path) && dir.exists(paths = file.path(path, ".git"))
 }
 
