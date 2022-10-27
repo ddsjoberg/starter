@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# starter <a href="http://www.danieldsjoberg.com/starter/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# starter <a href="https://www.danieldsjoberg.com/starter/"><img src="man/figures/logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
 
@@ -40,11 +40,11 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> ✔ Using "Default Project Template" template
-#> ✔ Writing folder ']8;;file://C:/Users/SjobergD/AppData/Local/Temp/RtmpgrfVe5/My Project FolderC:/Users/SjobergD/AppData/Local/Temp/RtmpgrfVe5/My Project Folder]8;;'
+#> ✔ Writing folder ']8;;file://C:/Users/SjobergD/AppData/Local/Temp/RtmpAzPBzk/My Project FolderC:/Users/SjobergD/AppData/Local/Temp/RtmpAzPBzk/My Project Folder]8;;'
 #> ✔ Writing files "README.md", ".gitignore", "My Project Folder.Rproj", and ".Rprofile"
 #> ✔ Initialising Git repo
 #> ✔ Initialising renv project
-#> * renv infrastructure has been generated for project "C:/Users/SjobergD/AppData/Local/Temp/RtmpgrfVe5/My Project Folder".
+#> * renv infrastructure has been generated for project "C:/Users/SjobergD/AppData/Local/Temp/RtmpAzPBzk/My Project Folder".
 ```
 
 ## Example Templates
