@@ -118,7 +118,7 @@ create_project <- function(path, path_data = NULL, template = "default",
 
   # finishing up ---------------------------------------------------------------
   # opening new R project
-  if (isTRUE(open) && rstudioapi::isAvailable()) {
+  if (isTRUE(open) && rstudioapi::isAvailable() && has_rproj(path)) {
     rstudioapi::openProject(path, newSession = TRUE)
   }
   return(invisible())
@@ -387,3 +387,9 @@ is_git <- function(path = ".") {
   dir.exists(path) && dir.exists(paths = file.path(path, ".git"))
 }
 
+has_rproj <- function(path) {
+  browser()
+  files <- list.files(path = path)
+
+  isTRUE(any(grepl(x = files, pattern = "\\.Rproj$")))
+}
