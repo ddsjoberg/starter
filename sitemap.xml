@@ -4,6 +4,18 @@
     <loc>http://www.danieldsjoberg.com/starter/404.html</loc>
   </url>
   <url>
+    <loc>http://www.danieldsjoberg.com/starter/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>http://www.danieldsjoberg.com/starter/SUPPORT.html</loc>
+  </url>
+  <url>
     <loc>http://www.danieldsjoberg.com/starter/articles/create_project.html</loc>
   </url>
   <url>
@@ -13,16 +25,7 @@
     <loc>http://www.danieldsjoberg.com/starter/authors.html</loc>
   </url>
   <url>
-    <loc>http://www.danieldsjoberg.com/starter/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>http://www.danieldsjoberg.com/starter/CONTRIBUTING.html</loc>
-  </url>
-  <url>
     <loc>http://www.danieldsjoberg.com/starter/index.html</loc>
-  </url>
-  <url>
-    <loc>http://www.danieldsjoberg.com/starter/LICENSE.html</loc>
   </url>
   <url>
     <loc>http://www.danieldsjoberg.com/starter/news/index.html</loc>
@@ -44,8 +47,5 @@
   </url>
   <url>
     <loc>http://www.danieldsjoberg.com/starter/reference/use_project_file.html</loc>
-  </url>
-  <url>
-    <loc>http://www.danieldsjoberg.com/starter/SUPPORT.html</loc>
   </url>
 </urlset>
