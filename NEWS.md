@@ -1,4 +1,4 @@
-# starter (development version)
+# starter 0.1.11
 
 * Removed {usethis} dependency. Moved {fs} and {readr} from 'Imports' to 'Suggests'.
 
