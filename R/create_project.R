@@ -388,7 +388,6 @@ is_git <- function(path = ".") {
 }
 
 has_rproj <- function(path) {
-  browser()
   files <- list.files(path = path)
 
   isTRUE(any(grepl(x = files, pattern = "\\.Rproj$")))
