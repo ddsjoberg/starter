@@ -31,6 +31,7 @@
 #' to the location in `path_data=`. Default is to place the symbolic link
 #' if the project is a git repository.
 #' @param renv.settings A list of renv settings passed to `renv::scaffold(settings=)`
+#' @param renv.path A path to place the base renv infrastrcuture. Default is `path`.
 #'
 #' @author Daniel D. Sjoberg
 #' @export
@@ -51,13 +52,13 @@
 create_project <- function(path, path_data = NULL, template = "default",
                            git = TRUE, renv = TRUE, symlink = git,
                            renv.settings = NULL,
+                           renv.path = path,
                            overwrite = NA, open = interactive()) {
   # check if template has function arg override --------------------------------
   if (!is.null(template) && !is.null(attr(template, "arg_override"))) {
     override_arg_list <- attr(template, "arg_override")
 
     # print note about args being set
-
     walk2(
       override_arg_list,
       names(override_arg_list),
@@ -107,7 +108,7 @@ create_project <- function(path, path_data = NULL, template = "default",
   if (isTRUE(renv)) {
     cli::cli_alert_success("Initialising {.pkg renv} project")
     # set up structure of renv project
-    renv::scaffold(project = path, settings = renv.settings)
+    renv::scaffold(project = renv.path, settings = renv.settings)
   }
 
   # if user added a path to a script, run it -----------------------------------
@@ -117,11 +118,8 @@ create_project <- function(path, path_data = NULL, template = "default",
   }
 
   # finishing up ---------------------------------------------------------------
-  # opening new R project
-  if (isTRUE(open) && rstudioapi::isAvailable() && has_rproj(path)) {
-    rstudioapi::openProject(path, newSession = TRUE)
-  }
-  return(invisible())
+  open_rstudio_project(path, open) # opening new R project
+  invisible()
 }
 
 evaluate_project_template <- function(template, path, git, renv, symlink) {

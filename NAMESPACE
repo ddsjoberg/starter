@@ -2,6 +2,7 @@
 
 export(create_project)
 export(create_symlink)
+export(open_rstudio_project)
 export(use_project_file)
 export(use_project_gitignore)
 export(use_project_readme)

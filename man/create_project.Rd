@@ -12,6 +12,7 @@ create_project(
   renv = TRUE,
   symlink = git,
   renv.settings = NULL,
+  renv.path = path,
   overwrite = NA,
   open = interactive()
 )
@@ -38,6 +39,8 @@ to the location in \verb{path_data=}. Default is to place the symbolic link
 if the project is a git repository.}
 
 \item{renv.settings}{A list of renv settings passed to \code{renv::scaffold(settings=)}}
+
+\item{renv.path}{A path to place the base renv infrastrcuture. Default is \code{path}.}
 
 \item{overwrite}{Logical indicating whether to overwrite existing files
 if they exist.  Options are

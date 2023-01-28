@@ -32,4 +32,5 @@ reference:
       - create_project
       - starts_with("use_")
       - create_symlink
+      - open_rstudio_project
       - project_templates
