@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Added `mustWork = FALSE` argument to a `normalizePath()` call to avoid warning when `path_data=` is not a local folder (e.g. no warnings when a SharePoint location is passed for the data location).
+
 # starter 0.1.12
 
 * Removed `browser()` that was left in the package from a previous debugging session.

@@ -271,7 +271,7 @@ writing_files_folders <- function(selected_template, path,
   symbolic_link <-
     ifelse(
       !is.null(path_data),
-      glue::glue('starter::create_symlink(to = "{normalizePath(path_data, winslash = \"/\")}")'),
+      glue::glue('starter::create_symlink(to = "{normalizePath(path_data, winslash = \"/\", mustWork = FALSE)}")'),
       'starter::create_symlink(to = "<secure data path>")'
     )
   folder_name <- basename(path)
