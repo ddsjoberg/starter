@@ -85,19 +85,19 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
 
   # wrapping createLink --------------------------------------------------------
-  safe_createLink <- safely(R.utils::createLink)
-  result <- safe_createLink(link = .find_project_root(name), target = to, ...)
-
-  if (is.null(result$error)) {
-    paste0("Symbolic link placed connecting {.file {name}} to\n",
-           "{.file {to}}") %>%
-      cli::cli_alert_success()
-  }
-  else {
-    # displaying note about windows and symbolic links if error occurred
+  tryCatch(
+    {
+      R.utils::createLink(link = .find_project_root(name), target = to, ...)
+      paste0("Symbolic link placed connecting {.file {name}} to\n",
+             "{.file {to}}") %>%
+        cli::cli_alert_success()
+    },
+    error = function(e) {
+      # displaying note about windows and symbolic links if error occurred
       if(!is.null(msg)) cli::cli_alert_danger(msg)
-      stop(result$error)
-  }
+      stop(e)
+    }
+  )
 
   invisible()
 }

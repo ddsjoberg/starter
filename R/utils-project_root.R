@@ -10,7 +10,7 @@
       tryCatch(rprojroot::find_root(rprojroot::is_pkgdown_project), error = function(e) NA_character_),
       tryCatch(rprojroot::find_root(rprojroot::is_projectile_project), error = function(e) NA_character_),
       tryCatch(rprojroot::find_root(rprojroot::is_testthat), error = function(e) NA_character_)
-    ) |>
+    ) %>%
     stats::na.omit()
 
   # keep longest directory as the root

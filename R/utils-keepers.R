@@ -3,9 +3,9 @@
 
 is_empty <- function(x) length(x) == 0
 
-keep <- function(.x, .p, ...) {
-  .x[map_lgl(.x, .p, ...)]
-}
+# keep <- function(.x, .p, ...) {
+#   .x[map_lgl(.x, .p, ...)]
+# }
 
 discard <- function(.x, .p, ...) {
   .x[!map_lgl(.x, .p, ...)]
