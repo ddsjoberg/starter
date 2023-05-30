@@ -23,7 +23,7 @@ Run the function without specifying a name, and all files available within the
 template will print.}
 
 \item{filename}{Optional argument to specify the name of the file to be written.
-Paths/filename is relative to project base (e.g. \code{here::here()})}
+Paths/filename is relative to project base}
 
 \item{template}{A project template. See
 \href{https://www.danieldsjoberg.com/starter/articles/create_project.html}{vignette}

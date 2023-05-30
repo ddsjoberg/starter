@@ -1,5 +1,20 @@
 
 test_that("create_project() works", {
+  proj_dir <- fs::path(tempdir(), "My Project Folder with symlink")
+  data_dir <- fs::path(tempdir(), "secure_data")
+  fs::dir_create(data_dir)
+  expect_error(
+    create_project(
+      path = proj_dir,
+      path_data = data_dir,
+      git = TRUE,
+      renv = FALSE,
+      symlink = TRUE,
+      open = FALSE # don't open project in new RStudio session
+    ),
+    NA
+  )
+
   proj_dir <- fs::path(tempdir(), "My Project Folder")
   expect_error(
     create_project(
@@ -70,7 +85,7 @@ test_that("test checks on template structure", {
   # don't error with 'copy' name
   expect_error(
     list(a = list(filename = "test",
-                  template_filename = here::here(),
+                  template_filename = .find_project_root(),
                   copy = TRUE)) %>%
     check_template_structure(),
     NA

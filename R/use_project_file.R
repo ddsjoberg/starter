@@ -9,7 +9,7 @@
 #' Run the function without specifying a name, and all files available within the
 #' template will print.
 #' @param filename Optional argument to specify the name of the file to be written.
-#' Paths/filename is relative to project base (e.g. `here::here()`)
+#' Paths/filename is relative to project base
 #' @param open If `TRUE`, opens the new file.
 #' @inheritParams create_project
 #' @name use_project_file
@@ -33,7 +33,7 @@
 use_project_file <- function(name = NULL, filename = NULL,
                              template = NULL, open = interactive()) {
   # import template ------------------------------------------------------------
-  path <- here::here()
+  path <- .find_project_root()
   template <- evaluate_project_template(template, path, git = FALSE, renv = FALSE)
 
   # checking name is in selected template

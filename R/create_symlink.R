@@ -63,7 +63,7 @@ create_symlink <- function(to, name = "secure_data", ...) {
   msg <- NULL
   if (Sys.info()[["sysname"]] == "Windows") {
     # grabbing drive name of project folder
-    drive_here <- substr(here::here(), 1, 2)
+    drive_here <- substr(.find_project_root(), 1, 2)
 
     # getting list of mapped network drives
     drive_mapped <-
@@ -85,19 +85,19 @@ create_symlink <- function(to, name = "secure_data", ...) {
   }
 
   # wrapping createLink --------------------------------------------------------
-  safe_createLink <- safely(R.utils::createLink)
-  result <- safe_createLink(link = here::here(name), target = to, ...)
-
-  if (is.null(result$error)) {
-    paste0("Symbolic link placed connecting {.file {name}} to\n",
-           "{.file {to}}") %>%
-      cli::cli_alert_success()
-  }
-  else {
-    # displaying note about windows and symbolic links if error occurred
+  tryCatch(
+    {
+      R.utils::createLink(link = .find_project_root(name), target = to, ...)
+      paste0("Symbolic link placed connecting {.file {name}} to\n",
+             "{.file {to}}") %>%
+        cli::cli_alert_success()
+    },
+    error = function(e) {
+      # displaying note about windows and symbolic links if error occurred
       if(!is.null(msg)) cli::cli_alert_danger(msg)
-      stop(result$error)
-  }
+      stop(e)
+    }
+  )
 
   invisible()
 }
