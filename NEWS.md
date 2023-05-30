@@ -1,5 +1,7 @@
 # starter (development version)
 
+* Removed dependency on the {here} package and replaced with {rprojroot}.
+
 # starter 0.1.13
 
 * Added `mustWork = FALSE` argument to a `normalizePath()` call to avoid warning when `path_data=` is not a local folder (e.g. no warnings when a SharePoint location is passed for the data location).
