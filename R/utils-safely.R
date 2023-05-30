@@ -18,26 +18,26 @@ safely <- function(.f, otherwise = NULL, quiet = TRUE) {
   function(...) capture_error(.f(...), otherwise, quiet)
 }
 
-quietly <- function(.f) {
-  function(...) capture_output(.f(...))
-}
-
-possibly <- function(.f, otherwise, quiet = TRUE) {
-  force(otherwise)
-  function(...) {
-    tryCatch(.f(...),
-      error = function(e) {
-        if (!quiet)
-          message("Error: ", e$message)
-        otherwise
-      },
-      interrupt = function(e) {
-        stop("Terminated by user", call. = FALSE)
-      }
-    )
-  }
-}
-
+# quietly <- function(.f) {
+#   function(...) capture_output(.f(...))
+# }
+#
+# possibly <- function(.f, otherwise, quiet = TRUE) {
+#   force(otherwise)
+#   function(...) {
+#     tryCatch(.f(...),
+#       error = function(e) {
+#         if (!quiet)
+#           message("Error: ", e$message)
+#         otherwise
+#       },
+#       interrupt = function(e) {
+#         stop("Terminated by user", call. = FALSE)
+#       }
+#     )
+#   }
+# }
+#
 capture_error <- function(code, otherwise = NULL, quiet = TRUE) {
   tryCatch(
     list(result = code, error = NULL),

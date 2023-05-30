@@ -378,10 +378,6 @@ copy_to_glue <- function(x) {
   )
 }
 
-# needed for R 3.4
-isFALSE = function(x) {
-  is.logical(x) && length(x) == 1L && !is.na(x) && !x
-}
 
 is_git <- function(path = ".") {
   dir.exists(path) && dir.exists(paths = file.path(path, ".git"))

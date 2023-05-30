@@ -70,7 +70,7 @@ test_that("test checks on template structure", {
   # don't error with 'copy' name
   expect_error(
     list(a = list(filename = "test",
-                  template_filename = here::here(),
+                  template_filename = .find_project_root(),
                   copy = TRUE)) %>%
     check_template_structure(),
     NA
