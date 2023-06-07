@@ -1,3 +1,5 @@
+# starter (development version)
+
 # starter 0.1.14
 
 * Removed dependency on the {here} package and replaced with {rprojroot}.
