@@ -1,4 +1,4 @@
-# starter (development version)
+# starter 0.1.15
 
 * The {stringr} package was added to Suggests due to upcoming changes in the {rmarkdown} package. (#47, @yihui)
 
