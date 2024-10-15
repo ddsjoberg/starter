@@ -1,3 +1,5 @@
+# starter (development version)
+
 # starter 0.1.16
 
 * Resubmitting to CRAN to address a NOTE about HTML manual builds.
