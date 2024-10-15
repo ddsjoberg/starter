@@ -9,13 +9,9 @@ create_symlink(to, name = "secure_data", ...)
 \arguments{
 \item{to}{target file or directory to which the shortcut should point to.}
 
-\item{name}{symbolic link folder name. Default folder name is `"secure_data"``}
+\item{name}{symbolic link folder name. Default folder name is \code{"secure_data"}}
 
-\item{...}{
-  Arguments passed on to \code{\link[R.utils:createLink]{R.utils::createLink}}
-  \describe{
-    \item{\code{}}{}
-  }}
+\item{...}{arguments passed on to \code{R.utils::createLink()}}
 }
 \value{
 NULL, Places the path or pathname to the link.
@@ -36,13 +32,12 @@ on your operating system, a link may not establish if the originating
 path is a network drive.
 }
 \examples{
-# only run fn interactively, will place symbolic link in current working dir
-if (interactive()) {
-  # Using `starter_symlink()` to establish a symbolic link to a
-  # mapped networked data folder.
-  # The default name of the symlink folder is 'secure_data'
-  create_symlink("O:/Outcomes/Project Folder/Data")
-}
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Using `starter_symlink()` to establish a symbolic link to a
+# mapped networked data folder.
+# The default name of the symlink folder is 'secure_data'
+create_symlink("O:/Outcomes/Project Folder/Data")
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[R.utils:createLink]{R.utils::createLink()}}

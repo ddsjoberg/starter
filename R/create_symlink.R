@@ -14,21 +14,17 @@
 #' path is a network drive.
 #'
 #' @param to target file or directory to which the shortcut should point to.
-#' @param name symbolic link folder name. Default folder name is `"secure_data"``
-#' @inheritDotParams R.utils::createLink
-#' @seealso [R.utils::createLink()]
+#' @param name symbolic link folder name. Default folder name is `"secure_data"`
+#' @param ... arguments passed on to `R.utils::createLink()`
+#' @seealso [`R.utils::createLink()`]
 #' @export
 #' @author Daniel D. Sjoberg
 #' @returns NULL, Places the path or pathname to the link.
-#' @examples
-#' # only run fn interactively, will place symbolic link in current working dir
-#' if (interactive()) {
-#'   # Using `starter_symlink()` to establish a symbolic link to a
-#'   # mapped networked data folder.
-#'   # The default name of the symlink folder is 'secure_data'
-#'   create_symlink("O:/Outcomes/Project Folder/Data")
-#' }
-
+#' @examplesIf interactive()
+#' # Using `starter_symlink()` to establish a symbolic link to a
+#' # mapped networked data folder.
+#' # The default name of the symlink folder is 'secure_data'
+#' create_symlink("O:/Outcomes/Project Folder/Data")
 create_symlink <- function(to, name = "secure_data", ...) {
   # checking inputs ------------------------------------------------------------
   # checking folder name a string of length 1

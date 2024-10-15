@@ -40,12 +40,12 @@ create_project(
   open = FALSE # don't open project in new RStudio session
 )
 #> ✔ Using "Default Project Template" template
-#> ✔ Writing folder '/var/folders/6f/gdjf_vxj2wl3jhmxdkd1hd_w0000gn/T/Rtmp1h8KQ5/My Project Folder'
+#> ✔ Writing folder '/var/folders/6f/gdjf_vxj2wl3jhmxdkd1hd_w0000gn/T/RtmpTUywzl/My Project Folder'
 #> ✔ Writing files "README.md", ".gitignore", "My Project Folder.Rproj", and ".Rprofile"
 #> ✔ Initialising Git repo
 #> ✔ Initialising renv project
-#> - Lockfile written to "/private/var/folders/6f/gdjf_vxj2wl3jhmxdkd1hd_w0000gn/T/Rtmp1h8KQ5/My Project Folder/renv.lock".
-#> - renv infrastructure has been generated for project "/private/var/folders/6f/gdjf_vxj2wl3jhmxdkd1hd_w0000gn/T/Rtmp1h8KQ5/My Project Folder".
+#> - Lockfile written to "/private/var/folders/6f/gdjf_vxj2wl3jhmxdkd1hd_w0000gn/T/RtmpTUywzl/My Project Folder/renv.lock".
+#> - renv infrastructure has been generated for project "/private/var/folders/6f/gdjf_vxj2wl3jhmxdkd1hd_w0000gn/T/RtmpTUywzl/My Project Folder".
 ```
 
 ## Example Templates

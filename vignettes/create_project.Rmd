@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -29,7 +29,7 @@ Users can also create a personalized project templates. Instructions for creatin
 Let's create a new project and inspect the results.
 The new project will be created in a the folder called `"My Project Folder"`.
 
-```{r, message=FALSE}
+```{r proj-setup, message=FALSE}
 # loading packages
 library(starter)
 
@@ -39,7 +39,7 @@ project_path <- fs::path(tempdir(), "My Project Folder")
 
 Let's set up our new project. 
 
-```{r}
+```{r proj-create}
 create_project(
   path = project_path,
   open = FALSE # don't open project in new RStudio session
@@ -54,7 +54,7 @@ The following is the `README.md` file added the project directory.
 It's pre-filled with information specific to this project.
 The first line of the file is the project folder name, followed by a R code for creating a symbolic link from the project folder to the secure data folder.
 
-```{r, comment = "", echo=FALSE}
+```{r readme, comment = "", echo=FALSE}
 readr::read_file(fs::path(project_path, "README.md")) %>% cat()
 ```
 
@@ -62,7 +62,7 @@ readr::read_file(fs::path(project_path, "README.md")) %>% cat()
 
 The `.gitignore` file is populated with various R files, data file types, and miscellaneous files typically not wanted in a Git repository.
 
-```{r, comment = "", echo=FALSE}
+```{r gitignore, comment = "", echo=FALSE}
 readr::read_file(fs::path(project_path, ".gitignore")) %>% cat()
 ```
 
@@ -108,7 +108,7 @@ The list elements may be named any proper name within R.
 However, the names must be unique and we recommend short names.
 These do not need to match/reference any other text in the template file.
 
-```{r}
+```{r my_template}
 my_template <-
   list(
     gitignore = list(),
@@ -128,7 +128,7 @@ The lists contain three important pieces of information about each template file
 
 The metadata for the `README.md` file in the default template looks like this:
 
-```{r, eval=FALSE}
+```{r lst-readme, eval=FALSE}
 readme <- 
   list(
     template_filename = system.file("project_templates/default_readme.md", package = "starter"), 
@@ -144,7 +144,7 @@ As another example, here's the metadata for the `*.Rproj` file from the default 
 Note that the file name can be dynamic (the use of `glue::glue()`), while the underlying file is not dynamic (`glue = FALSE`).
 The list is stored as an expression so the template meta data is not evaluated until you call the `create_project()` function, allowing files to be dynamically named and template files to be saved within a package.
 
-```{r, eval=FALSE}
+```{r rproj, eval=FALSE}
 rproj <- 
   rlang::expr(list(
     template_filename = system.file("project_templates/default_rproj.Rproj", package = "starter"), 
@@ -155,7 +155,7 @@ rproj <-
 
 Below is an example of a simple custom template.
 
-```{r}
+```{r full-template}
 my_template <- 
   list(
     readme = rlang::expr(list(
@@ -179,7 +179,7 @@ my_template <-
 Note that you are able to put files into subfolders by including the subfolder name in the `filename` argument.  This can be done for any type of file. 
 Here's an example of what the metadata could look like if the user has a static Rmarkdown template called `template_analysis.Rmd` that they want to copy into a project subfolder called `scripts`.
 
-```{r, eval = FALSE}
+```{r analysis, eval = FALSE}
 analysis <- 
   list(
     template_filename = "C:/project_templates/template_analysis.Rmd", 
@@ -206,7 +206,7 @@ For example, if you always want to initialize the git repo and never use renv, a
 There is one last step---give your template a label.
 The label will be displayed each time the template is called in either `create_project()` or `use_project_file()`.
 
-```{r}
+```{r label}
 attr(my_template, "label") <- "My 1st Project Template"
 ```
 
@@ -218,11 +218,11 @@ The `'readme'` element is used in the in the `use_project_readme()` function and
 Now that you have a folder with your template files stored and you have created a metadata list object, you can use them to create a new project folder with your custom template.
 The following code will get you started.
 
-```{r, include=FALSE, echo=FALSE}
+```{r unlink, include=FALSE, echo=FALSE}
 unlink(project_path, recursive = TRUE)
 ```
 
-```{r}
+```{r create_project}
 create_project(
   path = project_path,
   template = my_template # metadata list created above
